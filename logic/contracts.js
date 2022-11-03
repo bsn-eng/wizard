@@ -2,6 +2,7 @@ const { ethers } = require('ethers');
 const { _getChainSpecificConstants, _extractChainID } = require('./constants.js');
 
 const LSDN_FACTORY_ABI = require('../ABI/lsdn_factory_abi.json');
+const LIQUID_STAKING_MANAGER_ABI = require('../ABI/liquid_staking_manager_abi.json');
 
 const getContractInstance = async (signer) => {
 
@@ -14,8 +15,15 @@ const getContractInstance = async (signer) => {
         signer
     );
 
+    const getLiquidStakingManager = (liquidStakingManagerAddress) => new ethers.Contract(
+        liquidStakingManagerAddress,
+        LIQUID_STAKING_MANAGER_ABI,
+        signer
+    );
+
     return {
-        lsdnFactory: getLSDNFactory
+        lsdnFactory: getLSDNFactory,
+        liquidStakingManager: getLiquidStakingManager
     }
 }
 
