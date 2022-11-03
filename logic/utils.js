@@ -235,6 +235,15 @@ const _updateDaoRevenueCommission = async (signer, liquidStakingManagerAddress, 
     );
 };
 
+const _updateStakehouseTicker = async (signer, liquidStakingManagerAddress, newStakehouseTicker) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.updateTicker(
+        newStakehouseTicker
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -258,5 +267,6 @@ module.exports = {
     _deRegisterKnotsFromSyndicate,
     _restoreFreeFloatingSharesToSmartWalletForRageQuit,
     _updateDaoAddress,
-    _updateDaoRevenueCommission
+    _updateDaoRevenueCommission,
+    _updateStakehouseTicker
 }
