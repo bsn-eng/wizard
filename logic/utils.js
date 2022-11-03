@@ -156,6 +156,13 @@ const _getNumberOfKnots = async (signer, liquidStakingManagerAddress) => {
     return contract.numberOfKnots();
 };
 
+const _getDaoCommissionPercentage = async (signer, liquidStakingManagerAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.daoCommissionPercentage();
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -172,5 +179,6 @@ module.exports = {
     _getStakedKnotsOfSmartWallet,
     _getSmartWalletDormantRepresentative,
     _isNodeRunnerBanned,
-    _getNumberOfKnots
+    _getNumberOfKnots,
+    _getDaoCommissionPercentage
 }
