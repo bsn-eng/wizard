@@ -262,6 +262,16 @@ const _rotateEOARepresentative = async (signer, liquidStakingManagerAddress, new
     );
 };
 
+const _rotateEOARepresentativeOfNodeRunner = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, newRepresentativeAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.rotateEOARepresentativeOfNodeRunner(
+        _add0x(nodeRunnerAddress),
+        _add0x(newRepresentativeAddress)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -288,5 +298,6 @@ module.exports = {
     _updateDaoRevenueCommission,
     _updateStakehouseTicker,
     _updateWhitelisting,
-    _rotateEOARepresentative
+    _rotateEOARepresentative,
+    _rotateEOARepresentativeOfNodeRunner
 }
