@@ -131,6 +131,15 @@ const _getStakedKnotsOfSmartWallet = async (signer, liquidStakingManagerAddress,
     );
 };
 
+const _getSmartWalletDormantRepresentative = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {  
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.smartWalletDormantRepresentative(
+        _add0x(smartWalletAddress)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -144,5 +153,6 @@ module.exports = {
     _getSmartWalletOfKnot,
     _getSmartWalletOfNodeRunner,
     _getNodeRunnerOfSmartWallet,
-    _getStakedKnotsOfSmartWallet
+    _getStakedKnotsOfSmartWallet,
+    _getSmartWalletDormantRepresentative
 }
