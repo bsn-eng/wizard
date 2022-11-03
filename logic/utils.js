@@ -282,6 +282,17 @@ const _withdrawETHForKnot = async (signer, liquidStakingManagerAddress, recipien
     );
 };
 
+const _rotateNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddress, currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.rotateNodeRunnerOfSmartWallet(
+        _add0x(currentNodeRunner),
+        _add0x(newNodeRunner),
+        wasCurrentNodeRunnerMalicious
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -310,5 +321,6 @@ module.exports = {
     _updateWhitelisting,
     _rotateEOARepresentative,
     _rotateEOARepresentativeOfNodeRunner,
-    _withdrawETHForKnot
+    _withdrawETHForKnot,
+    _rotateNodeRunnerOfSmartWallet
 }
