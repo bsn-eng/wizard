@@ -307,6 +307,26 @@ const _claimRewardsAsNodeRunner = async (signer, liquidStakingManagerAddress, re
     );
 };
 
+const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress) => {
+
+    if(blsPublicKeys.length != blsSignatures.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+        blsSignatures[i] = _add0x(blsSignatures[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.registerBLSPublicKeys(
+        blsPublicKeys,
+        blsSignatures,
+        _add0x(representativeAddress)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -337,5 +357,6 @@ module.exports = {
     _rotateEOARepresentativeOfNodeRunner,
     _withdrawETHForKnot,
     _rotateNodeRunnerOfSmartWallet,
-    _claimRewardsAsNodeRunner
+    _claimRewardsAsNodeRunner,
+    _registerBLSPublicKeys
 }
