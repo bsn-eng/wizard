@@ -184,6 +184,19 @@ const _executeAsSmartWallet = async (signer, liquidStakingManagerAddress, nodeRu
     );
 };
 
+const _deRegisterKnotsFromSyndicate = async (signer, liquidStakingManagerAddress, blsPublicKeys) => {
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.deRegisterKnotFromSyndicate(
+        blsPublicKeys
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -203,5 +216,6 @@ module.exports = {
     _getNumberOfKnots,
     _getDaoCommissionPercentage,
     _isBLSPublicKeyBanned,
-    _executeAsSmartWallet
+    _executeAsSmartWallet,
+    _deRegisterKnotsFromSyndicate
 }
