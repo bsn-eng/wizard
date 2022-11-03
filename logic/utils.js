@@ -253,6 +253,15 @@ const _updateWhitelisting = async (signer, liquidStakingManagerAddress, newWhite
     );
 };
 
+const _rotateEOARepresentative = async (signer, liquidStakingManagerAddress, newRepresentativeAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.rotateEOARepresentative(
+        _add0x(newRepresentativeAddress)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -278,5 +287,6 @@ module.exports = {
     _updateDaoAddress,
     _updateDaoRevenueCommission,
     _updateStakehouseTicker,
-    _updateWhitelisting
+    _updateWhitelisting,
+    _rotateEOARepresentative
 }
