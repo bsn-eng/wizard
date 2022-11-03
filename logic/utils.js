@@ -35,10 +35,20 @@ const _isWhitelistingEnabled = async (signer, liquidStakingManagerAddress) => {
     return contract.enableWhitelisting();
 };
 
+const _isNodeRunnerWhitelisted = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.isNodeRunnerWhitelisted(
+        nodeRunnerAddress
+    );
+};
+
 module.exports = {
     _getDAOAddress,
     _getSavETHVaultAddress,
     _getFeesAndMEVPoolAddress,
     _getStakehouseTicker,
-    _isWhitelistingEnabled
+    _isWhitelistingEnabled,
+    _isNodeRunnerWhitelisted
 }
