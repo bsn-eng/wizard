@@ -13,7 +13,7 @@ const goerliFactoryAddresses = {
 };
 
 const customErrors = {
-
+	UNEQUAL_ARRAY_LENGTH: "Error: Unequal array size. Must provide arrays of equal length"
 };
 
 const _extractChainID = async (signerOrProvider) => {

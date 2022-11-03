@@ -1,3 +1,4 @@
+const { customErrors } = require('./constants');
 const { getContractInstance } = require('./contracts');
 
 const _add0x = (data) => {
@@ -163,7 +164,7 @@ const _getDaoCommissionPercentage = async (signer, liquidStakingManagerAddress) 
     return contract.daoCommissionPercentage();
 };
 
-const _isBLSPublicKeyBanned = async (signer, liquidStakingManager, blsPublicKey) => {
+const _isBLSPublicKeyBanned = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -197,6 +198,25 @@ const _deRegisterKnotsFromSyndicate = async (signer, liquidStakingManagerAddress
     );
 };
 
+const _restoreFreeFloatingSharesToSmartWalletForRageQuit = async (signer, liquidStakingManagerAddress, smartWalletAddress, blsPublicKeys, amounts) => {
+
+    if(blsPublicKeys.length != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.restoreFreeFloatingSharesToSmartWalletForRageQuit(
+        _add0x(smartWalletAddress),
+        blsPublicKeys,
+        amounts
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -217,5 +237,6 @@ module.exports = {
     _getDaoCommissionPercentage,
     _isBLSPublicKeyBanned,
     _executeAsSmartWallet,
-    _deRegisterKnotsFromSyndicate
+    _deRegisterKnotsFromSyndicate,
+    _restoreFreeFloatingSharesToSmartWalletForRageQuit
 }
