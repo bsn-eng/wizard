@@ -44,11 +44,21 @@ const _isNodeRunnerWhitelisted = async (signer, liquidStakingManagerAddress, nod
     );
 };
 
+const _getSmartWalletRepresentative = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.smartWalletRepresentative(
+        smartWalletAddress
+    );
+};
+
 module.exports = {
     _getDAOAddress,
     _getSavETHVaultAddress,
     _getFeesAndMEVPoolAddress,
     _getStakehouseTicker,
     _isWhitelistingEnabled,
-    _isNodeRunnerWhitelisted
+    _isNodeRunnerWhitelisted,
+    _getSmartWalletRepresentative
 }
