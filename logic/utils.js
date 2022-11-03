@@ -336,6 +336,33 @@ const _isKnotDeregistered = async (signer, liquidStakingManagerAddress, blsPubli
     );
 };
 
+const _stake = async (signer, liquidStakingManagerAddress, blsPublicKeys, cipherTexts, aesEncryptorKeys, encryptionSignatures, dataRoots) => {
+
+    const arrayLength = blsPublicKeys.length;
+    if(arrayLength != cipherTexts.length || arrayLength != aesEncryptorKeys.length || arrayLength != encryptionSignatures.length || arrayLength != dataRoots.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<arrayLength; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+        cipherTexts[i] = _add0x(cipherTexts[i]);
+        aesEncryptorKeys[i] = _add0x(aesEncryptorKeys[i]);
+        encryptionSignatures[i].r = _add0x(encryptionSignatures[i].r);
+        encryptionSignatures[i].s = _add0x(encryptionSignatures[i].s);
+        dataRoots[i] = _add0x(dataRoots[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.stake(
+        blsPublicKeys,
+        cipherTexts,
+        aesEncryptorKeys,
+        encryptionSignatures,
+        dataRoots
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -368,5 +395,6 @@ module.exports = {
     _rotateNodeRunnerOfSmartWallet,
     _claimRewardsAsNodeRunner,
     _registerBLSPublicKeys,
-    _isKnotDeregistered
+    _isKnotDeregistered,
+    _stake
 }
