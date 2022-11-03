@@ -163,6 +163,15 @@ const _getDaoCommissionPercentage = async (signer, liquidStakingManagerAddress) 
     return contract.daoCommissionPercentage();
 };
 
+const _isBLSPublicKeyBanned = async (signer, liquidStakingManager, blsPublicKey) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.isBLSPublicKeyBanned(
+        _add0x(blsPublicKey)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -180,5 +189,6 @@ module.exports = {
     _getSmartWalletDormantRepresentative,
     _isNodeRunnerBanned,
     _getNumberOfKnots,
-    _getDaoCommissionPercentage
+    _getDaoCommissionPercentage,
+    _isBLSPublicKeyBanned
 }
