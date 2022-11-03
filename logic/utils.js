@@ -272,6 +272,16 @@ const _rotateEOARepresentativeOfNodeRunner = async (signer, liquidStakingManager
     );
 };
 
+const _withdrawETHForKnot = async (signer, liquidStakingManagerAddress, recipientAddress, blsPublicKey) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.withdrawETHForKnot(
+        _add0x(recipientAddress),
+        _add0x(blsPublicKey)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -299,5 +309,6 @@ module.exports = {
     _updateStakehouseTicker,
     _updateWhitelisting,
     _rotateEOARepresentative,
-    _rotateEOARepresentativeOfNodeRunner
+    _rotateEOARepresentativeOfNodeRunner,
+    _withdrawETHForKnot
 }
