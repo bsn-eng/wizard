@@ -244,6 +244,15 @@ const _updateStakehouseTicker = async (signer, liquidStakingManagerAddress, newS
     );
 };
 
+const _updateWhitelisting = async (signer, liquidStakingManagerAddress, newWhitelistingStatus) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.updateWhitelisting(
+        newWhitelistingStatus
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -268,5 +277,6 @@ module.exports = {
     _restoreFreeFloatingSharesToSmartWalletForRageQuit,
     _updateDaoAddress,
     _updateDaoRevenueCommission,
-    _updateStakehouseTicker
+    _updateStakehouseTicker,
+    _updateWhitelisting
 }
