@@ -327,6 +327,15 @@ const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPu
     );
 };
 
+const _isKnotDeregistered = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.isKnotDeregistered(
+        _add0x(blsPublicKey)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -358,5 +367,6 @@ module.exports = {
     _withdrawETHForKnot,
     _rotateNodeRunnerOfSmartWallet,
     _claimRewardsAsNodeRunner,
-    _registerBLSPublicKeys
+    _registerBLSPublicKeys,
+    _isKnotDeregistered
 }
