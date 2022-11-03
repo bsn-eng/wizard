@@ -172,6 +172,18 @@ const _isBLSPublicKeyBanned = async (signer, liquidStakingManager, blsPublicKey)
     );
 };
 
+const _executeAsSmartWallet = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, targetContractAddress, encodedFunctionData, ethValue) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.executeAsSmartWallet(
+        _add0x(nodeRunnerAddress),
+        _add0x(targetContractAddress),
+        _add0x(encodedFunctionData),
+        ethValue
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -190,5 +202,6 @@ module.exports = {
     _isNodeRunnerBanned,
     _getNumberOfKnots,
     _getDaoCommissionPercentage,
-    _isBLSPublicKeyBanned
+    _isBLSPublicKeyBanned,
+    _executeAsSmartWallet
 }
