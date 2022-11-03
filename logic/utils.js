@@ -293,6 +293,20 @@ const _rotateNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddres
     );
 };
 
+const _claimRewardsAsNodeRunner = async (signer, liquidStakingManagerAddress, recipientAddress, blsPublicKeys) => {
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.claimRewardsAsNodeRunner(
+        _add0x(recipientAddress),
+        blsPublicKeys
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -322,5 +336,6 @@ module.exports = {
     _rotateEOARepresentative,
     _rotateEOARepresentativeOfNodeRunner,
     _withdrawETHForKnot,
-    _rotateNodeRunnerOfSmartWallet
+    _rotateNodeRunnerOfSmartWallet,
+    _claimRewardsAsNodeRunner
 }
