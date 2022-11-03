@@ -1,5 +1,47 @@
 const { getContractInstance } = require('./contracts');
 
+const _add0x = (data) => {
+
+	if(!data) {
+		throw customErrors.NULL_OR_UNDEFINED_VALUE;
+	}
+
+	if(Buffer.isBuffer(data)) {
+		return data;
+	}
+
+	if(data instanceof Uint8Array) {
+		return '0x' + Buffer.from(data).toString('hex');
+	}
+
+	if(_.isString(data)) {
+		return (data.indexOf('0x') !== -1) ? data : '0x'.concat(data);		
+	}
+
+	return data;
+};
+
+const _remove0x = (data) => {
+
+	if(!data) {
+		throw customErrors.NULL_OR_UNDEFINED_VALUE;
+	}
+
+	if(Buffer.isBuffer(data)) {
+		return data;
+	}
+
+	if(data instanceof Uint8Array) {
+		return Buffer.from(data).toString('hex');
+	}
+
+	if(_.isString(data)) {
+		return (data.indexOf('0x') !== -1) ? data.slice(2) : data;
+	}
+
+	return data;
+};
+
 const _getDAOAddress = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
@@ -54,6 +96,8 @@ const _getSmartWalletRepresentative = async (signer, liquidStakingManagerAddress
 };
 
 module.exports = {
+    _add0x,
+    _remove0x,
     _getDAOAddress,
     _getSavETHVaultAddress,
     _getFeesAndMEVPoolAddress,
