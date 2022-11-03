@@ -385,6 +385,13 @@ const _mintDerivatives = async (signer, liquidStakingManagerAddress, blsPublicKe
     );
 };
 
+const _getNetworkFeeRecipient = async (signer, liquidStakingManagerAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.getNetworkFeeRecipient();
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -419,5 +426,6 @@ module.exports = {
     _registerBLSPublicKeys,
     _isKnotDeregistered,
     _stake,
-    _mintDerivatives
+    _mintDerivatives,
+    _getNetworkFeeRecipient
 }
