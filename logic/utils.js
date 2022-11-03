@@ -82,7 +82,7 @@ const _isNodeRunnerWhitelisted = async (signer, liquidStakingManagerAddress, nod
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.isNodeRunnerWhitelisted(
-        nodeRunnerAddress
+        _add0x(nodeRunnerAddress)
     );
 };
 
@@ -91,7 +91,7 @@ const _getSmartWalletRepresentative = async (signer, liquidStakingManagerAddress
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.smartWalletRepresentative(
-        smartWalletAddress
+        _add0x(smartWalletAddress)
     );
 };
 
