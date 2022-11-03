@@ -104,6 +104,15 @@ const _getSmartWalletOfKnot = async (signer, liquidStakingManagerAddress, blsPub
     );
 };
 
+const _getSmartWalletOfNodeRunner = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.smartWalletOfNodeRunner(
+        _add0x(nodeRunnerAddress)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -114,5 +123,6 @@ module.exports = {
     _isWhitelistingEnabled,
     _isNodeRunnerWhitelisted,
     _getSmartWalletRepresentative,
-    _getSmartWalletOfKnot
+    _getSmartWalletOfKnot,
+    _getSmartWalletOfNodeRunner
 }
