@@ -1,0 +1,218 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_liquidStakingManagerImplementation",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_syndicateFactory",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_lpTokenFactory",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_smartWalletFactory",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_brand",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_savETHVaultDeployer",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_stakingFundsVaultDeployer",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_optionalGatekeeperDeployer",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "LiquidStakingManager",
+                "type": "address"
+            }
+        ],
+        "name": "LSDNDeployed",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "brand",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_dao",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_optionalCommission",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "_deployOptionalHouseGatekeeper",
+                "type": "bool"
+            },
+            {
+                "internalType": "string",
+                "name": "_stakehouseTicker",
+                "type": "string"
+            }
+        ],
+        "name": "deployNewLiquidStakingDerivativeNetwork",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "isLiquidStakingManager",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "liquidStakingManagerImplementation",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "lpTokenFactory",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "optionalGatekeeperDeployer",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "savETHVaultDeployer",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "smartWalletFactory",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "stakingFundsVaultDeployer",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "syndicateFactory",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
