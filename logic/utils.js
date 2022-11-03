@@ -149,6 +149,13 @@ const _isNodeRunnerBanned = async (signer, liquidStakingManagerAddress, nodeRunn
     )
 };
 
+const _getNumberOfKnots = async (signer, liquidStakingManagerAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.numberOfKnots();
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -164,5 +171,6 @@ module.exports = {
     _getNodeRunnerOfSmartWallet,
     _getStakedKnotsOfSmartWallet,
     _getSmartWalletDormantRepresentative,
-    _isNodeRunnerBanned
+    _isNodeRunnerBanned,
+    _getNumberOfKnots
 }
