@@ -14,6 +14,13 @@ const _getSavETHVaultAddress = async (signer, liquidStakingManagerAddress) => {
     return contract.savETHVault();
 };
 
+const _getFeesAndMEVPoolAddress = async (signer, liquidStakingManagerAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.stakingFundsVault();
+};
+
 const _getStakehouseTicker = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
@@ -30,7 +37,8 @@ const _isWhitelistingEnabled = async (signer, liquidStakingManagerAddress) => {
 
 module.exports = {
     _getDAOAddress,
+    _getSavETHVaultAddress,
+    _getFeesAndMEVPoolAddress,
     _getStakehouseTicker,
-    _isWhitelistingEnabled,
-    _getSavETHVaultAddress
+    _isWhitelistingEnabled
 }
