@@ -217,6 +217,15 @@ const _restoreFreeFloatingSharesToSmartWalletForRageQuit = async (signer, liquid
     );
 };
 
+const _updateDaoAddress = async (signer, liquidStakingManagerAddress, newDaoAddress) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.updateDAOAddress(
+        _add0x(newDaoAddress)
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -238,5 +247,6 @@ module.exports = {
     _isBLSPublicKeyBanned,
     _executeAsSmartWallet,
     _deRegisterKnotsFromSyndicate,
-    _restoreFreeFloatingSharesToSmartWalletForRageQuit
+    _restoreFreeFloatingSharesToSmartWalletForRageQuit,
+    _updateDaoAddress
 }
