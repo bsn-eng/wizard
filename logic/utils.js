@@ -363,6 +363,28 @@ const _stake = async (signer, liquidStakingManagerAddress, blsPublicKeys, cipher
     );
 };
 
+const _mintDerivatives = async (signer, liquidStakingManagerAddress, blsPublicKeys, beaconChainReports, authenticatedReportSignatures) => {
+
+    const arrayLength = blsPublicKeys.length;
+    if(arrayLength != authenticatedReports.length || arrayLength != beaconChainReports.length || arrayLength != authenticatedReportSignatures.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+        authenticatedReportSignatures[i].r = Buffer.from(authenticatedReportSignatures[i].r, 'hex');
+        authenticatedReportSignatures[i].s = Buffer.from(authenticatedReportSignatures[i].s, 'hex');
+    }
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.mintDerivatives(
+        blsPublicKeys,
+        beaconChainReports,
+        authenticatedReportSignatures
+    );
+};
+
 module.exports = {
     _add0x,
     _remove0x,
@@ -396,5 +418,6 @@ module.exports = {
     _claimRewardsAsNodeRunner,
     _registerBLSPublicKeys,
     _isKnotDeregistered,
-    _stake
+    _stake,
+    _mintDerivatives
 }
