@@ -5,10 +5,10 @@ const { UtilsSubPackage } = require('./interface/utilsClass');
 
 class Wizard {
 
-    constructor(signer) {
+    constructor({signer, liquidStakingManagerAddress=null}) {
         
         this.deployer = new DeployerSubPackage(signer);
-        this.utils = new UtilsSubPackage(signer);
+        this.utils = new UtilsSubPackage(signer, liquidStakingManagerAddress);
         
         this.contractInstance = new ContractSubPackage(signer);
         this.constants = new ConstantsSubPackage(signer);
