@@ -1,6 +1,6 @@
 const { customErrors } = require('./constants');
 const { getContractInstance } = require('./contracts');
-const { _add0x, _remove0x } = require('./utils')
+const { _add0x } = require('./utils');
 
 const _getIndexOwnedByTheVault = async (signer, savETHVaultAddress) => {
 
