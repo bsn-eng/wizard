@@ -75,10 +75,21 @@ const _burnLPTokens = async (signer, savETHVaultAddress, lpTokens, amounts) => {
     );
 };
 
+const _burnLPToken = async (signer, savETHVaultAddress, lpToken, amount) => {
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.burnLPToken(
+        _add0x(lpToken),
+        amount
+    );
+};
+
 module.exports = {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
     _depositETHForStaking,
     _burnLPTokensByBLS,
-    _burnLPTokens
+    _burnLPTokens,
+    _burnLPToken
 };
