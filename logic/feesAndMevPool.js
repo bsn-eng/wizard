@@ -35,8 +35,20 @@ const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddress, blsPubl
     );
 };
 
+const _depositETHForStaking = async (signer, feesAndMevPoolAddress, blsPublicKey, amount, ethValue) => {
+
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.depositETHForStaking(
+        _add0x(blsPublicKey),
+        amount,
+        { value: ethValue }
+    );
+};
+
 module.exports = {
     _totalShares,
     _updateAccumulatedETHPerLP,
-    _batchDepositETHForStaking
+    _batchDepositETHForStaking,
+    _depositETHForStaking
 };
