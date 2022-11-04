@@ -9,6 +9,8 @@ class Wizard {
         
         this.deployer = new DeployerSubPackage(signer);
         this.utils = new UtilsSubPackage(signer, liquidStakingManagerAddress);
+        // this.pool = new PoolSubPackage(signer);
+        // this.giantPool = new GiantPoolSubPackage(signer);
         
         this.contractInstance = new ContractSubPackage(signer);
         this.constants = new ConstantsSubPackage(signer);

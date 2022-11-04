@@ -3,6 +3,8 @@ const { _getChainSpecificConstants, _extractChainID } = require('./constants.js'
 
 const LSDN_FACTORY_ABI = require('../ABI/lsdn_factory_abi.json');
 const LIQUID_STAKING_MANAGER_ABI = require('../ABI/liquid_staking_manager_abi.json');
+const SAVETH_VAULT_ABI = require('../ABI/saveth_vault_abi.json');
+const STAKING_FUNDS_VAULT_ABI = require('../ABI/staking_funds_vault_abi.json');
 
 const getContractInstance = async (signer) => {
 
@@ -21,9 +23,23 @@ const getContractInstance = async (signer) => {
         signer
     );
 
+    const getSavETHVault = (savETHVaultAddress) => new ethers.Contract(
+        savETHVaultAddress,
+        SAVETH_VAULT_ABI,
+        signer
+    );
+
+    const getFeesAndMevPool = (feesAndMevPoolAddress) => new ethers.Contract(
+        feesAndMevPoolAddress,
+        STAKING_FUNDS_VAULT_ABI,
+        signer
+    );
+
     return {
         lsdnFactory: getLSDNFactory,
-        liquidStakingManager: getLiquidStakingManager
+        liquidStakingManager: getLiquidStakingManager,
+        savETHVault: getSavETHVault,
+        feesAndMevPool: getFeesAndMevPool
     }
 }
 
