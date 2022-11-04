@@ -9,7 +9,7 @@ const _getIndexOwnedByTheVault = async (signer, savETHVaultAddress) => {
     return contract.indexOwnedByTheVault();
 };
 
-const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicKeys, amounts) => {
+const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicKeys, amounts, ethValue) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -23,7 +23,8 @@ const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicK
 
     return contract.batchDepositETHForStaking(
         blsPublicKeys,
-        amounts
+        amounts,
+        { value: ethValue }
     );
 };
 
