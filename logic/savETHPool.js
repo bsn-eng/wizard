@@ -48,6 +48,7 @@ const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKeys, amo
     for(let i=0; i<blsPublicKeys.length; ++i) {
         blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
     }
+
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
     return contract.burnLPTokensByBLS(
@@ -56,9 +57,28 @@ const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKeys, amo
     );
 };
 
+const _burnLPTokens = async (signer, savETHVaultAddress, lpTokens, amounts) => {
+
+    if(lpTokens.length != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<lpTokens.length; ++i) {
+        lpTokens[i] = _add0x(lpTokens[i]);
+    }
+    
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.burnLPTokens(
+        lpTokens,
+        amounts
+    );
+};
+
 module.exports = {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
     _depositETHForStaking,
-    _burnLPTokensByBLS
+    _burnLPTokensByBLS,
+    _burnLPTokens
 };
