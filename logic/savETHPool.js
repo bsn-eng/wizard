@@ -28,7 +28,19 @@ const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicK
     );
 };
 
+const _depositETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount, ethValue) => {
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.depositETHForStaking(
+        _add0x(blsPublicKey),
+        amount,
+        { value: ethValue }
+    );
+};
+
 module.exports = {
     _getIndexOwnedByTheVault,
-    _batchDepositETHForStaking
+    _batchDepositETHForStaking,
+    _depositETHForStaking
 };
