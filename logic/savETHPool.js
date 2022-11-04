@@ -85,11 +85,21 @@ const _burnLPToken = async (signer, savETHVaultAddress, lpToken, amount) => {
     );
 };
 
+const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpToken) => {
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.isDETHReadyForWithdrawal(
+        lpToken
+    );
+};
+
 module.exports = {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
     _depositETHForStaking,
     _burnLPTokensByBLS,
     _burnLPTokens,
-    _burnLPToken
+    _burnLPToken,
+    _isDETHReadyForWithdrawal
 };
