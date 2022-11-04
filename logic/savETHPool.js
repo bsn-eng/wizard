@@ -39,8 +39,26 @@ const _depositETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, a
     );
 };
 
+const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKeys, amounts) => {
+
+    if(blsPublicKeys.length != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+    }
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.burnLPTokensByBLS(
+        blsPublicKeys,
+        amounts
+    );
+};
+
 module.exports = {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
-    _depositETHForStaking
+    _depositETHForStaking,
+    _burnLPTokensByBLS
 };
