@@ -5,8 +5,6 @@ const { ContractSubPackage } = require('./interface/contractClass');
 class Wizard {
 
     constructor(signer) {
-
-        super(signer);
         
         this.deployer = new DeployerSubPackage(signer);
         
