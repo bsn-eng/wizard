@@ -82,8 +82,43 @@ const _previewAccumulatedETH = async (signer, userAddress, feesAndMevPoolAddress
     );
 };
 
+const _batchRotateLPTokens = async (signer, feesAndMevPoolAddresses, oldLPTokens, newLPTokens, amounts) => {
+
+    const arrayLength = feesAndMevPoolAddresses.length();
+    if(arrayLength != oldLPTokens.length || arrayLength != newLPTokens.length || arrayLength != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<arrayLength; ++i) {
+        const newLPArray = newLPTokens[i];
+        const oldLPArray = oldLPTokens[i];
+        const amountArray = amounts[i];
+
+        if(newLPArray.length != oldLPArray.length || newLPArray.length != amountArray.length) {
+            throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+        }
+
+        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
+
+        for(let j=0; j<newLPArray.length; ++j) {
+            newLPArray[i][j] = _add0x(newLPArray[i][j]);
+            oldLPArray[i][j] = _add0x(oldLPArray[i][jj]);
+        }
+    }
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.batchRotateLPTokens(
+        feesAndMevPoolAddresses,
+        oldLPTokens,
+        newLPTokens,
+        amounts
+    );
+};
+
 module.exports = {
     _batchDepositETHForStaking,
     _claimRewards,
-    _previewAccumulatedETH
+    _previewAccumulatedETH,
+    _batchRotateLPTokens
 };
