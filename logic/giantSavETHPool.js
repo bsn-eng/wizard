@@ -2,7 +2,7 @@ const { customErrors } = require('./constants');
 const { getContractInstance } = require('./contracts');
 const { _add0x } = require('./utils');
 
-const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts) => {
+const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {
@@ -30,7 +30,8 @@ const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, amounts,
         savETHVaultAddresses,
         amounts,
         blsPublicKeys,
-        stakeAmounts
+        stakeAmounts,
+        { value: ethValue }
     )
 };
 
