@@ -35,6 +35,31 @@ const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amoun
     );
 };
 
+const _claimRewards = async (signer, recipient, feesAndMevPoolAddresses, blsPublicKeys) => {
+
+    const arrayLength = blsPublicKeys.length;
+    if(arrayLength != feesAndMevPoolAddresses.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<arrayLength; ++i) {
+        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
+
+        for(let j=0; j<blsPublicKeys[i].length; ++j) {
+            blsPublicKeys[i][j] = _add0x(blsPublicKeys[i][j]);
+        }
+    }
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.claimRewards(
+        _add0x(recipient),
+        feesAndMevPoolAddresses,
+        blsPublicKeys
+    );
+};
+
 module.exports = {
-    _batchDepositETHForStaking
+    _batchDepositETHForStaking,
+    _claimRewards
 };
