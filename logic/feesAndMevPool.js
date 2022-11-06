@@ -92,6 +92,20 @@ const _burnLPTokenForETH = async (signer, feesAndMevPoolAddress, lpToken, amount
     );
 };
 
+const _claimRewards = async (signer, feesAndMevPoolAddress, recipient, blsPublicKeys) => {
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.claimRewards(
+        _add0x(recipient),
+        blsPublicKeys
+    );
+};
+
 module.exports = {
     _totalShares,
     _updateAccumulatedETHPerLP,
@@ -99,5 +113,6 @@ module.exports = {
     _depositETHForStaking,
     _burnLPTokensForETHByBLS,
     _burnLPTokensForETH,
-    _burnLPTokenForETH
+    _burnLPTokenForETH,
+    _claimRewards
 };
