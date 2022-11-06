@@ -5,6 +5,7 @@ const { UtilsSubPackage } = require('./interface/utilsClass');
 const { SavETHPoolSubPackage } = require('./interface/savETHPoolClass');
 const { FeesAndMevPoolSubPackage } = require('./interface/feesAndMevPoolClass');
 const { GiantSavETHPoolSubPackage } = require('./interface/giantSavETHPoolClass');
+const { GiantFeesAndMevPoolSubPackage } = require('./interface/giantFeesAndMevPoolClass');
 
 class Wizard {
 
@@ -20,6 +21,7 @@ class Wizard {
         this.savETHPool = new SavETHPoolSubPackage(signer, savETHPoolAddress);
         this.feesAndMevPool = new FeesAndMevPoolSubPackage(signer, feesAndMevPoolAddress);
         this.giantSavETHPool = new GiantSavETHPoolSubPackage(signer);
+        this.giantFeesAndMevPool = new GiantFeesAndMevPoolSubPackage(signer);
         
         this.contractInstance = new ContractSubPackage(signer);
         this.constants = new ConstantsSubPackage(signer);
