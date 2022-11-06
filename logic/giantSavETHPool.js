@@ -100,8 +100,40 @@ const _batchRotateLPTokens = async (signer, savETHVaultAddresses, oldLPTokens, n
     );
 };
 
+const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddresses, lpTokens, amounts) => {
+
+    const arrayLength = savETHVaultAddresses.length;
+    if(arrayLength != lpTokens.length || arrayLength != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<arrayLength; ++i) {
+        const lpArray = lpTokens[i];
+        const amountArray = amounts[i];
+
+        if(lpArray.length != amountArray.length) {
+            throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+        }
+
+        savETHVaultAddresses[i] = _add0x(savETHVaultAddresses);
+
+        for(let j=0; j<lpArray.length; ++j) {
+            lpTokens[i][j] = _add0x(lpTokens[i][j]);
+        }
+    }
+
+    const contract = (await getContractInstance(signer)).giantSavETHPool();
+
+    return contract.bringUnusedETHBackIntoGiantPool(
+        savETHVaultAddresses,
+        lpTokens,
+        amounts
+    );
+};
+
 module.exports = {
     _batchDepositETHForStaking,
     _withdrawDETH,
-    _batchRotateLPTokens
+    _batchRotateLPTokens,
+    _bringUnusedETHBackIntoGiantPool
 };
