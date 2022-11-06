@@ -1,0 +1,299 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "contract LSDNFactory",
+                "name": "_factory",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "ETHDeposited",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "savETHVaultLPToken",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "LPBurnedForDETH",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "LPBurnedForETH",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "vaultLPToken",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "LPSwappedForVaultLP",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "MIN_STAKING_AMOUNT",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "_savETHVaults",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "_ETHTransactionAmounts",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes[][]",
+                "name": "_blsPublicKeys",
+                "type": "bytes[][]"
+            },
+            {
+                "internalType": "uint256[][]",
+                "name": "_stakeAmounts",
+                "type": "uint256[][]"
+            }
+        ],
+        "name": "batchDepositETHForStaking",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "_savETHVaults",
+                "type": "address[]"
+            },
+            {
+                "internalType": "contract LPToken[][]",
+                "name": "_oldLPTokens",
+                "type": "address[][]"
+            },
+            {
+                "internalType": "contract LPToken[][]",
+                "name": "_newLPTokens",
+                "type": "address[][]"
+            },
+            {
+                "internalType": "uint256[][]",
+                "name": "_amounts",
+                "type": "uint256[][]"
+            }
+        ],
+        "name": "batchRotateLPTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "_savETHVaults",
+                "type": "address[]"
+            },
+            {
+                "internalType": "contract LPToken[][]",
+                "name": "_lpTokens",
+                "type": "address[][]"
+            },
+            {
+                "internalType": "uint256[][]",
+                "name": "_amounts",
+                "type": "uint256[][]"
+            }
+        ],
+        "name": "bringUnusedETHBackIntoGiantPool",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "depositETH",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "idleETH",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "liquidStakingDerivativeFactory",
+        "outputs": [
+            {
+                "internalType": "contract LSDNFactory",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "lpTokenETH",
+        "outputs": [
+            {
+                "internalType": "contract GiantLP",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "_savETHVaults",
+                "type": "address[]"
+            },
+            {
+                "internalType": "contract LPToken[][]",
+                "name": "_lpTokens",
+                "type": "address[][]"
+            },
+            {
+                "internalType": "uint256[][]",
+                "name": "_amounts",
+                "type": "uint256[][]"
+            }
+        ],
+        "name": "withdrawDETH",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawETH",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "contract LPToken[]",
+                "name": "_lpTokens",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "_amounts",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "withdrawLPTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
