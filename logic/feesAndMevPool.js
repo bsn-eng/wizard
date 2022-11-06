@@ -64,10 +64,28 @@ const _burnLPTokensForETHByBLS = async (signer, feesAndMevPoolAddress, blsPublic
     );
 };
 
+const _burnLPTokensForETH = async (signer, feesAndMevPoolAddress, lpTokens, amounts) => {
+
+    if(lpTokens.length != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<lpTokens.length; ++i) {
+        lpTokens[i] = _add0x(lpTokens[i]);
+    }
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.burnLPTokensForETH(
+        lpTokens,
+        amounts
+    );
+};
+
 module.exports = {
     _totalShares,
     _updateAccumulatedETHPerLP,
     _batchDepositETHForStaking,
     _depositETHForStaking,
-    _burnLPTokensForETHByBLS
+    _burnLPTokensForETHByBLS,
+    _burnLPTokensForETH
 };
