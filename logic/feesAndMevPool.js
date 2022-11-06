@@ -120,6 +120,20 @@ const _batchPreviewAccumulatedETHByBLSKeys = async (signer, feesAndMevPoolAddres
     );
 };
 
+const _batchPreviewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAddress, lpTokens) => {
+
+    for(let i=0; i<lpTokens.length; ++i) {
+        lpTokens[i] = _add0x(lpTokens[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.batchPreviewAccumulatedETH(
+        _add0x(userAddress),
+        lpTokens
+    );
+};
+
 module.exports = {
     _totalShares,
     _updateAccumulatedETHPerLP,
@@ -129,5 +143,6 @@ module.exports = {
     _burnLPTokensForETH,
     _burnLPTokenForETH,
     _claimRewards,
-    _batchPreviewAccumulatedETHByBLSKeys
+    _batchPreviewAccumulatedETHByBLSKeys,
+    _batchPreviewAccumulatedETH
 };
