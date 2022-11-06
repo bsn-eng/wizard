@@ -73,11 +73,22 @@ const _burnLPTokensForETH = async (signer, feesAndMevPoolAddress, lpTokens, amou
     for(let i=0; i<lpTokens.length; ++i) {
         lpTokens[i] = _add0x(lpTokens[i]);
     }
+
     const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
 
     return contract.burnLPTokensForETH(
         lpTokens,
         amounts
+    );
+};
+
+const _burnLPTokenForETH = async (signer, feesAndMevPoolAddress, lpToken, amount) => {
+
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.burnLPForETH(
+        _add0x(lpToken),
+        amount
     );
 };
 
@@ -87,5 +98,6 @@ module.exports = {
     _batchDepositETHForStaking,
     _depositETHForStaking,
     _burnLPTokensForETHByBLS,
-    _burnLPTokensForETH
+    _burnLPTokensForETH,
+    _burnLPTokenForETH
 };
