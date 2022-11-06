@@ -147,10 +147,18 @@ const _bringUnusedETHBackIntoGiantPool = async (signer, feesAndMevPoolAddresses,
     );
 };
 
+const _updateAccumulatedETHPerLP = async (signer) => {
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.updateAccumulatedETHPerLP();
+};
+
 module.exports = {
     _batchDepositETHForStaking,
     _claimRewards,
     _previewAccumulatedETH,
     _batchRotateLPTokens,
-    _bringUnusedETHBackIntoGiantPool
+    _bringUnusedETHBackIntoGiantPool,
+    _updateAccumulatedETHPerLP
 };
