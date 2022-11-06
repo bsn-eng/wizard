@@ -308,7 +308,7 @@ const _claimRewardsAsNodeRunner = async (signer, liquidStakingManagerAddress, re
     );
 };
 
-const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress) => {
+const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress, ethValue) => {
 
     if(blsPublicKeys.length != blsSignatures.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -324,7 +324,8 @@ const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPu
     return contract.registerBLSPublicKeys(
         blsPublicKeys,
         blsSignatures,
-        _add0x(representativeAddress)
+        _add0x(representativeAddress),
+        { value: ethValue }
     );
 };
 

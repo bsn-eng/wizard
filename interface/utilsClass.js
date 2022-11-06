@@ -163,8 +163,8 @@ class UtilsSubPackage {
         return _claimRewardsAsNodeRunner(this.etherSigner, this.liquidStakingManagerAddress, recipientAddress, blsPublicKeys);
     }
 
-    registerBLSPublicKeys(blsPublicKeys, blsSignatures, representativeAddress) {
-        return _registerBLSPublicKeys(this.etherSigner, this.liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress);
+    registerBLSPublicKeys(blsPublicKeys, blsSignatures, representativeAddress, ethValue) {
+        return _registerBLSPublicKeys(this.etherSigner, this.liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress, ethValue);
     }
 
     isKnotDeregistered(blsPublicKey) {
