@@ -144,6 +144,19 @@ const _previewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAddress
     );
 };
 
+const _claimFundsFromSyndicateForDistribution = async (signer, feesAndMevPoolAddress, blsPublicKeys) => {
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.claimFundsFromSyndicateForDistribution(
+        blsPublicKeys
+    );
+};
+
 module.exports = {
     _totalShares,
     _updateAccumulatedETHPerLP,
@@ -155,5 +168,6 @@ module.exports = {
     _claimRewards,
     _batchPreviewAccumulatedETHByBLSKeys,
     _batchPreviewAccumulatedETH,
-    _previewAccumulatedETH
+    _previewAccumulatedETH,
+    _claimFundsFromSyndicateForDistribution
 };
