@@ -59,7 +59,31 @@ const _claimRewards = async (signer, recipient, feesAndMevPoolAddresses, blsPubl
     );
 };
 
+const _previewAccumulatedETH = async (signer, userAddress, feesAndMevPoolAddresses, lpTokens) => {
+
+    if(lpTokens.length != feesAndMevPoolAddresses.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<feesAndMevPoolAddresses.length; ++i) {
+        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
+
+        for(let j=0; j<lpTokens[i].length; ++j) {
+            lpTokens[i][j] = _add0x(lpTokens[i][j]);
+        }
+    }
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.previewAccumulatedETH(
+        _add0x(userAddress),
+        feesAndMevPoolAddresses,
+        lpTokens
+    );
+};
+
 module.exports = {
     _batchDepositETHForStaking,
-    _claimRewards
+    _claimRewards,
+    _previewAccumulatedETH
 };
