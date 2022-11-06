@@ -181,7 +181,8 @@ const _executeAsSmartWallet = async (signer, liquidStakingManagerAddress, nodeRu
         _add0x(nodeRunnerAddress),
         _add0x(targetContractAddress),
         _add0x(encodedFunctionData),
-        ethValue
+        ethValue,
+        { value: ethValue }
     );
 };
 
