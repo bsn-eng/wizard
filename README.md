@@ -31,3 +31,13 @@ const wizard = new Wizard({
 
 To deploy a new LSD network, the SDK only needs the `signer` parameter.  
 
+## Sub classes
+The SDK exposes various sub-classes:  
+* deployer  
+* utils  
+* savETHPool  
+* feesAndMevPool  
+* giantSavETHPool  
+* giantFeesAndMevPool  
+* contractInstance  
+* constants  
