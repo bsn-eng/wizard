@@ -25,6 +25,7 @@ const {
     _updateStakehouseTicker,
     _updateWhitelisting,
     _rotateEOARepresentative,
+    _updateNodeRunnerWhitelistStatus,
     _rotateEOARepresentativeOfNodeRunner,
     _withdrawETHForKnot,
     _rotateNodeRunnerOfSmartWallet,
@@ -141,6 +142,10 @@ class UtilsSubPackage {
 
     updateWhitelisting(newWhitelistingStatus) {
         return _updateWhitelisting(this.etherSigner, this.liquidStakingManagerAddress, newWhitelistingStatus);
+    }
+
+    updateNodeRunnerWhitelistStatus(nodeRunnerAddress, newWhitelistingStatus) {
+        return _updateNodeRunnerWhitelistStatus(this.etherSigner, this.liquidStakingManagerAddress, nodeRunnerAddress, newWhitelistingStatus);
     }
 
     rotateEOARepresentative(newRepresentativeAddress) {

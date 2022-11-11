@@ -254,6 +254,16 @@ const _updateWhitelisting = async (signer, liquidStakingManagerAddress, newWhite
     );
 };
 
+const _updateNodeRunnerWhitelistStatus = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, newWhitelistingStatus) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.updateNodeRunnerWhitelistStatus(
+        _add0x(nodeRunnerAddress),
+        newWhitelistingStatus
+    );
+};
+
 const _rotateEOARepresentative = async (signer, liquidStakingManagerAddress, newRepresentativeAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
@@ -420,6 +430,7 @@ module.exports = {
     _updateDaoRevenueCommission,
     _updateStakehouseTicker,
     _updateWhitelisting,
+    _updateNodeRunnerWhitelistStatus,
     _rotateEOARepresentative,
     _rotateEOARepresentativeOfNodeRunner,
     _withdrawETHForKnot,
