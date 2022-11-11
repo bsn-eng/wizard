@@ -312,3 +312,137 @@ Update the whitelisting status of the LSD. When enabled, only selected node oper
 ```js
 await wizard.utils.updateWhitelisting(newWhitelistingStatus);
 ```
+
+## updateNodeRunnerWhitelistStatus function
+Update the whitelist status of a node runner. Can be only called by the DAO.  
+
+### Input params
+`nodeRunnerAddress`: Address of the node runner  
+`newWhitelistingStatus`: Boolean status of whitelist  
+
+### Using the function
+```js
+await wizard.utils.updateNodeRunnerWhitelistStatus(nodeRunnerAddress, newWhitelistingStatus);
+```
+
+## rotateEOARepresentative function
+Appoint a new representative for the node runner. Should be called by the node runner who owns the smart wallet. The new representative will then be associated to the node runner's smart wallet.  
+
+### Input params
+`newRepresentativeAddress`: Address of the new representative
+
+### Using the function
+```js
+await wizard.utils.rotateEOARepresentative(newRepresentativeAddress);
+```
+
+## rotateEOARepresentativeOfNodeRunner function
+Allows the DAO to rotate representative in the case that node runner is not available (to facilitate staking). Can be only called by the DAO address.  
+
+### Input params
+`nodeRunnerAddress`: Address of the node runner  
+`newRepresentativeAddress`: Address of the new EOA representative of the node runner  
+
+### Using the function
+```js
+await wizard.utils.rotateEOARepresentativeOfNodeRunner(nodeRunnerAddress, newRepresentativeAddress);
+```
+
+## withdrawETHForKnot function
+Allow node runners to withdraw ETH from their smart wallet. ETH can only be withdrawn until the KNOT has not been staked. Once the ETh is withdrawn for the BLS public key, this key will be banned from the LSD and can no longer be used to stake.  
+
+### Input params
+`recipientAddress`: Ethereum address that receives the ETH after withdrawal  
+`blsPublicKey`: BLS public key for which the ETH is to be withdrawn  
+
+### Using the function
+```js
+await wizard.utils.withdrawETHForKnot(recipientAddress, blsPublicKey);
+```
+
+## rotateNodeRunnerOfSmartWallet function
+Allow appointing a new node runner if the existing node runner coordinates with the DAO to sell their wallet. Can be only called by the DAO address or the current owner of the smart wallet.  
+
+### Input params
+`currentNodeRunner`: Address of the current owner of the smart wallet  
+`newNodeRunner`: Address of the new node runner to be associated with the smart wallet  `wasCurrentNodeRunnerMalicious`: Boolean. `true` if the current node runner was malicious, `false` otherwise  
+
+### Using the function
+```js
+await wizard.utils.rotateNodeRunnerOfSmartWallet(currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
+```
+
+## claimRewardsAsNodeRunner function
+Allows a node runner to claim ETH from the syndicate from their smart wallet. Can be only called by the node runner that owns a smart wallet in the LSD network.  
+
+### Input params
+`recipientAddress`: Address that receives the ETH after claiming  
+`blsPublicKeys`: List of BLS public keys to claim rewards for  
+
+### Using the function
+```js
+await wizard.utils.claimRewardsAsNodeRunner(recipientAddress, blsPublicKeys);
+```
+
+## registerBLSPublicKeys function
+Allows node runners to register a new BLS public key. If the node runner is interacting with the LSD network for the fist time, then a new smart wallet is created. If not, then the BLS public keys are added to the existing smart wallet of the node runner. Every node runner has a uniques smart wallet in an LSD network. The node runner should also supply 4 ETH with every BLS public keys he wants to register.  
+
+### Input params
+`blsPublicKeys`: List of BLS public keys to be registered  
+`blsSignatures`: List of BLS signatures corresponding to each of the BLS public keys  `representativeAddress`: EOA representative to be appointed by the node runner  
+`ethValue`: ETH attached along with the transaction. 4 ETH per BLS public key.  
+
+### Using the function
+```js
+await wizard.utils.registerBLSPublicKeys(blsPublicKeys, blsSignatures, representativeAddress, ethValue);
+```
+
+## isKnotDeregistered function
+Check if a KNOT has been de-registered from the LSD network.  
+
+### Input params
+`blsPublicKey`: BLS public key of the KNOT  
+
+### Using the function
+```js
+await wizard.utils.isKnotDeregistered(blsPublicKey);
+```
+
+### Returns
+Boolean. `true` if de-registered, `false` otherwise.  
+
+## stake function
+Stake a list of BLS public keys. Make sure that there is enough ETH for all the BLS public keys. Can be only called by a node runner who has registered BLS public keys in the LSD network.  
+
+### Input params
+`blsPublicKeys`: List of BLS public keys to be staked  
+`cipherTexts`: List of cipher texts corresponding to the BLS public keys  
+`aesEncryptorKeys`: List of AES encryptor keys corresponding to the BLS public keys  `encryptionSignatures`: List of encryption signatures corresponding to the BLS public keys  `dataRoots`: List of data roots corresponding to the BLS public keys  
+
+### Using the function
+```js
+await wizard.utils.stake(blsPublicKeys, cipherTexts, aesEncryptorKeys, encryptionSignatures, dataRoots);
+```
+
+## mintDerivatives function
+Trigger minting of derivatives for a KNOT after it has been activated on Ethereum consensus layer. Anyone can trigger minting. After the minting of the KNOT has been triggered, it starts earning rewards.  
+
+### Input params
+`blsPublicKeys`: List of BLS public keys to trigger minting for  
+`beaconChainReports`: List of finalised beacon chain reports for each of the BLS public keys  `authenticatedReportSignatures`: List of report signatures after the beacon chain reports have been authenticated by the deposit router  
+
+### Using the function
+```js
+await wizard.utils.mintDerivatives(blsPublicKeys, beaconChainReports, authenticatedReportSignatures);
+```
+
+## getNetworkFeeRecipient function
+Fetch the network recipient, which the node runner must set in order to receive rewards after their KNOT has been activated. Every LSD network has a single fee recipient determined by its syndicate contract.  
+
+### Using the function
+```js
+await wizard.utils.getNetworkFeeRecipient();
+```
+
+### Returns
+Ethereum address of the LSD's fee recipient  
