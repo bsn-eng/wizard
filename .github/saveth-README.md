@@ -1,0 +1,2 @@
+# SavETH Pool sub-class
+This sub-class exposes all the necessary functions from the SavETHVault smart contract. For anyone to use this sub-class it is necessary to initialize the Wizard SDK with the `signer` instance and `savETHPoolAddress`. SavETH Pool Address is the Protected Staking Pool address of the respective LSD.
