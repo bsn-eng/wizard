@@ -35,8 +35,8 @@ To deploy a new LSD network, the SDK only needs the `signer` parameter.
 The SDK exposes various sub-classes:  
 * [deployer](./deployer-README.md)  
 * [utils](./uitls-README.md)  
-* savETHPool  
-* feesAndMevPool  
+* [savETHPool](./saveth-README.md)  
+* [feesAndMevPool](./feesAndMev-README.md)  
 * giantSavETHPool  
 * giantFeesAndMevPool  
 * contractInstance  
