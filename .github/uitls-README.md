@@ -1,5 +1,5 @@
 # Utils sub-class
-This sub-class exposes all the necessary functions from the Liquid Staking Manager smart contract. For anyone to use this sub-class, it is necessary to initialize the Wizard SDK with `signer` instance and `liquidStakingManagerAddress`. Liquid Staking Manager address is the ETh address of the Liquid Staking Manager smart contract of the respective LSD.  
+This sub-class exposes all the necessary functions from the Liquid Staking Manager smart contract. For anyone to use this sub-class, it is necessary to initialize the Wizard SDK with `signer` instance and `liquidStakingManagerAddress`. Liquid Staking Manager address is the ETH address of the Liquid Staking Manager smart contract of the respective LSD.  
 
 ## add0x function
 Appends `0x` towards the start of a string, or object.  
