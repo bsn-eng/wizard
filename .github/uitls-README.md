@@ -365,7 +365,8 @@ Allow appointing a new node runner if the existing node runner coordinates with 
 
 ### Input params
 `currentNodeRunner`: Address of the current owner of the smart wallet  
-`newNodeRunner`: Address of the new node runner to be associated with the smart wallet  `wasCurrentNodeRunnerMalicious`: Boolean. `true` if the current node runner was malicious, `false` otherwise  
+`newNodeRunner`: Address of the new node runner to be associated with the smart wallet  
+`wasCurrentNodeRunnerMalicious`: Boolean. `true` if the current node runner was malicious, `false` otherwise  
 
 ### Using the function
 ```js
@@ -389,7 +390,8 @@ Allows node runners to register a new BLS public key. If the node runner is inte
 
 ### Input params
 `blsPublicKeys`: List of BLS public keys to be registered  
-`blsSignatures`: List of BLS signatures corresponding to each of the BLS public keys  `representativeAddress`: EOA representative to be appointed by the node runner  
+`blsSignatures`: List of BLS signatures corresponding to each of the BLS public keys  
+`representativeAddress`: EOA representative to be appointed by the node runner  
 `ethValue`: ETH attached along with the transaction. 4 ETH per BLS public key.  
 
 ### Using the function
@@ -417,7 +419,8 @@ Stake a list of BLS public keys. Make sure that there is enough ETH for all the 
 ### Input params
 `blsPublicKeys`: List of BLS public keys to be staked  
 `cipherTexts`: List of cipher texts corresponding to the BLS public keys  
-`aesEncryptorKeys`: List of AES encryptor keys corresponding to the BLS public keys  `encryptionSignatures`: List of encryption signatures corresponding to the BLS public keys  `dataRoots`: List of data roots corresponding to the BLS public keys  
+`aesEncryptorKeys`: List of AES encryptor keys corresponding to the BLS public keys  
+`encryptionSignatures`: List of encryption signatures corresponding to the BLS public keys  `dataRoots`: List of data roots corresponding to the BLS public keys  
 
 ### Using the function
 ```js
@@ -429,7 +432,8 @@ Trigger minting of derivatives for a KNOT after it has been activated on Ethereu
 
 ### Input params
 `blsPublicKeys`: List of BLS public keys to trigger minting for  
-`beaconChainReports`: List of finalised beacon chain reports for each of the BLS public keys  `authenticatedReportSignatures`: List of report signatures after the beacon chain reports have been authenticated by the deposit router  
+`beaconChainReports`: List of finalised beacon chain reports for each of the BLS public keys  
+`authenticatedReportSignatures`: List of report signatures after the beacon chain reports have been authenticated by the deposit router  
 
 ### Using the function
 ```js
