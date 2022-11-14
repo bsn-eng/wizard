@@ -3,7 +3,8 @@ const {
     _withdrawDETH,
     _batchRotateLPTokens,
     _bringUnusedETHBackIntoGiantPool,
-    _depositETH
+    _depositETH,
+    _getIdleETH
 } = require('../logic/giantSavETHPool');
 
 class GiantSavETHPoolSubPackage {
@@ -30,6 +31,10 @@ class GiantSavETHPoolSubPackage {
 
     depositETH(amount, ethValue) {
         return _depositETH(this.etherSigner, amount, ethValue);
+    }
+
+    getIdleETH() {
+        return _getIdleETH(this.etherSigner);
     }
 }
 
