@@ -55,3 +55,37 @@ Any ETH that has not been utilized by a Protected Staking Pool can be brought ba
 ```js
 await wizard.giantSavETHPool.bringUnusedETHBackIntoGiantPool(savETHVaultAddresses, lpToken, amounts);
 ```
+
+## depositETH function
+Allow users to deposit ETH into the Giant Protected Staking Pool in exchange of Giant LP tokens. The LP tokens maintain 1:1 ratio with ETH as long as the ETH is not staked. Once staked, user start earning rewards and their LP tokens can be burnt to get dETH.  
+
+### Input params
+`amount`: Amount of ETH to deposit  
+`ethValue`: Amount of ETH attached with the transaction  
+
+### Using the function
+```js
+await wizard.giantSavETHPool.depositETH(amount, ethValue);
+```
+
+## getIdleETH function
+Fetch the number of idle ETH sitting in the pool.  
+
+### Using the function
+```js
+await wizard.giantSavETHPool.getIdleETH();
+```
+
+### Returns
+Number of idle ETH in Big Numbers.  
+
+## withdrawETH function
+Allow users to burn LP tokens and get back the ETH they deposited in case the ETH has not been staked yet.  
+
+### Input params
+`amount`: Number of LP tokens to be burnt  
+
+### Using the function
+```js
+await wizard.giantSavETHPool.withdrawETH(amount);
+```
