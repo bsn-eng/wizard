@@ -39,5 +39,5 @@ The SDK exposes various sub-classes:
 * [feesAndMevPool](./feesAndMev-README.md)  
 * [giantSavETHPool](./giantSaveth-README.md)  
 * [giantFeesAndMevPool](./giantFeesAndMev-README.md)  
-* contractInstance  
+* [contractInstance](./contract-README.md)  
 * constants  
