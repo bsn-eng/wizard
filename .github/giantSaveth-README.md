@@ -1,0 +1,2 @@
+# Giant SavETH Pool sub-class
+This sub-class exposes all the necessary functions requires to interact with the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signer` instance.  
