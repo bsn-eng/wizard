@@ -4,7 +4,10 @@ const {
     _previewAccumulatedETH,
     _batchRotateLPTokens,
     _bringUnusedETHBackIntoGiantPool,
-    _updateAccumulatedETHPerLP
+    _updateAccumulatedETHPerLP,
+    _depositETH,
+    _getIdleETH,
+    _withdrawETH
 } = require('../logic/giantFeesAndMevPool');
 
 class GiantFeesAndMevPoolSubPackage {
@@ -35,6 +38,18 @@ class GiantFeesAndMevPoolSubPackage {
     
     updateAccumulatedETHPerLP() {
         return _updateAccumulatedETHPerLP(this.etherSigner);
+    }
+
+    depositETH(amount, ethValue) {
+        return _depositETH(this.etherSigner, amount, ethValue);
+    }
+
+    getIdleETH() {
+        return _getIdleETH(this.etherSigner);
+    }
+
+    withdrawETH(amount) {
+        return _withdrawETH(this.etherSigner, amount);
     }
 }
 

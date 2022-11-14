@@ -154,11 +154,38 @@ const _updateAccumulatedETHPerLP = async (signer) => {
     return contract.updateAccumulatedETHPerLP();
 };
 
+const _depositETH = async (signer, amount, ethValue) => {
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.depositETH(
+        amount,
+        { value: ethValue }
+    );
+};
+
+const _getIdleETH = async (signer) => {
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.idleETH();
+};
+
+const _withdrawETH = async (signer, amount) => {
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.withdrawETH(amount);
+};
+
 module.exports = {
     _batchDepositETHForStaking,
     _claimRewards,
     _previewAccumulatedETH,
     _batchRotateLPTokens,
     _bringUnusedETHBackIntoGiantPool,
-    _updateAccumulatedETHPerLP
+    _updateAccumulatedETHPerLP,
+    _depositETH,
+    _getIdleETH,
+    _withdrawETH
 };
