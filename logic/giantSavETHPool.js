@@ -148,11 +148,19 @@ const _getIdleETH = async (signer) => {
     return contract.idleETH();
 };
 
+const _withdrawETH = async (signer, amount) => {
+
+    const contract = (await getContractInstance(signer)).giantSavETHPool();
+
+    return contract.withdrawETH(amount);
+};
+
 module.exports = {
     _batchDepositETHForStaking,
     _withdrawDETH,
     _batchRotateLPTokens,
     _bringUnusedETHBackIntoGiantPool,
     _depositETH,
-    _getIdleETH
+    _getIdleETH,
+    _withdrawETH
 };
