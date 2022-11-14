@@ -2,7 +2,8 @@ const {
     _batchDepositETHForStaking,
     _withdrawDETH,
     _batchRotateLPTokens,
-    _bringUnusedETHBackIntoGiantPool
+    _bringUnusedETHBackIntoGiantPool,
+    _depositETH
 } = require('../logic/giantSavETHPool');
 
 class GiantSavETHPoolSubPackage {
@@ -25,6 +26,10 @@ class GiantSavETHPoolSubPackage {
     
     bringUnusedETHBackIntoGiantPool(savETHVaultAddresses, lpToken, amounts) {
         return _bringUnusedETHBackIntoGiantPool(this.etherSigner, savETHVaultAddresses, lpToken, amounts);
+    }
+
+    depositETH(amount, ethValue) {
+        return _depositETH(this.etherSigner, amount, ethValue);
     }
 }
 

@@ -131,9 +131,20 @@ const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddresses, lp
     );
 };
 
+const _depositETH = async (signer, amount, ethValue) => {
+
+    const contract = (await getContractInstance(signer)).giantSavETHPool();
+
+    return contract.depositETH(
+        amount,
+        { value: ethValue }
+    );
+};
+
 module.exports = {
     _batchDepositETHForStaking,
     _withdrawDETH,
     _batchRotateLPTokens,
-    _bringUnusedETHBackIntoGiantPool
+    _bringUnusedETHBackIntoGiantPool,
+    _depositETH
 };
