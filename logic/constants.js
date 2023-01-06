@@ -9,9 +9,9 @@ const CHAIN_ID = {
 };
 
 const goerliFactoryAddresses = {
-    LSDN_FACTORY: "0xE9482A9B8f3eA7400D4b07c798287d94B036Be5C",
-	GIANT_SAVETH_POOL: "0xf498849ea5cAEdf73CF9198C5A2EF9db62443809",
-	GIANT_FEES_AND_MEV_POOL: "0x7d8381AfBadA9Ab3eC16De3F17aD0e3A2AF58b79"
+    LSDN_FACTORY: "0xe9482a9b8f3ea7400d4b07c798287d94b036be5c",
+	GIANT_SAVETH_POOL: "0xf498849ea5caedf73cf9198c5a2ef9db62443809",
+	GIANT_FEES_AND_MEV_POOL: "0x7d8381afbada9ab3ec16de3f17ad0e3a2af58b79"
 };
 
 const customErrors = {
@@ -64,4 +64,3 @@ module.exports = {
 	customErrors,
 	lifecycleStatuses,
 };
-
