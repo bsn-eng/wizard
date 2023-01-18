@@ -50,13 +50,27 @@ const getContractInstance = async (signer) => {
         signer
     );
 
+    const getSyndicate = (syndicateAddress) => new ethers.Contract(
+        syndicateAddress,
+        lsdContracts.SYNDICATE,
+        signer
+    );
+
+    const getSmartWallet = (smartWalletAddress) => new ethers.Contract(
+        smartWalletAddress,
+        lsdContracts.SMART_WALLET,
+        signer
+    );
+
     return {
         lsdnFactory: getLSDNFactory,
         liquidStakingManager: getLiquidStakingManager,
         savETHVault: getSavETHVault,
         feesAndMevPool: getFeesAndMevPool,
         giantSavETHPool: getGiantSavETHPool,
-        giantFeesAndMevPool: getGiantFeesAndMevPool
+        giantFeesAndMevPool: getGiantFeesAndMevPool,
+        syndicate: getSyndicate,
+        smartWallet: getSmartWallet
     }
 }
 
