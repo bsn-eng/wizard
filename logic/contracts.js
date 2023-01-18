@@ -62,6 +62,12 @@ const getContractInstance = async (signer) => {
         signer
     );
 
+    const getSmartWalletNamingRegistry = () => new ethers.Contract(
+        values.factoryAddresses.SMART_WALLET_NAMING_REGISTRY,
+        lsdContracts.SMART_WALLET_NAMING_REGISTRY,
+        signer
+    );
+
     return {
         lsdnFactory: getLSDNFactory,
         liquidStakingManager: getLiquidStakingManager,
@@ -70,7 +76,8 @@ const getContractInstance = async (signer) => {
         giantSavETHPool: getGiantSavETHPool,
         giantFeesAndMevPool: getGiantFeesAndMevPool,
         syndicate: getSyndicate,
-        smartWallet: getSmartWallet
+        smartWallet: getSmartWallet,
+        smartWalletNamingRegistry: getSmartWalletNamingRegistry
     }
 }
 
