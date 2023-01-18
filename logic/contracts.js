@@ -1,6 +1,7 @@
 const { ethers } = require('ethers');
 const { _getChainSpecificConstants, _extractChainID } = require('./constants.js');
 const { lsdContracts } = require('@blockswaplab/lsd-protocol-abis');
+const { stakehouseContracts } = require('@blockswaplab/stakehouse-protocol-abis');
 
 const getContractInstance = async (signer) => {
 
@@ -61,6 +62,12 @@ const getContractInstance = async (signer) => {
         signer
     );
 
+    const getDETH = () => new ethers.Contract(
+        values.factoryAddresses.DETH,
+        stakehouseContracts.ERC20_GENERIC,
+        signer
+    );
+
     return {
         lsdnFactory: getLSDNFactory,
         liquidStakingManager: getLiquidStakingManager,
@@ -70,7 +77,8 @@ const getContractInstance = async (signer) => {
         giantFeesAndMevPool: getGiantFeesAndMevPool,
         syndicate: getSyndicate,
         smartWallet: getSmartWallet,
-        smartWalletNamingRegistry: getSmartWalletNamingRegistry
+        smartWalletNamingRegistry: getSmartWalletNamingRegistry,
+        dETH: getDETH
     }
 }
 

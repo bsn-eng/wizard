@@ -7,6 +7,11 @@
   resolved "https://registry.npmjs.org/@blockswaplab/lsd-protocol-abis/-/lsd-protocol-abis-1.2.0.tgz#cc97d5c1fe374dbd09ab80a44fd01cc12926c7ef"
   integrity sha512-xiuRr75O5ydxfSI37IMyA92JIJwSO+zE8e53B1F1QxkZf/jlw16t+w5KBrzsVx7nRB1JIvjDHYQC0fYse9vf/w==
 
+"@blockswaplab/stakehouse-protocol-abis@2.1.9":
+  version "2.1.9"
+  resolved "https://registry.npmjs.org/@blockswaplab/stakehouse-protocol-abis/-/stakehouse-protocol-abis-2.1.9.tgz#699974507c956f628c0b64a3c19c3cd15c331d9d"
+  integrity sha512-8eUsKcagBVQl+eBMay4pE6Cwob/w/82MjKiM0ZwEPxIxWBqfUkHFmVgvoFvTzcjgEWbmR7bbpvinQM2a1PKmuw==
+
 "@ethersproject/abi@5.7.0", "@ethersproject/abi@^5.7.0":
   version "5.7.0"
   resolved "https://registry.npmjs.org/@ethersproject/abi/-/abi-5.7.0.tgz#b3f3e045bbbeed1af3947335c247ad625a44e449"
