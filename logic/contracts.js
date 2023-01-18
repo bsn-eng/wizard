@@ -7,6 +7,7 @@ const SAVETH_VAULT_ABI = require('../ABI/saveth_vault_abi.json');
 const STAKING_FUNDS_VAULT_ABI = require('../ABI/staking_funds_vault_abi.json');
 const GIANT_SAVETH_POOL = require('../ABI/giant_saveth_pool_abi.json');
 const GIANT_FEES_AND_MEV_POOL = require('../ABI/giant_fees_and_mev_pool_abi.json');
+const { lsdContracts } = require('@blockswaplab/lsd-protocol-abis');
 
 const getContractInstance = async (signer) => {
 
@@ -15,37 +16,37 @@ const getContractInstance = async (signer) => {
 
     const getLSDNFactory = () => new ethers.Contract(
         values.factoryAddresses.LSDN_FACTORY,
-        LSDN_FACTORY_ABI,
+        lsdContracts.LSDN_FACTORY,
         signer
     );
 
     const getLiquidStakingManager = (liquidStakingManagerAddress) => new ethers.Contract(
         liquidStakingManagerAddress,
-        LIQUID_STAKING_MANAGER_ABI,
+        lsdContracts.LIQUID_STAKING_MANAGER,
         signer
     );
 
     const getSavETHVault = (savETHVaultAddress) => new ethers.Contract(
         savETHVaultAddress,
-        SAVETH_VAULT_ABI,
+        lsdContracts.PROTECTED_STAKING,
         signer
     );
 
     const getFeesAndMevPool = (feesAndMevPoolAddress) => new ethers.Contract(
         feesAndMevPoolAddress,
-        STAKING_FUNDS_VAULT_ABI,
+        lsdContracts.FEES_AND_MEV,
         signer
     );
 
     const getGiantSavETHPool = () => new ethers.Contract(
         values.factoryAddresses.GIANT_SAVETH_POOL,
-        GIANT_SAVETH_POOL,
+        lsdContracts.GIANT_PROTECTED_STAKING,
         signer
     );
 
     const getGiantFeesAndMevPool = () => new ethers.Contract (
         values.factoryAddresses.GIANT_FEES_AND_MEV_POOL,
-        GIANT_FEES_AND_MEV_POOL,
+        lsdContracts.GIANT_FEES_AND_MEV,
         signer
     );
 

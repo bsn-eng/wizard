@@ -1,5 +1,6 @@
 const { customErrors } = require('./constants');
 const { getContractInstance } = require('./contracts');
+const _ = require('lodash');
 
 const _add0x = (data) => {
 
