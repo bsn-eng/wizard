@@ -1,6 +1,6 @@
 {
     "name": "@blockswaplab/lsd-wizard",
-    "version": "1.3.4",
+    "version": "1.4.0",
     "description": "SDK for Liquid Staking Derivative Network",
     "main": "config.js",
     "exports": {
