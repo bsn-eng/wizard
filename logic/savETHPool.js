@@ -94,6 +94,25 @@ const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpToken) =>
     );
 };
 
+const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount) => {
+
+    const contract = (await getContractInstance(signer)).savETHPool(savETHVaultAddress);
+
+    return contract.depositDETHForStaking(
+        _add0x(blsPublicKey),
+        amount
+    );
+};
+
+const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVaultAddress, blsPublicKey) => {
+
+    const contract = (await getContractInstance(signer)).savETHPool(savETHVaultAddress);
+
+    return contract.dETHRequiredToIsolateWithdrawnKnot(
+        _add0x(blsPublicKey)
+    );
+};
+
 module.exports = {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
@@ -101,5 +120,7 @@ module.exports = {
     _burnLPTokensByBLS,
     _burnLPTokens,
     _burnLPToken,
-    _isDETHReadyForWithdrawal
+    _isDETHReadyForWithdrawal,
+    _getdETHRequiredToIsolateWithdrawnKnot,
+    _depositDETHForStaking
 };

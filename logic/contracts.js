@@ -1,12 +1,5 @@
 const { ethers } = require('ethers');
 const { _getChainSpecificConstants, _extractChainID } = require('./constants.js');
-
-const LSDN_FACTORY_ABI = require('../ABI/lsdn_factory_abi.json');
-const LIQUID_STAKING_MANAGER_ABI = require('../ABI/liquid_staking_manager_abi.json');
-const SAVETH_VAULT_ABI = require('../ABI/saveth_vault_abi.json');
-const STAKING_FUNDS_VAULT_ABI = require('../ABI/staking_funds_vault_abi.json');
-const GIANT_SAVETH_POOL = require('../ABI/giant_saveth_pool_abi.json');
-const GIANT_FEES_AND_MEV_POOL = require('../ABI/giant_fees_and_mev_pool_abi.json');
 const { lsdContracts } = require('@blockswaplab/lsd-protocol-abis');
 
 const getContractInstance = async (signer) => {
