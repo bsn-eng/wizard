@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@blockswaplab/lsd-protocol-abis@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@blockswaplab/lsd-protocol-abis/-/lsd-protocol-abis-1.1.0.tgz#cbfff637a15ef8db11da28b53594fd3b9984c456"
-  integrity sha512-g+erBOJ7erKAQMl5OOiLmvywtmVZtAjBMlLqIzwBcHML+tDAIPvLDpHFfnZ7IGIpGCkc+R4UfdgjS/R7P5SHIA==
+"@blockswaplab/lsd-protocol-abis@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@blockswaplab/lsd-protocol-abis/-/lsd-protocol-abis-1.2.0.tgz#cc97d5c1fe374dbd09ab80a44fd01cc12926c7ef"
+  integrity sha512-xiuRr75O5ydxfSI37IMyA92JIJwSO+zE8e53B1F1QxkZf/jlw16t+w5KBrzsVx7nRB1JIvjDHYQC0fYse9vf/w==
 
 "@ethersproject/abi@5.7.0", "@ethersproject/abi@^5.7.0":
   version "5.7.0"
