@@ -7,7 +7,8 @@ const {
     _burnLPToken,
     _isDETHReadyForWithdrawal,
     _getdETHRequiredToIsolateWithdrawnKnot,
-    _depositDETHForStaking
+    _depositDETHForStaking,
+    _approveProtectedStakingPoolToTransferDETH
 } = require('../logic/savETHPool');
 
 class SavETHPoolSubPackage {
@@ -51,6 +52,10 @@ class SavETHPoolSubPackage {
 
     depositDETHForStaking(blsPublicKey, amount) {
         return _depositDETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKey, amount);
+    }
+
+    approveProtectedStakingPoolToTransferDETH(amount) {
+        return _approveProtectedStakingPoolToTransferDETH(this.etherSigner, this.savETHPoolAddress, amount);
     }
 }
 

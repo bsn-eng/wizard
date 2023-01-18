@@ -113,6 +113,16 @@ const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVaultAddress
     );
 };
 
+const _approveProtectedStakingPoolToTransferDETH = async (signer, spender, amount) => {
+
+    const contract = (await getContractInstance(signer)).dETH();
+
+    return contract.approve(
+        _add0x(spender),
+        amount
+    );
+};
+
 module.exports = {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
@@ -122,5 +132,6 @@ module.exports = {
     _burnLPToken,
     _isDETHReadyForWithdrawal,
     _getdETHRequiredToIsolateWithdrawnKnot,
-    _depositDETHForStaking
+    _depositDETHForStaking,
+    _approveProtectedStakingPoolToTransferDETH
 };
