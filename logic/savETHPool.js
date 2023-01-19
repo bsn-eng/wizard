@@ -96,7 +96,7 @@ const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpToken) =>
 
 const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount) => {
 
-    const contract = (await getContractInstance(signer)).savETHPool(savETHVaultAddress);
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
     return contract.depositDETHForStaking(
         _add0x(blsPublicKey),
@@ -106,7 +106,7 @@ const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, 
 
 const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVaultAddress, blsPublicKey) => {
 
-    const contract = (await getContractInstance(signer)).savETHPool(savETHVaultAddress);
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
     return contract.dETHRequiredToIsolateWithdrawnKnot(
         _add0x(blsPublicKey)
