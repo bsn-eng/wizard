@@ -10,7 +10,7 @@
         "test": "mocha ./test/**/*.test.js --timeout 20000 --recursive"
     },
     "dependencies": {
-        "@blockswaplab/lsd-protocol-abis": "1.2.0",
+        "@blockswaplab/lsd-protocol-abis": "1.2.1",
         "@blockswaplab/stakehouse-protocol-abis": "2.1.9",
         "ethers": "^5.5.3",
         "graphql": "^16.1.0",
