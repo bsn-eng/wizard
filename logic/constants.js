@@ -16,6 +16,10 @@ const goerliFactoryAddresses = {
 	DETH: "0x506C2B850D519065a4005b04b9ceed946A64CB6F"
 };
 
+const goerliLSDUrls = {
+	SUBGRAPH_ENDPOINT: "https://api.thegraph.com/subgraphs/name/bsn-eng/liquid-staking-derivative"
+}
+
 const customErrors = {
 	UNEQUAL_ARRAY_LENGTH: "Error: Unequal array size. Must provide arrays of equal length"
 };
@@ -43,7 +47,8 @@ const _getChainSpecificConstants = (chainID) => {
 	if(chainID === CHAIN_ID.GOERLI) {
 		return {
 			factoryAddresses: goerliFactoryAddresses,
-			customErrors: customErrors
+			customErrors: customErrors,
+			lsdUrls: goerliLSDUrls
 		};
 	}
 };
@@ -65,4 +70,5 @@ module.exports = {
 	CHAIN_ID,
 	customErrors,
 	lifecycleStatuses,
+	goerliLSDUrls
 };
