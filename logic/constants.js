@@ -16,8 +16,20 @@ const goerliFactoryAddresses = {
 	DETH: "0x506C2B850D519065a4005b04b9ceed946A64CB6F"
 };
 
+const mainnetFactoryAddresses = {
+    LSDN_FACTORY: "0x28AC271135D7FCA904dF141439959e9B916B9BcD",
+	GIANT_SAVETH_POOL: "0x607c0FBfAFe70A195e2fAaE1EFE62E7cb5888AD9",
+	GIANT_FEES_AND_MEV_POOL: "0x1dC847964D3FeaeeFc5FAD5Ad63aE0eAa4343FD4",
+	SMART_WALLET_NAMING_REGISTRY: "",
+	DETH: "0x3d1e5cf16077f349e999d6b21a4f646e83cd90c5"
+};
+
 const goerliLSDUrls = {
 	SUBGRAPH_ENDPOINT: "https://api.thegraph.com/subgraphs/name/bsn-eng/liquid-staking-derivative"
+}
+
+const mainnetLSDUrls = {
+	SUBGRAPH_ENDPOINT: "https://api.studio.thegraph.com/query/37726/lsd-mainnet/v0.0.1"
 }
 
 const customErrors = {
@@ -49,6 +61,13 @@ const _getChainSpecificConstants = (chainID) => {
 			factoryAddresses: goerliFactoryAddresses,
 			customErrors: customErrors,
 			lsdUrls: goerliLSDUrls
+		};
+	}
+	else if(chainID === CHAIN_ID.MAINNET) {
+		return {
+			factoryAddresses: mainnetFactoryAddresses,
+			customErrors: customErrors,
+			lsdUrls: mainnetLSDUrls
 		};
 	}
 };
