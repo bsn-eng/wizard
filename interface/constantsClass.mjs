@@ -1,7 +1,4 @@
-const {
-	_getChainSpecificConstants,
-	_extractChainID
-} = require('../logic/constants');
+import { _getChainSpecificConstants, _extractChainID } from '../logic/constants.mjs';
 
 class ConstantsSubPackage {
 
@@ -20,6 +17,6 @@ class ConstantsSubPackage {
 	}
 }
 
-module.exports = {
+export default {
     ConstantsSubPackage
 };

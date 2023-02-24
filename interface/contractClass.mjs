@@ -1,6 +1,4 @@
-const {
-    getContractInstance
-} = require('../logic/contracts');
+import { getContractInstance } from '../logic/contracts.mjs';
 
 class ContractSubPackage {
 
@@ -9,6 +7,6 @@ class ContractSubPackage {
     }
 }
 
-module.exports = {
+export default {
     ContractSubPackage
 };

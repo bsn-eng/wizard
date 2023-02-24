@@ -1,6 +1,6 @@
-const { customErrors } = require('./constants');
-const { getContractInstance } = require('./contracts');
-const _ = require('lodash');
+import { customErrors } from './constants.mjs';
+import { getContractInstance } from './contracts.mjs';
+import _ from 'lodash';
 
 const _add0x = (data) => {
 
@@ -409,7 +409,7 @@ const _getNetworkFeeRecipient = async (signer, liquidStakingManagerAddress) => {
     return contract.getNetworkFeeRecipient();
 };
 
-module.exports = {
+export default {
     _add0x,
     _remove0x,
     _getDAOAddress,
@@ -446,4 +446,4 @@ module.exports = {
     _stake,
     _mintDerivatives,
     _getNetworkFeeRecipient
-}
+};

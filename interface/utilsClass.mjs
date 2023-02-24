@@ -1,4 +1,4 @@
-const {
+import {
     _add0x,
     _remove0x,
     _getDAOAddress,
@@ -34,8 +34,8 @@ const {
     _isKnotDeregistered,
     _stake,
     _mintDerivatives,
-    _getNetworkFeeRecipient
-} = require('../logic/utils');
+    _getNetworkFeeRecipient,
+} from '../logic/utils.mjs';
 
 class UtilsSubPackage {
 
@@ -189,6 +189,6 @@ class UtilsSubPackage {
     }
 }
 
-module.exports = {
+export default {
     UtilsSubPackage
 };

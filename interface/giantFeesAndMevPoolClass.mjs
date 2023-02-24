@@ -1,4 +1,4 @@
-const {
+import {
     _batchDepositETHForStaking,
     _claimRewards,
     _previewAccumulatedETH,
@@ -7,8 +7,8 @@ const {
     _updateAccumulatedETHPerLP,
     _depositETH,
     _getIdleETH,
-    _withdrawETH
-} = require('../logic/giantFeesAndMevPool');
+    _withdrawETH,
+} from '../logic/giantFeesAndMevPool.mjs';
 
 class GiantFeesAndMevPoolSubPackage {
 
@@ -53,6 +53,6 @@ class GiantFeesAndMevPoolSubPackage {
     }
 }
 
-module.exports = {
+export default {
     GiantFeesAndMevPoolSubPackage
 };

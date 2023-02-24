@@ -1,4 +1,4 @@
-const { ethers, utils, Signer } = require('ethers');
+import { ethers, utils, Signer } from 'ethers';
 
 const ZERO = ethers.BigNumber.from('0');
 const ONE_GWEI = utils.parseUnits('1', 'gwei');
@@ -80,7 +80,7 @@ const lifecycleStatuses = {
 	EXITED: 4
 };
 
-module.exports = {
+export default {
 	_getChainSpecificConstants,
 	_extractChainID,
 	ZERO,

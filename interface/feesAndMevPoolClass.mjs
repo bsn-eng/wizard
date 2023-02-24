@@ -1,4 +1,4 @@
-const {
+import {
     _totalShares,
     _updateAccumulatedETHPerLP,
     _batchDepositETHForStaking,
@@ -10,8 +10,8 @@ const {
     _batchPreviewAccumulatedETHByBLSKeys,
     _batchPreviewAccumulatedETH,
     _previewAccumulatedETH,
-    _claimFundsFromSyndicateForDistribution
-} = require('../logic/feesAndMevPool');
+    _claimFundsFromSyndicateForDistribution,
+} from '../logic/feesAndMevPool.mjs';
 
 class FeesAndMevPoolSubPackage {
 
@@ -69,6 +69,6 @@ class FeesAndMevPoolSubPackage {
     }
 }
 
-module.exports = {
+export default {
     FeesAndMevPoolSubPackage
 };

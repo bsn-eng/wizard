@@ -1,12 +1,12 @@
-const {
+import {
     _batchDepositETHForStaking,
     _withdrawDETH,
     _batchRotateLPTokens,
     _bringUnusedETHBackIntoGiantPool,
     _depositETH,
     _getIdleETH,
-    _withdrawETH
-} = require('../logic/giantSavETHPool');
+    _withdrawETH,
+} from '../logic/giantSavETHPool.mjs';
 
 class GiantSavETHPoolSubPackage {
 
@@ -43,6 +43,6 @@ class GiantSavETHPoolSubPackage {
     }
 }
 
-module.exports = {
+export default {
     GiantSavETHPoolSubPackage
 };

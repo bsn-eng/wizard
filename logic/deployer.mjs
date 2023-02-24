@@ -1,5 +1,5 @@
-const { ethers } = require('ethers');
-const { getContractInstance } = require('./contracts');
+import { ethers } from 'ethers';
+import { getContractInstance } from './contracts';
 
 const _deployNewLiquidStakingDerivativeNetwork = async (signer, daoAddress, stakehouseTicker, commission=null, gateKeeping=null) => {
 
@@ -21,6 +21,6 @@ const _deployNewLiquidStakingDerivativeNetwork = async (signer, daoAddress, stak
     );
 };
 
-module.exports = {
+export default {
     _deployNewLiquidStakingDerivativeNetwork
 };

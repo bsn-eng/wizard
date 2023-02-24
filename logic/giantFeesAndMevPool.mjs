@@ -1,6 +1,6 @@
-const { customErrors } = require('./constants');
-const { getContractInstance } = require('./contracts');
-const { _add0x } = require('./utils');
+import { customErrors } from './constants';
+import { getContractInstance } from './contracts';
+import { _add0x } from './utils.mjs';
 
 const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
 
@@ -178,7 +178,7 @@ const _withdrawETH = async (signer, amount) => {
     return contract.withdrawETH(amount);
 };
 
-module.exports = {
+export default {
     _batchDepositETHForStaking,
     _claimRewards,
     _previewAccumulatedETH,

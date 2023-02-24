@@ -1,6 +1,6 @@
-const { customErrors } = require('./constants');
-const { getContractInstance } = require('./contracts');
-const { _add0x } = require('./utils');
+import { customErrors } from './constants';
+import { getContractInstance } from './contracts';
+import { _add0x } from './utils.mjs';
 
 const _getIndexOwnedByTheVault = async (signer, savETHVaultAddress) => {
 
@@ -123,7 +123,7 @@ const _approveProtectedStakingPoolToTransferDETH = async (signer, spender, amoun
     );
 };
 
-module.exports = {
+export default {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
     _depositETHForStaking,

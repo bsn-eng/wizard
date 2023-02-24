@@ -1,6 +1,6 @@
-const { customErrors } = require('./constants');
-const { getContractInstance } = require('./contracts');
-const { _add0x } = require('./utils');
+import { customErrors } from './constants';
+import { getContractInstance } from './contracts';
+import { _add0x } from './utils.mjs';
 
 const _totalShares = async (signer, feesAndMevPoolAddress) => {
 
@@ -157,7 +157,7 @@ const _claimFundsFromSyndicateForDistribution = async (signer, feesAndMevPoolAdd
     );
 };
 
-module.exports = {
+export default {
     _totalShares,
     _updateAccumulatedETHPerLP,
     _batchDepositETHForStaking,

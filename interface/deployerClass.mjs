@@ -1,6 +1,4 @@
-const {
-    _deployNewLiquidStakingDerivativeNetwork
-} = require('../logic/deployer');
+import { _deployNewLiquidStakingDerivativeNetwork } from '../logic/deployer.mjs';
 
 class DeployerSubPackage {
 
@@ -13,6 +11,6 @@ class DeployerSubPackage {
     }
 }
 
-module.exports = {
+export default {
     DeployerSubPackage
 };

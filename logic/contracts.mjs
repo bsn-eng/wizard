@@ -1,7 +1,7 @@
-const { ethers } = require('ethers');
-const { _getChainSpecificConstants, _extractChainID } = require('./constants.js');
-const { lsdContracts } = require('@blockswaplab/lsd-protocol-abis');
-const { stakehouseContracts } = require('@blockswaplab/stakehouse-protocol-abis');
+import { ethers } from 'ethers';
+import { _getChainSpecificConstants, _extractChainID } from './constants.mjs';
+import { lsdContracts } from '@blockswaplab/lsd-protocol-abis';
+import { stakehouseContracts } from '@blockswaplab/stakehouse-protocol-abis';
 
 const getContractInstance = async (signer) => {
 
@@ -82,6 +82,6 @@ const getContractInstance = async (signer) => {
     }
 }
 
-module.exports = {
+export default {
     getContractInstance
 };

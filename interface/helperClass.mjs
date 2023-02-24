@@ -1,6 +1,4 @@
-const {
-    _getValidatorDetails
-} = require('../logic/helper');
+import { _getValidatorDetails } from '../logic/helper.mjs';
 
 class HelperSubPackage {
 
@@ -13,6 +11,6 @@ class HelperSubPackage {
     }
 }
 
-module.exports = {
+export default {
     HelperSubPackage
 };
