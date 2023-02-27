@@ -1,22 +1,22 @@
-import { customErrors } from './constants';
-import { getContractInstance } from './contracts';
+import { customErrors } from './constants.mjs';
+import { getContractInstance } from './contracts.mjs';
 import { _add0x } from './utils.mjs';
 
-const _totalShares = async (signer, feesAndMevPoolAddress) => {
+export const _totalShares = async (signer, feesAndMevPoolAddress) => {
 
     const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
 
     return contract.totalShares();
 };
 
-const _updateAccumulatedETHPerLP = async (signer, feesAndMevPoolAddress) => {
+export const _updateAccumulatedETHPerLP = async (signer, feesAndMevPoolAddress) => {
 
     const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
 
     return contract.updateAccumulatedETHPerLP();
 };
 
-const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddress, blsPublicKeys, amounts, ethValue) => {
+export const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddress, blsPublicKeys, amounts, ethValue) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -35,7 +35,7 @@ const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddress, blsPubl
     );
 };
 
-const _depositETHForStaking = async (signer, feesAndMevPoolAddress, blsPublicKey, amount, ethValue) => {
+export const _depositETHForStaking = async (signer, feesAndMevPoolAddress, blsPublicKey, amount, ethValue) => {
 
     const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
 
@@ -46,7 +46,7 @@ const _depositETHForStaking = async (signer, feesAndMevPoolAddress, blsPublicKey
     );
 };
 
-const _burnLPTokensForETHByBLS = async (signer, feesAndMevPoolAddress, blsPublicKeys, amounts) => {
+export const _burnLPTokensForETHByBLS = async (signer, feesAndMevPoolAddress, blsPublicKeys, amounts) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -64,7 +64,7 @@ const _burnLPTokensForETHByBLS = async (signer, feesAndMevPoolAddress, blsPublic
     );
 };
 
-const _burnLPTokensForETH = async (signer, feesAndMevPoolAddress, lpTokens, amounts) => {
+export const _burnLPTokensForETH = async (signer, feesAndMevPoolAddress, lpTokens, amounts) => {
 
     if(lpTokens.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -82,7 +82,7 @@ const _burnLPTokensForETH = async (signer, feesAndMevPoolAddress, lpTokens, amou
     );
 };
 
-const _burnLPTokenForETH = async (signer, feesAndMevPoolAddress, lpToken, amount) => {
+export const _burnLPTokenForETH = async (signer, feesAndMevPoolAddress, lpToken, amount) => {
 
     const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
 
@@ -92,7 +92,7 @@ const _burnLPTokenForETH = async (signer, feesAndMevPoolAddress, lpToken, amount
     );
 };
 
-const _claimRewards = async (signer, feesAndMevPoolAddress, recipient, blsPublicKeys) => {
+export const _claimRewards = async (signer, feesAndMevPoolAddress, recipient, blsPublicKeys) => {
 
     for(let i=0; i<blsPublicKeys.length; ++i) {
         blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
@@ -106,7 +106,7 @@ const _claimRewards = async (signer, feesAndMevPoolAddress, recipient, blsPublic
     );
 };
 
-const _batchPreviewAccumulatedETHByBLSKeys = async (signer, feesAndMevPoolAddress, userAddress, blsPublicKeys) => {
+export const _batchPreviewAccumulatedETHByBLSKeys = async (signer, feesAndMevPoolAddress, userAddress, blsPublicKeys) => {
 
     for(let i=0; i<blsPublicKeys.length; ++i) {
         blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
@@ -120,7 +120,7 @@ const _batchPreviewAccumulatedETHByBLSKeys = async (signer, feesAndMevPoolAddres
     );
 };
 
-const _batchPreviewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAddress, lpTokens) => {
+export const _batchPreviewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAddress, lpTokens) => {
 
     for(let i=0; i<lpTokens.length; ++i) {
         lpTokens[i] = _add0x(lpTokens[i]);
@@ -134,7 +134,7 @@ const _batchPreviewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAd
     );
 };
 
-const _previewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAddress, lpToken) => {
+export const _previewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAddress, lpToken) => {
 
     const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
 
@@ -144,7 +144,7 @@ const _previewAccumulatedETH = async (signer, feesAndMevPoolAddress, userAddress
     );
 };
 
-const _claimFundsFromSyndicateForDistribution = async (signer, feesAndMevPoolAddress, blsPublicKeys) => {
+export const _claimFundsFromSyndicateForDistribution = async (signer, feesAndMevPoolAddress, blsPublicKeys) => {
 
     for(let i=0; i<blsPublicKeys.length; ++i) {
         blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
@@ -155,19 +155,4 @@ const _claimFundsFromSyndicateForDistribution = async (signer, feesAndMevPoolAdd
     return contract.claimFundsFromSyndicateForDistribution(
         blsPublicKeys
     );
-};
-
-export default {
-    _totalShares,
-    _updateAccumulatedETHPerLP,
-    _batchDepositETHForStaking,
-    _depositETHForStaking,
-    _burnLPTokensForETHByBLS,
-    _burnLPTokensForETH,
-    _burnLPTokenForETH,
-    _claimRewards,
-    _batchPreviewAccumulatedETHByBLSKeys,
-    _batchPreviewAccumulatedETH,
-    _previewAccumulatedETH,
-    _claimFundsFromSyndicateForDistribution
 };

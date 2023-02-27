@@ -1,6 +1,6 @@
 import { _getChainSpecificConstants, _extractChainID } from '../logic/constants.mjs';
 
-class ConstantsSubPackage {
+export class ConstantsSubPackage {
 
 	constructor(signer) {
 
@@ -16,7 +16,3 @@ class ConstantsSubPackage {
 		})();
 	}
 }
-
-export default {
-    ConstantsSubPackage
-};

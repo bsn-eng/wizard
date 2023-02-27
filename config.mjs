@@ -8,7 +8,7 @@ import { GiantSavETHPoolSubPackage } from './interface/giantSavETHPoolClass.mjs'
 import { GiantFeesAndMevPoolSubPackage } from './interface/giantFeesAndMevPoolClass.mjs';
 import { HelperSubPackage } from './interface/helperClass.mjs';
 
-class Wizard {
+export class Wizard {
 
     constructor({
         signer, 
@@ -29,7 +29,3 @@ class Wizard {
         this.constants = new ConstantsSubPackage(signer);
     }
 }
-
-export default {
-    Wizard
-};

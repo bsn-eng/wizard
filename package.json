@@ -2,9 +2,10 @@
     "name": "@blockswaplab/lsd-wizard",
     "version": "1.7.0",
     "description": "SDK for Liquid Staking Derivative Network",
-    "main": "config.js",
+    "main": "config.mjs",
+    "type": "module",
     "exports": {
-        ".": "./config.js"
+        ".": "./config.mjs"
     },
     "scripts": {
         "test": "mocha ./test/**/*.test.js --timeout 20000 --recursive"

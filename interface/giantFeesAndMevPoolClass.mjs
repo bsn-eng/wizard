@@ -10,7 +10,7 @@ import {
     _withdrawETH,
 } from '../logic/giantFeesAndMevPool.mjs';
 
-class GiantFeesAndMevPoolSubPackage {
+export class GiantFeesAndMevPoolSubPackage {
 
     constructor(signer) {
         this.etherSigner = signer;
@@ -52,7 +52,3 @@ class GiantFeesAndMevPoolSubPackage {
         return _withdrawETH(this.etherSigner, amount);
     }
 }
-
-export default {
-    GiantFeesAndMevPoolSubPackage
-};

@@ -1,8 +1,8 @@
-import { customErrors } from './constants';
-import { getContractInstance } from './contracts';
+import { customErrors } from './constants.mjs';
+import { getContractInstance } from './contracts.mjs';
 import { _add0x } from './utils.mjs';
 
-const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
+export const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {
@@ -35,7 +35,7 @@ const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, amounts,
     )
 };
 
-const _withdrawDETH = async (signer, savETHVaultAddresses, lpTokens, amounts) => {
+export const _withdrawDETH = async (signer, savETHVaultAddresses, lpTokens, amounts) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != lpTokens.length || arrayLength != amounts.length) {
@@ -66,7 +66,7 @@ const _withdrawDETH = async (signer, savETHVaultAddresses, lpTokens, amounts) =>
     );
 };
 
-const _batchRotateLPTokens = async (signer, savETHVaultAddresses, oldLPTokens, newLPTokens, amounts) => {
+export const _batchRotateLPTokens = async (signer, savETHVaultAddresses, oldLPTokens, newLPTokens, amounts) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != oldLPTokens.length || arrayLength != newLPTokens.length || arrayLength != amounts.length) {
@@ -100,7 +100,7 @@ const _batchRotateLPTokens = async (signer, savETHVaultAddresses, oldLPTokens, n
     );
 };
 
-const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddresses, lpTokens, amounts) => {
+export const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddresses, lpTokens, amounts) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != lpTokens.length || arrayLength != amounts.length) {
@@ -131,7 +131,7 @@ const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddresses, lp
     );
 };
 
-const _depositETH = async (signer, amount, ethValue) => {
+export const _depositETH = async (signer, amount, ethValue) => {
 
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
@@ -141,26 +141,16 @@ const _depositETH = async (signer, amount, ethValue) => {
     );
 };
 
-const _getIdleETH = async (signer) => {
+export const _getIdleETH = async (signer) => {
 
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
     return contract.idleETH();
 };
 
-const _withdrawETH = async (signer, amount) => {
+export const _withdrawETH = async (signer, amount) => {
 
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
     return contract.withdrawETH(amount);
-};
-
-export default {
-    _batchDepositETHForStaking,
-    _withdrawDETH,
-    _batchRotateLPTokens,
-    _bringUnusedETHBackIntoGiantPool,
-    _depositETH,
-    _getIdleETH,
-    _withdrawETH
 };

@@ -13,7 +13,7 @@ import {
     _claimFundsFromSyndicateForDistribution,
 } from '../logic/feesAndMevPool.mjs';
 
-class FeesAndMevPoolSubPackage {
+export class FeesAndMevPoolSubPackage {
 
     constructor(signer, feesAndMevPoolAddress) {
         this.etherSigner = signer,
@@ -68,7 +68,3 @@ class FeesAndMevPoolSubPackage {
         return _claimFundsFromSyndicateForDistribution(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys);
     }
 }
-
-export default {
-    FeesAndMevPoolSubPackage
-};

@@ -3,7 +3,7 @@ import { _getChainSpecificConstants, _extractChainID } from './constants.mjs';
 import { lsdContracts } from '@blockswaplab/lsd-protocol-abis';
 import { stakehouseContracts } from '@blockswaplab/stakehouse-protocol-abis';
 
-const getContractInstance = async (signer) => {
+export const getContractInstance = async (signer) => {
 
     const chainID = await _extractChainID(signer);
     const values = _getChainSpecificConstants(chainID);
@@ -81,7 +81,3 @@ const getContractInstance = async (signer) => {
         dETH: getDETH
     }
 }
-
-export default {
-    getContractInstance
-};

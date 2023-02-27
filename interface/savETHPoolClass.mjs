@@ -11,7 +11,7 @@ import {
     _approveProtectedStakingPoolToTransferDETH,
 } from '../logic/savETHPool.mjs';
 
-class SavETHPoolSubPackage {
+export class SavETHPoolSubPackage {
 
     constructor(signer, savETHPoolAddress) {
         this.etherSigner = signer;
@@ -58,7 +58,3 @@ class SavETHPoolSubPackage {
         return _approveProtectedStakingPoolToTransferDETH(this.etherSigner, this.savETHPoolAddress, amount);
     }
 }
-
-export default {
-    SavETHPoolSubPackage
-};

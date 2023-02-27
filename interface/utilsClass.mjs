@@ -37,7 +37,7 @@ import {
     _getNetworkFeeRecipient,
 } from '../logic/utils.mjs';
 
-class UtilsSubPackage {
+export class UtilsSubPackage {
 
     constructor(signer, liquidStakingManagerAddress) {
         this.etherSigner = signer;
@@ -188,7 +188,3 @@ class UtilsSubPackage {
         return _getNetworkFeeRecipient(this.etherSigner, this.liquidStakingManagerAddress);
     }
 }
-
-export default {
-    UtilsSubPackage
-};
