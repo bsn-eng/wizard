@@ -1,5 +1,6 @@
 const { customErrors } = require('./constants');
 const { getContractInstance } = require('./contracts');
+const _ = require('lodash');
 
 const _add0x = (data) => {
 
@@ -254,12 +255,16 @@ const _updateWhitelisting = async (signer, liquidStakingManagerAddress, newWhite
     );
 };
 
-const _updateNodeRunnerWhitelistStatus = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, newWhitelistingStatus) => {
+const _updateNodeRunnerWhitelistStatus = async (signer, liquidStakingManagerAddress, nodeRunnerAddresses, newWhitelistingStatus) => {
+
+    for(let i=0; i<nodeRunnerAddresses.length; ++i) {
+        nodeRunnerAddresses[i] = _add0x(nodeRunnerAddresses[i]);
+    }
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.updateNodeRunnerWhitelistStatus(
-        _add0x(nodeRunnerAddress),
+        nodeRunnerAddresses,
         newWhitelistingStatus
     );
 };

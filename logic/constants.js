@@ -9,10 +9,28 @@ const CHAIN_ID = {
 };
 
 const goerliFactoryAddresses = {
-    LSDN_FACTORY: "0xDA02a5ddfeee5B557625835248b5E5a865f1e742",
-	GIANT_SAVETH_POOL: "0xE58CdCA8525040B8E0Ae99a2D8277Ab37144dB31",
-	GIANT_FEES_AND_MEV_POOL: "0xf16FEeA67834d264b6FEadBC7069062c09B7beee"
+    LSDN_FACTORY: "0xe9482a9b8f3ea7400d4b07c798287d94b036be5c",
+	GIANT_SAVETH_POOL: "0xf498849ea5caedf73cf9198c5a2ef9db62443809",
+	GIANT_FEES_AND_MEV_POOL: "0x7d8381afbada9ab3ec16de3f17ad0e3a2af58b79",
+	SMART_WALLET_NAMING_REGISTRY: "0x31D01003bE62Ef03222CF54E8895931e91B8C2eE",
+	DETH: "0x506C2B850D519065a4005b04b9ceed946A64CB6F"
 };
+
+const mainnetFactoryAddresses = {
+    LSDN_FACTORY: "0x6EDd4DDa4F879541A67366bca844b2D78cC3850A",
+	GIANT_SAVETH_POOL: "0xF5D92B01c478273bD13aA8efb130D98e131ecBB9",
+	GIANT_FEES_AND_MEV_POOL: "0x04e5c93f4b96D2fdB2cDE4c9826C373e5656796E",
+	SMART_WALLET_NAMING_REGISTRY: "0xfC40C203d6b0976526Dd169F2c21AF53B8f2a372",
+	DETH: "0x3d1E5Cf16077F349e999d6b21A4f646e83Cd90c5"
+};
+
+const goerliLSDUrls = {
+	SUBGRAPH_ENDPOINT: "https://api.thegraph.com/subgraphs/name/bsn-eng/liquid-staking-derivative"
+}
+
+const mainnetLSDUrls = {
+	SUBGRAPH_ENDPOINT: "https://gateway.thegraph.com/api/403d404492bbd29f3d4e97044fe652e7/subgraphs/id/FXWYdAqgDbmfiahrDB85juPnZ123XiTsojSbosBAJkFK"
+}
 
 const customErrors = {
 	UNEQUAL_ARRAY_LENGTH: "Error: Unequal array size. Must provide arrays of equal length"
@@ -41,7 +59,15 @@ const _getChainSpecificConstants = (chainID) => {
 	if(chainID === CHAIN_ID.GOERLI) {
 		return {
 			factoryAddresses: goerliFactoryAddresses,
-			customErrors: customErrors
+			customErrors: customErrors,
+			lsdUrls: goerliLSDUrls
+		};
+	}
+	else if(chainID === CHAIN_ID.MAINNET) {
+		return {
+			factoryAddresses: mainnetFactoryAddresses,
+			customErrors: customErrors,
+			lsdUrls: mainnetLSDUrls
 		};
 	}
 };
@@ -63,5 +89,5 @@ module.exports = {
 	CHAIN_ID,
 	customErrors,
 	lifecycleStatuses,
+	goerliLSDUrls
 };
-

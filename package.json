@@ -1,6 +1,6 @@
 {
-    "name": "@blockswaplab/wizard",
-    "version": "1.0.0",
+    "name": "@blockswaplab/lsd-wizard",
+    "version": "2.0.0",
     "description": "SDK for Liquid Staking Derivative Network",
     "main": "config.js",
     "exports": {
@@ -10,6 +10,8 @@
         "test": "mocha ./test/**/*.test.js --timeout 20000 --recursive"
     },
     "dependencies": {
+        "@blockswaplab/lsd-protocol-abis": "1.2.1",
+        "@blockswaplab/stakehouse-protocol-abis": "2.1.9",
         "ethers": "^5.5.3",
         "graphql": "^16.1.0",
         "graphql-request": "^3.7.0",

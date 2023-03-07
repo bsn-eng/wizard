@@ -144,8 +144,8 @@ class UtilsSubPackage {
         return _updateWhitelisting(this.etherSigner, this.liquidStakingManagerAddress, newWhitelistingStatus);
     }
 
-    updateNodeRunnerWhitelistStatus(nodeRunnerAddress, newWhitelistingStatus) {
-        return _updateNodeRunnerWhitelistStatus(this.etherSigner, this.liquidStakingManagerAddress, nodeRunnerAddress, newWhitelistingStatus);
+    updateNodeRunnerWhitelistStatus(nodeRunnerAddresses, newWhitelistingStatus) {
+        return _updateNodeRunnerWhitelistStatus(this.etherSigner, this.liquidStakingManagerAddress, nodeRunnerAddresses, newWhitelistingStatus);
     }
 
     rotateEOARepresentative(newRepresentativeAddress) {
