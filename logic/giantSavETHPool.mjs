@@ -17,7 +17,7 @@ export const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, a
             throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
         }
 
-        savETHVaultAddresses[i] = _add0x(savETHVaultAddresses);
+        savETHVaultAddresses[i] = _add0x(savETHVaultAddresses[i]);
 
         for(let j=0; j<blsArray.length; ++j) {
             blsPublicKeys[i][j] = _add0x(blsPublicKeys[i][j]);
@@ -115,7 +115,7 @@ export const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddres
             throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
         }
 
-        savETHVaultAddresses[i] = _add0x(savETHVaultAddresses);
+        savETHVaultAddresses[i] = _add0x(savETHVaultAddresses[i]);
 
         for(let j=0; j<lpArray.length; ++j) {
             lpTokens[i][j] = _add0x(lpTokens[i][j]);

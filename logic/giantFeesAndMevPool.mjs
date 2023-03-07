@@ -11,13 +11,13 @@ export const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses
 
     for(let i=0; i<arrayLength; ++i) {
         const blsArray = blsPublicKeys[i];
-        const amountArray = amounts[i];
+        const amountArray = stakeAmounts[i];
 
         if(blsArray.length != amountArray.length) {
             throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
         }
 
-        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses);
+        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
 
         for(let j=0; j<blsArray.length; ++j) {
             blsPublicKeys[i][j] = _add0x(blsPublicKeys[i][j]);
