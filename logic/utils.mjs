@@ -1,8 +1,8 @@
-const { customErrors } = require('./constants');
-const { getContractInstance } = require('./contracts');
-const _ = require('lodash');
+import { customErrors } from './constants.mjs';
+import { getContractInstance } from './contracts.mjs';
+import _ from 'lodash';
 
-const _add0x = (data) => {
+export const _add0x = (data) => {
 
 	if(!data) {
 		throw customErrors.NULL_OR_UNDEFINED_VALUE;
@@ -23,7 +23,7 @@ const _add0x = (data) => {
 	return data;
 };
 
-const _remove0x = (data) => {
+export const _remove0x = (data) => {
 
 	if(!data) {
 		throw customErrors.NULL_OR_UNDEFINED_VALUE;
@@ -44,42 +44,42 @@ const _remove0x = (data) => {
 	return data;
 };
 
-const _getDAOAddress = async (signer, liquidStakingManagerAddress) => {
+export const _getDAOAddress = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.dao();
 };
 
-const _getSavETHVaultAddress = async (signer, liquidStakingManagerAddress) => {
+export const _getSavETHVaultAddress = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.savETHVault();
 };
 
-const _getFeesAndMEVPoolAddress = async (signer, liquidStakingManagerAddress) => {
+export const _getFeesAndMEVPoolAddress = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.stakingFundsVault();
 };
 
-const _getStakehouseTicker = async (signer, liquidStakingManagerAddress) => {
+export const _getStakehouseTicker = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.stakehouseTicker();
 };
 
-const _isWhitelistingEnabled = async (signer, liquidStakingManagerAddress) => {
+export const _isWhitelistingEnabled = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.enableWhitelisting();
 };
 
-const _isNodeRunnerWhitelisted = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
+export const _isNodeRunnerWhitelisted = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -88,7 +88,7 @@ const _isNodeRunnerWhitelisted = async (signer, liquidStakingManagerAddress, nod
     );
 };
 
-const _getSmartWalletRepresentative = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {
+export const _getSmartWalletRepresentative = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -97,7 +97,7 @@ const _getSmartWalletRepresentative = async (signer, liquidStakingManagerAddress
     );
 };
 
-const _getSmartWalletOfKnot = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
+export const _getSmartWalletOfKnot = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -106,7 +106,7 @@ const _getSmartWalletOfKnot = async (signer, liquidStakingManagerAddress, blsPub
     );
 };
 
-const _getSmartWalletOfNodeRunner = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
+export const _getSmartWalletOfNodeRunner = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -115,7 +115,7 @@ const _getSmartWalletOfNodeRunner = async (signer, liquidStakingManagerAddress, 
     );
 };
 
-const _getNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {
+export const _getNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -124,7 +124,7 @@ const _getNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddress, 
     )
 };
 
-const _getStakedKnotsOfSmartWallet = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {
+export const _getStakedKnotsOfSmartWallet = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -133,7 +133,7 @@ const _getStakedKnotsOfSmartWallet = async (signer, liquidStakingManagerAddress,
     );
 };
 
-const _getSmartWalletDormantRepresentative = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {  
+export const _getSmartWalletDormantRepresentative = async (signer, liquidStakingManagerAddress, smartWalletAddress) => {  
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -142,7 +142,7 @@ const _getSmartWalletDormantRepresentative = async (signer, liquidStakingManager
     );
 };
 
-const _isNodeRunnerBanned = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
+export const _isNodeRunnerBanned = async (signer, liquidStakingManagerAddress, nodeRunnerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -151,21 +151,21 @@ const _isNodeRunnerBanned = async (signer, liquidStakingManagerAddress, nodeRunn
     )
 };
 
-const _getNumberOfKnots = async (signer, liquidStakingManagerAddress) => {
+export const _getNumberOfKnots = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.numberOfKnots();
 };
 
-const _getDaoCommissionPercentage = async (signer, liquidStakingManagerAddress) => {
+export const _getDaoCommissionPercentage = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.daoCommissionPercentage();
 };
 
-const _isBLSPublicKeyBanned = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
+export const _isBLSPublicKeyBanned = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -174,7 +174,7 @@ const _isBLSPublicKeyBanned = async (signer, liquidStakingManagerAddress, blsPub
     );
 };
 
-const _executeAsSmartWallet = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, targetContractAddress, encodedFunctionData, ethValue) => {
+export const _executeAsSmartWallet = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, targetContractAddress, encodedFunctionData, ethValue) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -187,7 +187,7 @@ const _executeAsSmartWallet = async (signer, liquidStakingManagerAddress, nodeRu
     );
 };
 
-const _deRegisterKnotsFromSyndicate = async (signer, liquidStakingManagerAddress, blsPublicKeys) => {
+export const _deRegisterKnotsFromSyndicate = async (signer, liquidStakingManagerAddress, blsPublicKeys) => {
 
     for(let i=0; i<blsPublicKeys.length; ++i) {
         blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
@@ -200,7 +200,7 @@ const _deRegisterKnotsFromSyndicate = async (signer, liquidStakingManagerAddress
     );
 };
 
-const _restoreFreeFloatingSharesToSmartWalletForRageQuit = async (signer, liquidStakingManagerAddress, smartWalletAddress, blsPublicKeys, amounts) => {
+export const _restoreFreeFloatingSharesToSmartWalletForRageQuit = async (signer, liquidStakingManagerAddress, smartWalletAddress, blsPublicKeys, amounts) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -219,7 +219,7 @@ const _restoreFreeFloatingSharesToSmartWalletForRageQuit = async (signer, liquid
     );
 };
 
-const _updateDaoAddress = async (signer, liquidStakingManagerAddress, newDaoAddress) => {
+export const _updateDaoAddress = async (signer, liquidStakingManagerAddress, newDaoAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -228,7 +228,7 @@ const _updateDaoAddress = async (signer, liquidStakingManagerAddress, newDaoAddr
     );
 };
 
-const _updateDaoRevenueCommission = async (signer, liquidStakingManagerAddress, newDaoRevenueCommission) => {
+export const _updateDaoRevenueCommission = async (signer, liquidStakingManagerAddress, newDaoRevenueCommission) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -237,7 +237,7 @@ const _updateDaoRevenueCommission = async (signer, liquidStakingManagerAddress, 
     );
 };
 
-const _updateStakehouseTicker = async (signer, liquidStakingManagerAddress, newStakehouseTicker) => {
+export const _updateStakehouseTicker = async (signer, liquidStakingManagerAddress, newStakehouseTicker) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -246,7 +246,7 @@ const _updateStakehouseTicker = async (signer, liquidStakingManagerAddress, newS
     );
 };
 
-const _updateWhitelisting = async (signer, liquidStakingManagerAddress, newWhitelistingStatus) => {
+export const _updateWhitelisting = async (signer, liquidStakingManagerAddress, newWhitelistingStatus) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -255,7 +255,7 @@ const _updateWhitelisting = async (signer, liquidStakingManagerAddress, newWhite
     );
 };
 
-const _updateNodeRunnerWhitelistStatus = async (signer, liquidStakingManagerAddress, nodeRunnerAddresses, newWhitelistingStatus) => {
+export const _updateNodeRunnerWhitelistStatus = async (signer, liquidStakingManagerAddress, nodeRunnerAddresses, newWhitelistingStatus) => {
 
     for(let i=0; i<nodeRunnerAddresses.length; ++i) {
         nodeRunnerAddresses[i] = _add0x(nodeRunnerAddresses[i]);
@@ -269,7 +269,7 @@ const _updateNodeRunnerWhitelistStatus = async (signer, liquidStakingManagerAddr
     );
 };
 
-const _rotateEOARepresentative = async (signer, liquidStakingManagerAddress, newRepresentativeAddress) => {
+export const _rotateEOARepresentative = async (signer, liquidStakingManagerAddress, newRepresentativeAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -278,7 +278,7 @@ const _rotateEOARepresentative = async (signer, liquidStakingManagerAddress, new
     );
 };
 
-const _rotateEOARepresentativeOfNodeRunner = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, newRepresentativeAddress) => {
+export const _rotateEOARepresentativeOfNodeRunner = async (signer, liquidStakingManagerAddress, nodeRunnerAddress, newRepresentativeAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -288,7 +288,7 @@ const _rotateEOARepresentativeOfNodeRunner = async (signer, liquidStakingManager
     );
 };
 
-const _withdrawETHForKnot = async (signer, liquidStakingManagerAddress, recipientAddress, blsPublicKey) => {
+export const _withdrawETHForKnot = async (signer, liquidStakingManagerAddress, recipientAddress, blsPublicKey) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -298,7 +298,7 @@ const _withdrawETHForKnot = async (signer, liquidStakingManagerAddress, recipien
     );
 };
 
-const _rotateNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddress, currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious) => {
+export const _rotateNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddress, currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -309,7 +309,7 @@ const _rotateNodeRunnerOfSmartWallet = async (signer, liquidStakingManagerAddres
     );
 };
 
-const _claimRewardsAsNodeRunner = async (signer, liquidStakingManagerAddress, recipientAddress, blsPublicKeys) => {
+export const _claimRewardsAsNodeRunner = async (signer, liquidStakingManagerAddress, recipientAddress, blsPublicKeys) => {
 
     for(let i=0; i<blsPublicKeys.length; ++i) {
         blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
@@ -323,7 +323,7 @@ const _claimRewardsAsNodeRunner = async (signer, liquidStakingManagerAddress, re
     );
 };
 
-const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress, ethValue) => {
+export const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress, ethValue) => {
 
     if(blsPublicKeys.length != blsSignatures.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -344,7 +344,7 @@ const _registerBLSPublicKeys = async (signer, liquidStakingManagerAddress, blsPu
     );
 };
 
-const _isKnotDeregistered = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
+export const _isKnotDeregistered = async (signer, liquidStakingManagerAddress, blsPublicKey) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
@@ -353,7 +353,7 @@ const _isKnotDeregistered = async (signer, liquidStakingManagerAddress, blsPubli
     );
 };
 
-const _stake = async (signer, liquidStakingManagerAddress, blsPublicKeys, cipherTexts, aesEncryptorKeys, encryptionSignatures, dataRoots) => {
+export const _stake = async (signer, liquidStakingManagerAddress, blsPublicKeys, cipherTexts, aesEncryptorKeys, encryptionSignatures, dataRoots) => {
 
     const arrayLength = blsPublicKeys.length;
     if(arrayLength != cipherTexts.length || arrayLength != aesEncryptorKeys.length || arrayLength != encryptionSignatures.length || arrayLength != dataRoots.length) {
@@ -380,7 +380,7 @@ const _stake = async (signer, liquidStakingManagerAddress, blsPublicKeys, cipher
     );
 };
 
-const _mintDerivatives = async (signer, liquidStakingManagerAddress, blsPublicKeys, beaconChainReports, authenticatedReportSignatures) => {
+export const _mintDerivatives = async (signer, liquidStakingManagerAddress, blsPublicKeys, beaconChainReports, authenticatedReportSignatures) => {
 
     const arrayLength = blsPublicKeys.length;
     if(arrayLength != authenticatedReports.length || arrayLength != beaconChainReports.length || arrayLength != authenticatedReportSignatures.length) {
@@ -402,48 +402,9 @@ const _mintDerivatives = async (signer, liquidStakingManagerAddress, blsPublicKe
     );
 };
 
-const _getNetworkFeeRecipient = async (signer, liquidStakingManagerAddress) => {
+export const _getNetworkFeeRecipient = async (signer, liquidStakingManagerAddress) => {
 
     const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
 
     return contract.getNetworkFeeRecipient();
 };
-
-module.exports = {
-    _add0x,
-    _remove0x,
-    _getDAOAddress,
-    _getSavETHVaultAddress,
-    _getFeesAndMEVPoolAddress,
-    _getStakehouseTicker,
-    _isWhitelistingEnabled,
-    _isNodeRunnerWhitelisted,
-    _getSmartWalletRepresentative,
-    _getSmartWalletOfKnot,
-    _getSmartWalletOfNodeRunner,
-    _getNodeRunnerOfSmartWallet,
-    _getStakedKnotsOfSmartWallet,
-    _getSmartWalletDormantRepresentative,
-    _isNodeRunnerBanned,
-    _getNumberOfKnots,
-    _getDaoCommissionPercentage,
-    _isBLSPublicKeyBanned,
-    _executeAsSmartWallet,
-    _deRegisterKnotsFromSyndicate,
-    _restoreFreeFloatingSharesToSmartWalletForRageQuit,
-    _updateDaoAddress,
-    _updateDaoRevenueCommission,
-    _updateStakehouseTicker,
-    _updateWhitelisting,
-    _updateNodeRunnerWhitelistStatus,
-    _rotateEOARepresentative,
-    _rotateEOARepresentativeOfNodeRunner,
-    _withdrawETHForKnot,
-    _rotateNodeRunnerOfSmartWallet,
-    _claimRewardsAsNodeRunner,
-    _registerBLSPublicKeys,
-    _isKnotDeregistered,
-    _stake,
-    _mintDerivatives,
-    _getNetworkFeeRecipient
-}

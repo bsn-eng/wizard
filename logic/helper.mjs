@@ -1,6 +1,6 @@
-const { gql, request } = require('graphql-request');
-const { _getChainSpecificConstants, _extractChainID } = require('./constants');
-const { _add0x } = require('./utils');
+import { gql, request } from 'graphql-request';
+import { _getChainSpecificConstants, _extractChainID } from './constants.mjs';
+import { _add0x } from './utils.mjs';
 
 const _getValidatorFromSubgraph = async (signer, blsPublicKey) => {
 
@@ -43,7 +43,7 @@ const _getValidatorFromSubgraph = async (signer, blsPublicKey) => {
     return response.lsdvalidators[0];
 };
 
-const _getValidatorDetails = async (signer, blsPublicKey) => {
+export const _getValidatorDetails = async (signer, blsPublicKey) => {
     
     try {
         const res = await _getValidatorFromSubgraph(signer, blsPublicKey);
@@ -62,8 +62,4 @@ const _getValidatorDetails = async (signer, blsPublicKey) => {
     catch(e) {
         return;
     }
-};
-
-module.exports = {
-    _getValidatorDetails
 };

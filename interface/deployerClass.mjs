@@ -1,8 +1,6 @@
-const {
-    _deployNewLiquidStakingDerivativeNetwork
-} = require('../logic/deployer');
+import { _deployNewLiquidStakingDerivativeNetwork } from '../logic/deployer.mjs';
 
-class DeployerSubPackage {
+export class DeployerSubPackage {
 
     constructor(signer) {
 		this.etherSigner = signer;
@@ -12,7 +10,3 @@ class DeployerSubPackage {
         return _deployNewLiquidStakingDerivativeNetwork(this.etherSigner, daoAddress, stakehouseTicker, commission, gateKeeping);
     }
 }
-
-module.exports = {
-    DeployerSubPackage
-};

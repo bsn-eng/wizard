@@ -1,14 +1,14 @@
-const { DeployerSubPackage } = require('./interface/deployerClass');
-const { ConstantsSubPackage } = require('./interface/constantsClass');
-const { ContractSubPackage } = require('./interface/contractClass');
-const { UtilsSubPackage } = require('./interface/utilsClass');
-const { SavETHPoolSubPackage } = require('./interface/savETHPoolClass');
-const { FeesAndMevPoolSubPackage } = require('./interface/feesAndMevPoolClass');
-const { GiantSavETHPoolSubPackage } = require('./interface/giantSavETHPoolClass');
-const { GiantFeesAndMevPoolSubPackage } = require('./interface/giantFeesAndMevPoolClass');
-const { HelperSubPackage } = require('./interface/helperClass');
+import { DeployerSubPackage } from './interface/deployerClass.mjs';
+import { ConstantsSubPackage } from './interface/constantsClass.mjs';
+import { ContractSubPackage } from './interface/contractClass.mjs';
+import { UtilsSubPackage } from './interface/utilsClass.mjs';
+import { SavETHPoolSubPackage } from './interface/savETHPoolClass.mjs';
+import { FeesAndMevPoolSubPackage } from './interface/feesAndMevPoolClass.mjs';
+import { GiantSavETHPoolSubPackage } from './interface/giantSavETHPoolClass.mjs';
+import { GiantFeesAndMevPoolSubPackage } from './interface/giantFeesAndMevPoolClass.mjs';
+import { HelperSubPackage } from './interface/helperClass.mjs';
 
-class Wizard {
+export class Wizard {
 
     constructor({
         signer, 
@@ -29,7 +29,3 @@ class Wizard {
         this.constants = new ConstantsSubPackage(signer);
     }
 }
-
-module.exports = {
-    Wizard
-};

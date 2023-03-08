@@ -1,4 +1,4 @@
-const {
+import {
     _add0x,
     _remove0x,
     _getDAOAddress,
@@ -34,10 +34,10 @@ const {
     _isKnotDeregistered,
     _stake,
     _mintDerivatives,
-    _getNetworkFeeRecipient
-} = require('../logic/utils');
+    _getNetworkFeeRecipient,
+} from '../logic/utils.mjs';
 
-class UtilsSubPackage {
+export class UtilsSubPackage {
 
     constructor(signer, liquidStakingManagerAddress) {
         this.etherSigner = signer;
@@ -188,7 +188,3 @@ class UtilsSubPackage {
         return _getNetworkFeeRecipient(this.etherSigner, this.liquidStakingManagerAddress);
     }
 }
-
-module.exports = {
-    UtilsSubPackage
-};

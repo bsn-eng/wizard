@@ -1,8 +1,6 @@
-const {
-    _getValidatorDetails
-} = require('../logic/helper');
+import { _getValidatorDetails } from '../logic/helper.mjs';
 
-class HelperSubPackage {
+export class HelperSubPackage {
 
     constructor(signer) {
 		this.etherSigner = signer;
@@ -12,7 +10,3 @@ class HelperSubPackage {
         return _getValidatorDetails(this.etherSigner, blsPublicKey);
     }
 }
-
-module.exports = {
-    HelperSubPackage
-};

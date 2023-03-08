@@ -1,7 +1,7 @@
-const { ethers } = require('ethers');
-const { getContractInstance } = require('./contracts');
+import { ethers } from 'ethers';
+import { getContractInstance } from './contracts.mjs';
 
-const _deployNewLiquidStakingDerivativeNetwork = async (signer, daoAddress, stakehouseTicker, commission=null, gateKeeping=null) => {
+export const _deployNewLiquidStakingDerivativeNetwork = async (signer, daoAddress, stakehouseTicker, commission=null, gateKeeping=null) => {
 
     if(!commission) {
         commission = ethers.BigNumber.from("0");
@@ -19,8 +19,4 @@ const _deployNewLiquidStakingDerivativeNetwork = async (signer, daoAddress, stak
         gateKeeping,
         stakehouseTicker
     );
-};
-
-module.exports = {
-    _deployNewLiquidStakingDerivativeNetwork
 };

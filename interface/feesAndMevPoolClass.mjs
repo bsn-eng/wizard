@@ -1,4 +1,4 @@
-const {
+import {
     _totalShares,
     _updateAccumulatedETHPerLP,
     _batchDepositETHForStaking,
@@ -10,10 +10,10 @@ const {
     _batchPreviewAccumulatedETHByBLSKeys,
     _batchPreviewAccumulatedETH,
     _previewAccumulatedETH,
-    _claimFundsFromSyndicateForDistribution
-} = require('../logic/feesAndMevPool');
+    _claimFundsFromSyndicateForDistribution,
+} from '../logic/feesAndMevPool.mjs';
 
-class FeesAndMevPoolSubPackage {
+export class FeesAndMevPoolSubPackage {
 
     constructor(signer, feesAndMevPoolAddress) {
         this.etherSigner = signer,
@@ -68,7 +68,3 @@ class FeesAndMevPoolSubPackage {
         return _claimFundsFromSyndicateForDistribution(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys);
     }
 }
-
-module.exports = {
-    FeesAndMevPoolSubPackage
-};

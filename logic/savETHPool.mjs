@@ -1,15 +1,15 @@
-const { customErrors } = require('./constants');
-const { getContractInstance } = require('./contracts');
-const { _add0x } = require('./utils');
+import { customErrors } from './constants.mjs';
+import { getContractInstance } from './contracts.mjs';
+import { _add0x } from './utils.mjs';
 
-const _getIndexOwnedByTheVault = async (signer, savETHVaultAddress) => {
+export const _getIndexOwnedByTheVault = async (signer, savETHVaultAddress) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
     return contract.indexOwnedByTheVault();
 };
 
-const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicKeys, amounts, ethValue) => {
+export const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicKeys, amounts, ethValue) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -28,7 +28,7 @@ const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicK
     );
 };
 
-const _depositETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount, ethValue) => {
+export const _depositETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount, ethValue) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -39,7 +39,7 @@ const _depositETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, a
     );
 };
 
-const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKeys, amounts) => {
+export const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKeys, amounts) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -57,7 +57,7 @@ const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKeys, amo
     );
 };
 
-const _burnLPTokens = async (signer, savETHVaultAddress, lpTokens, amounts) => {
+export const _burnLPTokens = async (signer, savETHVaultAddress, lpTokens, amounts) => {
 
     if(lpTokens.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -75,7 +75,7 @@ const _burnLPTokens = async (signer, savETHVaultAddress, lpTokens, amounts) => {
     );
 };
 
-const _burnLPToken = async (signer, savETHVaultAddress, lpToken, amount) => {
+export const _burnLPToken = async (signer, savETHVaultAddress, lpToken, amount) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -85,7 +85,7 @@ const _burnLPToken = async (signer, savETHVaultAddress, lpToken, amount) => {
     );
 };
 
-const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpToken) => {
+export const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpToken) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -94,7 +94,7 @@ const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpToken) =>
     );
 };
 
-const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount) => {
+export const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -104,7 +104,7 @@ const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, 
     );
 };
 
-const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVaultAddress, blsPublicKey) => {
+export const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVaultAddress, blsPublicKey) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -113,7 +113,7 @@ const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVaultAddress
     );
 };
 
-const _approveProtectedStakingPoolToTransferDETH = async (signer, spender, amount) => {
+export const _approveProtectedStakingPoolToTransferDETH = async (signer, spender, amount) => {
 
     const contract = (await getContractInstance(signer)).dETH();
 
@@ -121,17 +121,4 @@ const _approveProtectedStakingPoolToTransferDETH = async (signer, spender, amoun
         _add0x(spender),
         amount
     );
-};
-
-module.exports = {
-    _getIndexOwnedByTheVault,
-    _batchDepositETHForStaking,
-    _depositETHForStaking,
-    _burnLPTokensByBLS,
-    _burnLPTokens,
-    _burnLPToken,
-    _isDETHReadyForWithdrawal,
-    _getdETHRequiredToIsolateWithdrawnKnot,
-    _depositDETHForStaking,
-    _approveProtectedStakingPoolToTransferDETH
 };

@@ -1,4 +1,4 @@
-const {
+import {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
     _depositETHForStaking,
@@ -8,10 +8,10 @@ const {
     _isDETHReadyForWithdrawal,
     _getdETHRequiredToIsolateWithdrawnKnot,
     _depositDETHForStaking,
-    _approveProtectedStakingPoolToTransferDETH
-} = require('../logic/savETHPool');
+    _approveProtectedStakingPoolToTransferDETH,
+} from '../logic/savETHPool.mjs';
 
-class SavETHPoolSubPackage {
+export class SavETHPoolSubPackage {
 
     constructor(signer, savETHPoolAddress) {
         this.etherSigner = signer;
@@ -58,7 +58,3 @@ class SavETHPoolSubPackage {
         return _approveProtectedStakingPoolToTransferDETH(this.etherSigner, this.savETHPoolAddress, amount);
     }
 }
-
-module.exports = {
-    SavETHPoolSubPackage
-};

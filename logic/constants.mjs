@@ -1,18 +1,18 @@
-const { ethers, utils, Signer } = require('ethers');
+import { ethers, utils, Signer } from 'ethers';
 
-const ZERO = ethers.BigNumber.from('0');
-const ONE_GWEI = utils.parseUnits('1', 'gwei');
-const ONE_ETHER = utils.parseUnits('1', 'ether');
-const CHAIN_ID = {
+export const ZERO = ethers.BigNumber.from('0');
+export const ONE_GWEI = utils.parseUnits('1', 'gwei');
+export const ONE_ETHER = utils.parseUnits('1', 'ether');
+export const CHAIN_ID = {
 	MAINNET: 1,
 	GOERLI: 5
 };
 
-const goerliFactoryAddresses = {
+export const goerliFactoryAddresses = {
     LSDN_FACTORY: "0xe9482a9b8f3ea7400d4b07c798287d94b036be5c",
 	GIANT_SAVETH_POOL: "0xf498849ea5caedf73cf9198c5a2ef9db62443809",
 	GIANT_FEES_AND_MEV_POOL: "0x7d8381afbada9ab3ec16de3f17ad0e3a2af58b79",
-	SMART_WALLET_NAMING_REGISTRY: "0x31D01003bE62Ef03222CF54E8895931e91B8C2eE",
+	SMART_WALLET_NAMING_REGISTRY: "0x78F82286eBd81879672285684CAA5CfC93c48E08",
 	DETH: "0x506C2B850D519065a4005b04b9ceed946A64CB6F"
 };
 
@@ -24,7 +24,7 @@ const mainnetFactoryAddresses = {
 	DETH: "0x3d1E5Cf16077F349e999d6b21A4f646e83Cd90c5"
 };
 
-const goerliLSDUrls = {
+export const goerliLSDUrls = {
 	SUBGRAPH_ENDPOINT: "https://api.thegraph.com/subgraphs/name/bsn-eng/liquid-staking-derivative"
 }
 
@@ -32,11 +32,11 @@ const mainnetLSDUrls = {
 	SUBGRAPH_ENDPOINT: "https://gateway.thegraph.com/api/403d404492bbd29f3d4e97044fe652e7/subgraphs/id/FXWYdAqgDbmfiahrDB85juPnZ123XiTsojSbosBAJkFK"
 }
 
-const customErrors = {
+export const customErrors = {
 	UNEQUAL_ARRAY_LENGTH: "Error: Unequal array size. Must provide arrays of equal length"
 };
 
-const _extractChainID = async (signerOrProvider) => {
+export const _extractChainID = async (signerOrProvider) => {
 
 	if(!signerOrProvider) {
 		throw "Invalid signer or provider instance";
@@ -54,7 +54,7 @@ const _extractChainID = async (signerOrProvider) => {
 	return network.chainId;
 };
 
-const _getChainSpecificConstants = (chainID) => {
+export const _getChainSpecificConstants = (chainID) => {
 
 	if(chainID === CHAIN_ID.GOERLI) {
 		return {
@@ -72,22 +72,10 @@ const _getChainSpecificConstants = (chainID) => {
 	}
 };
 
-const lifecycleStatuses = {
+export const lifecycleStatuses = {
 	UNBEGUN: 0,
 	INITIALS_REGISTERED: 1,
 	DEPOSIT_COMPLETED: 2,
 	TOKENS_MINTED: 3,
 	EXITED: 4
-};
-
-module.exports = {
-	_getChainSpecificConstants,
-	_extractChainID,
-	ZERO,
-	ONE_GWEI,
-	ONE_ETHER,
-	CHAIN_ID,
-	customErrors,
-	lifecycleStatuses,
-	goerliLSDUrls
 };

@@ -1,8 +1,8 @@
-const { customErrors } = require('./constants');
-const { getContractInstance } = require('./contracts');
-const { _add0x } = require('./utils');
+import { customErrors } from './constants.mjs';
+import { getContractInstance } from './contracts.mjs';
+import { _add0x } from './utils.mjs';
 
-const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
+export const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
 
     const arrayLength = feesAndMevPoolAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts) {
@@ -11,13 +11,13 @@ const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amoun
 
     for(let i=0; i<arrayLength; ++i) {
         const blsArray = blsPublicKeys[i];
-        const amountArray = amounts[i];
+        const amountArray = stakeAmounts[i];
 
         if(blsArray.length != amountArray.length) {
             throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
         }
 
-        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses);
+        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
 
         for(let j=0; j<blsArray.length; ++j) {
             blsPublicKeys[i][j] = _add0x(blsPublicKeys[i][j]);
@@ -35,7 +35,7 @@ const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amoun
     );
 };
 
-const _claimRewards = async (signer, recipient, feesAndMevPoolAddresses, blsPublicKeys) => {
+export const _claimRewards = async (signer, recipient, feesAndMevPoolAddresses, blsPublicKeys) => {
 
     const arrayLength = blsPublicKeys.length;
     if(arrayLength != feesAndMevPoolAddresses.length) {
@@ -59,7 +59,7 @@ const _claimRewards = async (signer, recipient, feesAndMevPoolAddresses, blsPubl
     );
 };
 
-const _previewAccumulatedETH = async (signer, userAddress, feesAndMevPoolAddresses, lpTokens) => {
+export const _previewAccumulatedETH = async (signer, userAddress, feesAndMevPoolAddresses, lpTokens) => {
 
     if(lpTokens.length != feesAndMevPoolAddresses.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -82,7 +82,7 @@ const _previewAccumulatedETH = async (signer, userAddress, feesAndMevPoolAddress
     );
 };
 
-const _batchRotateLPTokens = async (signer, feesAndMevPoolAddresses, oldLPTokens, newLPTokens, amounts) => {
+export const _batchRotateLPTokens = async (signer, feesAndMevPoolAddresses, oldLPTokens, newLPTokens, amounts) => {
 
     const arrayLength = feesAndMevPoolAddresses.length();
     if(arrayLength != oldLPTokens.length || arrayLength != newLPTokens.length || arrayLength != amounts.length) {
@@ -116,7 +116,7 @@ const _batchRotateLPTokens = async (signer, feesAndMevPoolAddresses, oldLPTokens
     );
 };
 
-const _bringUnusedETHBackIntoGiantPool = async (signer, feesAndMevPoolAddresses, lpTokens, amounts) => {
+export const _bringUnusedETHBackIntoGiantPool = async (signer, feesAndMevPoolAddresses, lpTokens, amounts) => {
 
     const arrayLength = feesAndMevPoolAddresses.length;
     if(arrayLength != lpTokens.length || arrayLength != amounts.length) {
@@ -147,14 +147,14 @@ const _bringUnusedETHBackIntoGiantPool = async (signer, feesAndMevPoolAddresses,
     );
 };
 
-const _updateAccumulatedETHPerLP = async (signer) => {
+export const _updateAccumulatedETHPerLP = async (signer) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
     return contract.updateAccumulatedETHPerLP();
 };
 
-const _depositETH = async (signer, amount, ethValue) => {
+export const _depositETH = async (signer, amount, ethValue) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
@@ -164,28 +164,16 @@ const _depositETH = async (signer, amount, ethValue) => {
     );
 };
 
-const _getIdleETH = async (signer) => {
+export const _getIdleETH = async (signer) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
     return contract.idleETH();
 };
 
-const _withdrawETH = async (signer, amount) => {
+export const _withdrawETH = async (signer, amount) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
     return contract.withdrawETH(amount);
-};
-
-module.exports = {
-    _batchDepositETHForStaking,
-    _claimRewards,
-    _previewAccumulatedETH,
-    _batchRotateLPTokens,
-    _bringUnusedETHBackIntoGiantPool,
-    _updateAccumulatedETHPerLP,
-    _depositETH,
-    _getIdleETH,
-    _withdrawETH
 };
