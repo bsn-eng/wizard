@@ -1,7 +1,5 @@
 import { ethers } from 'ethers';
 import { _getChainSpecificConstants, _extractChainID } from './constants.mjs';
-import { lsdContracts } from '@blockswaplab/lsd-protocol-abis';
-import { stakehouseContracts } from '@blockswaplab/stakehouse-protocol-abis';
 import { 
     Lsdn_factory_abi__factory,
     Lsm_abi__factory,
