@@ -2,69 +2,72 @@ import { ethers } from 'ethers';
 import { _getChainSpecificConstants, _extractChainID } from './constants.mjs';
 import { lsdContracts } from '@blockswaplab/lsd-protocol-abis';
 import { stakehouseContracts } from '@blockswaplab/stakehouse-protocol-abis';
+import { 
+    Lsdn_factory_abi__factory,
+    Lsm_abi__factory,
+    Protected_staking_abi__factory,
+    Fees_and_mev_abi__factory,
+    Giant_protected_staking_abi__factory,
+    Giant_fees_and_mev_abi__factory,
+    Syndicate_abi__factory,
+    Smart_wallet_abi__factory,
+    Smart_wallet_naming_abi__factory
+} from '../contracts/lsd/index.js';
+
+import { Erc20_generic_abi__factory } from '../contracts/stakehouse/index.js';
 
 export const getContractInstance = async (signer) => {
 
     const chainID = await _extractChainID(signer);
     const values = _getChainSpecificConstants(chainID);
 
-    const getLSDNFactory = () => new ethers.Contract(
+    const getLSDNFactory = () => Lsdn_factory_abi__factory.connect(
         values.factoryAddresses.LSDN_FACTORY,
-        lsdContracts.LSDN_FACTORY,
         signer
     );
 
-    const getLiquidStakingManager = (liquidStakingManagerAddress) => new ethers.Contract(
+    const getLiquidStakingManager = (liquidStakingManagerAddress) => Lsm_abi__factory.connect(
         liquidStakingManagerAddress,
-        lsdContracts.LIQUID_STAKING_MANAGER,
         signer
     );
 
-    const getSavETHVault = (savETHVaultAddress) => new ethers.Contract(
+    const getSavETHVault = (savETHVaultAddress) => Protected_staking_abi__factory.connect(
         savETHVaultAddress,
-        lsdContracts.PROTECTED_STAKING,
         signer
     );
 
-    const getFeesAndMevPool = (feesAndMevPoolAddress) => new ethers.Contract(
+    const getFeesAndMevPool = (feesAndMevPoolAddress) =>Fees_and_mev_abi__factory.connect(
         feesAndMevPoolAddress,
-        lsdContracts.FEES_AND_MEV,
         signer
     );
 
-    const getGiantSavETHPool = () => new ethers.Contract(
+    const getGiantSavETHPool = () => Giant_protected_staking_abi__factory.connect(
         values.factoryAddresses.GIANT_SAVETH_POOL,
-        lsdContracts.GIANT_PROTECTED_STAKING,
         signer
     );
 
-    const getGiantFeesAndMevPool = () => new ethers.Contract (
+    const getGiantFeesAndMevPool = () => Giant_fees_and_mev_abi__factory.connect(
         values.factoryAddresses.GIANT_FEES_AND_MEV_POOL,
-        lsdContracts.GIANT_FEES_AND_MEV,
         signer
     );
 
-    const getSyndicate = (syndicateAddress) => new ethers.Contract(
+    const getSyndicate = (syndicateAddress) => Syndicate_abi__factory.connect(
         syndicateAddress,
-        lsdContracts.SYNDICATE,
         signer
     );
 
-    const getSmartWallet = (smartWalletAddress) => new ethers.Contract(
+    const getSmartWallet = (smartWalletAddress) => Smart_wallet_abi__factory.connect(
         smartWalletAddress,
-        lsdContracts.SMART_WALLET,
         signer
     );
 
-    const getSmartWalletNamingRegistry = () => new ethers.Contract(
+    const getSmartWalletNamingRegistry = () => Smart_wallet_naming_abi__factory.connect(
         values.factoryAddresses.SMART_WALLET_NAMING_REGISTRY,
-        lsdContracts.SMART_WALLET_NAMING_REGISTRY,
         signer
     );
 
-    const getDETH = () => new ethers.Contract(
+    const getDETH = () => Erc20_generic_abi__factory.connect(
         values.factoryAddresses.DETH,
-        stakehouseContracts.ERC20_GENERIC,
         signer
     );
 
