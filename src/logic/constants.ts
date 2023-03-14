@@ -1,4 +1,5 @@
 import { ethers, utils, Signer } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 
 export const ZERO = ethers.BigNumber.from('0');
 export const ONE_GWEI = utils.parseUnits('1', 'gwei');
@@ -36,7 +37,7 @@ export const customErrors = {
 	UNEQUAL_ARRAY_LENGTH: "Error: Unequal array size. Must provide arrays of equal length"
 };
 
-export const _extractChainID = async (signerOrProvider) => {
+export const _extractChainID = async (signerOrProvider: Signer | Provider) => {
 
 	if(!signerOrProvider) {
 		throw "Invalid signer or provider instance";
@@ -54,7 +55,7 @@ export const _extractChainID = async (signerOrProvider) => {
 	return network.chainId;
 };
 
-export const _getChainSpecificConstants = (chainID) => {
+export const _getChainSpecificConstants = (chainID: Number) => {
 
 	if(chainID === CHAIN_ID.GOERLI) {
 		return {

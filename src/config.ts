@@ -1,12 +1,12 @@
-import { DeployerSubPackage } from './interface/deployerClass.mjs';
-import { ConstantsSubPackage } from './interface/constantsClass.mjs';
-import { ContractSubPackage } from './interface/contractClass.mjs';
-import { UtilsSubPackage } from './interface/utilsClass.mjs';
-import { SavETHPoolSubPackage } from './interface/savETHPoolClass.mjs';
-import { FeesAndMevPoolSubPackage } from './interface/feesAndMevPoolClass.mjs';
-import { GiantSavETHPoolSubPackage } from './interface/giantSavETHPoolClass.mjs';
-import { GiantFeesAndMevPoolSubPackage } from './interface/giantFeesAndMevPoolClass.mjs';
-import { HelperSubPackage } from './interface/helperClass.mjs';
+import { DeployerSubPackage } from './interface/deployerClass.js';
+import { ConstantsSubPackage } from './interface/constantsClass.js';
+import { ContractSubPackage } from './interface/contractClass.js';
+import { UtilsSubPackage } from './interface/utilsClass.js';
+import { SavETHPoolSubPackage } from './interface/savETHPoolClass.js';
+import { FeesAndMevPoolSubPackage } from './interface/feesAndMevPoolClass.js';
+import { GiantSavETHPoolSubPackage } from './interface/giantSavETHPoolClass.js';
+import { GiantFeesAndMevPoolSubPackage } from './interface/giantFeesAndMevPoolClass.js';
+import { HelperSubPackage } from './interface/helperClass.js';
 
 export class Wizard {
 

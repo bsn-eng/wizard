@@ -9,7 +9,7 @@ import {
     _getdETHRequiredToIsolateWithdrawnKnot,
     _depositDETHForStaking,
     _approveProtectedStakingPoolToTransferDETH,
-} from '../logic/savETHPool.mjs';
+} from '../logic/savETHPool.js';
 
 export class SavETHPoolSubPackage {
 

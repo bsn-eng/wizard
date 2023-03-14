@@ -1,7 +1,12 @@
-import { ethers } from 'ethers';
-import { getContractInstance } from './contracts.mjs';
+import { BigNumber, ethers, Signer } from 'ethers';
+import { getContractInstance } from './contracts.js';
 
-export const _deployNewLiquidStakingDerivativeNetwork = async (signer, daoAddress, stakehouseTicker, commission=null, gateKeeping=null) => {
+export const _deployNewLiquidStakingDerivativeNetwork = async (
+    signer: Signer,
+    daoAddress: string,
+    stakehouseTicker: string,
+    commission?: BigNumber,
+    gateKeeping?: boolean) => {
 
     if(!commission) {
         commission = ethers.BigNumber.from("0");

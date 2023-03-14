@@ -1,5 +1,5 @@
-import { ethers } from 'ethers';
-import { _getChainSpecificConstants, _extractChainID } from './constants.mjs';
+import { Signer } from 'ethers';
+import { _getChainSpecificConstants, _extractChainID } from './constants.js';
 import { 
     Lsdn_factory_abi__factory,
     Lsm_abi__factory,
@@ -14,58 +14,58 @@ import {
 
 import { Erc20_generic_abi__factory } from '../contracts/stakehouse/index.js';
 
-export const getContractInstance = async (signer) => {
+export const getContractInstance = async (signer: Signer) => {
 
     const chainID = await _extractChainID(signer);
     const values = _getChainSpecificConstants(chainID);
 
     const getLSDNFactory = () => Lsdn_factory_abi__factory.connect(
-        values.factoryAddresses.LSDN_FACTORY,
+        values?.factoryAddresses.LSDN_FACTORY as string,
         signer
     );
 
-    const getLiquidStakingManager = (liquidStakingManagerAddress) => Lsm_abi__factory.connect(
+    const getLiquidStakingManager = (liquidStakingManagerAddress: string) => Lsm_abi__factory.connect(
         liquidStakingManagerAddress,
         signer
     );
 
-    const getSavETHVault = (savETHVaultAddress) => Protected_staking_abi__factory.connect(
+    const getSavETHVault = (savETHVaultAddress: string) => Protected_staking_abi__factory.connect(
         savETHVaultAddress,
         signer
     );
 
-    const getFeesAndMevPool = (feesAndMevPoolAddress) =>Fees_and_mev_abi__factory.connect(
+    const getFeesAndMevPool = (feesAndMevPoolAddress: string) =>Fees_and_mev_abi__factory.connect(
         feesAndMevPoolAddress,
         signer
     );
 
     const getGiantSavETHPool = () => Giant_protected_staking_abi__factory.connect(
-        values.factoryAddresses.GIANT_SAVETH_POOL,
+        values?.factoryAddresses.GIANT_SAVETH_POOL as string,
         signer
     );
 
     const getGiantFeesAndMevPool = () => Giant_fees_and_mev_abi__factory.connect(
-        values.factoryAddresses.GIANT_FEES_AND_MEV_POOL,
+        values?.factoryAddresses.GIANT_FEES_AND_MEV_POOL as string,
         signer
     );
 
-    const getSyndicate = (syndicateAddress) => Syndicate_abi__factory.connect(
+    const getSyndicate = (syndicateAddress: string) => Syndicate_abi__factory.connect(
         syndicateAddress,
         signer
     );
 
-    const getSmartWallet = (smartWalletAddress) => Smart_wallet_abi__factory.connect(
+    const getSmartWallet = (smartWalletAddress: string) => Smart_wallet_abi__factory.connect(
         smartWalletAddress,
         signer
     );
 
     const getSmartWalletNamingRegistry = () => Smart_wallet_naming_abi__factory.connect(
-        values.factoryAddresses.SMART_WALLET_NAMING_REGISTRY,
+        values?.factoryAddresses.SMART_WALLET_NAMING_REGISTRY as string,
         signer
     );
 
     const getDETH = () => Erc20_generic_abi__factory.connect(
-        values.factoryAddresses.DETH,
+        values?.factoryAddresses.DETH as string,
         signer
     );
 

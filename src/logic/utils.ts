@@ -1,5 +1,5 @@
-import { customErrors } from './constants.mjs';
-import { getContractInstance } from './contracts.mjs';
+import { customErrors } from './constants.js';
+import { getContractInstance } from './contracts.js';
 import _ from 'lodash';
 
 export const _add0x = (data) => {

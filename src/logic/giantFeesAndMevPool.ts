@@ -1,6 +1,6 @@
-import { customErrors } from './constants.mjs';
-import { getContractInstance } from './contracts.mjs';
-import { _add0x } from './utils.mjs';
+import { customErrors } from './constants.js';
+import { getContractInstance } from './contracts.js';
+import { _add0x } from './utils.js';
 
 export const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
 

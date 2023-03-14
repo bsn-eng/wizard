@@ -35,7 +35,7 @@ import {
     _stake,
     _mintDerivatives,
     _getNetworkFeeRecipient,
-} from '../logic/utils.mjs';
+} from '../logic/utils.js';
 
 export class UtilsSubPackage {
 

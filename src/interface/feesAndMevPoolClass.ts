@@ -1,3 +1,4 @@
+import { Signer } from 'ethers';
 import {
     _totalShares,
     _updateAccumulatedETHPerLP,
@@ -11,11 +12,14 @@ import {
     _batchPreviewAccumulatedETH,
     _previewAccumulatedETH,
     _claimFundsFromSyndicateForDistribution,
-} from '../logic/feesAndMevPool.mjs';
+} from '../logic/feesAndMevPool.js';
 
 export class FeesAndMevPoolSubPackage {
+    
+    etherSigner;
+    feesAndMevPoolAddress;
 
-    constructor(signer, feesAndMevPoolAddress) {
+    constructor(signer: Signer, feesAndMevPoolAddress: string) {
         this.etherSigner = signer,
         this.feesAndMevPoolAddress = feesAndMevPoolAddress;
     }

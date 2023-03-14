@@ -1,6 +1,6 @@
 import { gql, request } from 'graphql-request';
-import { _getChainSpecificConstants, _extractChainID } from './constants.mjs';
-import { _add0x } from './utils.mjs';
+import { _getChainSpecificConstants, _extractChainID } from './constants.js';
+import { _add0x } from './utils.js';
 
 const _getValidatorFromSubgraph = async (signer, blsPublicKey) => {
 
