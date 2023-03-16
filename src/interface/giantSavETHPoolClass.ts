@@ -1,3 +1,5 @@
+import { BigNumber, Signer, Bytes } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import {
     _batchDepositETHForStaking,
     _withdrawDETH,
@@ -10,27 +12,29 @@ import {
 
 export class GiantSavETHPoolSubPackage {
 
-    constructor(signer) {
+    etherSigner;
+
+    constructor(signer: Signer | Provider) {
         this.etherSigner = signer;
     }
 
-    batchDepositETHForStaking(savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) {
+    batchDepositETHForStaking(savETHVaultAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string | Bytes>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) {
         return _batchDepositETHForStaking(this.etherSigner, savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue);
     }
 
-    withdrawDETH(savETHVaultAddresses, lpTokens, amounts) {
+    withdrawDETH(savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
         return _withdrawDETH(this.etherSigner, savETHVaultAddresses, lpTokens, amounts);
     }
 
-    batchRotateLPTokens(savETHVaultAddresses, oldLPTokens, newLPTokens, amounts) {
+    batchRotateLPTokens(savETHVaultAddresses: Array<string>, oldLPTokens: Array<Array<string>>, newLPTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
         return _batchRotateLPTokens(this.etherSigner, savETHVaultAddresses, oldLPTokens, newLPTokens, amounts);
     }
     
-    bringUnusedETHBackIntoGiantPool(savETHVaultAddresses, lpToken, amounts) {
-        return _bringUnusedETHBackIntoGiantPool(this.etherSigner, savETHVaultAddresses, lpToken, amounts);
+    bringUnusedETHBackIntoGiantPool(savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
+        return _bringUnusedETHBackIntoGiantPool(this.etherSigner, savETHVaultAddresses, lpTokens, amounts);
     }
 
-    depositETH(amount, ethValue) {
+    depositETH(amount: string | BigNumber, ethValue: BigNumber) {
         return _depositETH(this.etherSigner, amount, ethValue);
     }
 
@@ -38,7 +42,7 @@ export class GiantSavETHPoolSubPackage {
         return _getIdleETH(this.etherSigner);
     }
 
-    withdrawETH(amount) {
+    withdrawETH(amount: string | BigNumber) {
         return _withdrawETH(this.etherSigner, amount);
     }
 }

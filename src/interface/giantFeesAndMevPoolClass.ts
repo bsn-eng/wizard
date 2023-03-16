@@ -1,3 +1,5 @@
+import { BigNumber, Bytes, Signer } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import {
     _batchDepositETHForStaking,
     _claimRewards,
@@ -12,27 +14,29 @@ import {
 
 export class GiantFeesAndMevPoolSubPackage {
 
-    constructor(signer) {
+    etherSigner;
+
+    constructor(signer: Signer | Provider) {
         this.etherSigner = signer;
     }
 
-    batchDepositETHForStaking(feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) {
+    batchDepositETHForStaking(feesAndMevPoolAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string | Bytes>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) {
         return _batchDepositETHForStaking(this.etherSigner, feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue);
     }
 
-    claimRewards(recipient, feesAndMevPoolAddresses, blsPublicKeys) {
+    claimRewards(recipient: string, feesAndMevPoolAddresses: Array<string>, blsPublicKeys: Array<Array<string | Bytes>>) {
         return _claimRewards(this.etherSigner, recipient, feesAndMevPoolAddresses, blsPublicKeys);
     }
     
-    previewAccumulatedETH(userAddress, feesAndMevPoolAddresses, lpTokens) {
+    previewAccumulatedETH(userAddress: string, feesAndMevPoolAddresses: Array<string>, lpTokens:Array<Array<string>>) {
         return _previewAccumulatedETH(this.etherSigner, userAddress, feesAndMevPoolAddresses, lpTokens);
     }
 
-    batchRotateLPTokens(feesAndMevPoolAddresses, oldLPTokens, newLPToken, amounts) {
+    batchRotateLPTokens(feesAndMevPoolAddresses: Array<string>, oldLPTokens: Array<Array<string>>, newLPToken: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
         return _batchRotateLPTokens(this.etherSigner, feesAndMevPoolAddresses, oldLPTokens, newLPToken, amounts);
     }
     
-    bringUnusedETHBackIntoGiantPool(feesAndMevPoolAddresses, lpTokens, amounts) {
+    bringUnusedETHBackIntoGiantPool(feesAndMevPoolAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
         return _bringUnusedETHBackIntoGiantPool(this.etherSigner, feesAndMevPoolAddresses, lpTokens, amounts);
     }
     
@@ -40,7 +44,7 @@ export class GiantFeesAndMevPoolSubPackage {
         return _updateAccumulatedETHPerLP(this.etherSigner);
     }
 
-    depositETH(amount, ethValue) {
+    depositETH(amount: string | BigNumber, ethValue: BigNumber) {
         return _depositETH(this.etherSigner, amount, ethValue);
     }
 
@@ -48,7 +52,7 @@ export class GiantFeesAndMevPoolSubPackage {
         return _getIdleETH(this.etherSigner);
     }
 
-    withdrawETH(amount) {
+    withdrawETH(amount: string | BigNumber) {
         return _withdrawETH(this.etherSigner, amount);
     }
 }

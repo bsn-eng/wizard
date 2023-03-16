@@ -1,9 +1,12 @@
 import { Signer } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import { _getChainSpecificConstants, _extractChainID } from '../logic/constants';
 
 export class ConstantsSubPackage {
 
-	constructor(signer: Signer) {
+	factoryAddresses; customErrors;
+
+	constructor(signer: Signer | Provider) {
 
 		return (async () => {
 			const chainID = await _extractChainID(signer);

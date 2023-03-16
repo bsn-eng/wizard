@@ -1,8 +1,10 @@
+import { BigNumber, Bytes, Signer } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import { customErrors } from './constants.js';
 import { getContractInstance } from './contracts.js';
 import { _add0x } from './utils.js';
 
-export const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
+export const _batchDepositETHForStaking = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string | Bytes>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {
@@ -35,7 +37,7 @@ export const _batchDepositETHForStaking = async (signer, savETHVaultAddresses, a
     )
 };
 
-export const _withdrawDETH = async (signer, savETHVaultAddresses, lpTokens, amounts) => {
+export const _withdrawDETH = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != lpTokens.length || arrayLength != amounts.length) {
@@ -66,7 +68,7 @@ export const _withdrawDETH = async (signer, savETHVaultAddresses, lpTokens, amou
     );
 };
 
-export const _batchRotateLPTokens = async (signer, savETHVaultAddresses, oldLPTokens, newLPTokens, amounts) => {
+export const _batchRotateLPTokens = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, oldLPTokens: Array<Array<string>>, newLPTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != oldLPTokens.length || arrayLength != newLPTokens.length || arrayLength != amounts.length) {
@@ -100,7 +102,7 @@ export const _batchRotateLPTokens = async (signer, savETHVaultAddresses, oldLPTo
     );
 };
 
-export const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddresses, lpTokens, amounts) => {
+export const _bringUnusedETHBackIntoGiantPool = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != lpTokens.length || arrayLength != amounts.length) {
@@ -131,7 +133,7 @@ export const _bringUnusedETHBackIntoGiantPool = async (signer, savETHVaultAddres
     );
 };
 
-export const _depositETH = async (signer, amount, ethValue) => {
+export const _depositETH = async (signer: Signer | Provider, amount: string | BigNumber, ethValue: BigNumber) => {
 
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
@@ -141,14 +143,14 @@ export const _depositETH = async (signer, amount, ethValue) => {
     );
 };
 
-export const _getIdleETH = async (signer) => {
+export const _getIdleETH = async (signer: Signer | Provider) => {
 
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
     return contract.idleETH();
 };
 
-export const _withdrawETH = async (signer, amount) => {
+export const _withdrawETH = async (signer: Signer | Provider, amount: string | BigNumber) => {
 
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 

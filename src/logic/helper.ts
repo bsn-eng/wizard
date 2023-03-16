@@ -1,11 +1,13 @@
+import { Provider } from '@ethersproject/abstract-provider';
+import { Signer, Bytes } from 'ethers';
 import { gql, request } from 'graphql-request';
 import { _getChainSpecificConstants, _extractChainID } from './constants.js';
 import { _add0x } from './utils.js';
 
-const _getValidatorFromSubgraph = async (signer, blsPublicKey) => {
+const _getValidatorFromSubgraph = async (signer: Signer | Provider, blsPublicKey: string | Bytes) => {
 
     const chainID = await _extractChainID(signer);
-	const { lsdUrls } = _getChainSpecificConstants(chainID);
+    const { lsdUrls } = _getChainSpecificConstants(chainID);
 
     const lookupQuery = gql`
         query Knot($blsPublicKey: String!) {
@@ -43,7 +45,7 @@ const _getValidatorFromSubgraph = async (signer, blsPublicKey) => {
     return response.lsdvalidators[0];
 };
 
-export const _getValidatorDetails = async (signer, blsPublicKey) => {
+export const _getValidatorDetails = async (signer: Signer | Provider, blsPublicKey: string | Bytes) => {
     
     try {
         const res = await _getValidatorFromSubgraph(signer, blsPublicKey);

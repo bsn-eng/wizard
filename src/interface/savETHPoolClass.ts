@@ -1,3 +1,5 @@
+import { Signer, Bytes, BigNumber } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
@@ -13,7 +15,9 @@ import {
 
 export class SavETHPoolSubPackage {
 
-    constructor(signer, savETHPoolAddress) {
+    etherSigner; savETHPoolAddress;
+
+    constructor(signer: Signer | Provider, savETHPoolAddress: string) {
         this.etherSigner = signer;
         this.savETHPoolAddress = savETHPoolAddress;
     }
@@ -22,39 +26,39 @@ export class SavETHPoolSubPackage {
         return _getIndexOwnedByTheVault(this.etherSigner, this.savETHPoolAddress);
     }
 
-    batchDepositETHForStaking(blsPublicKeys, amounts, ethValue) {
+    batchDepositETHForStaking(blsPublicKeys: Array<string | Bytes>, amounts: Array<string | BigNumber>, ethValue: BigNumber) {
         return _batchDepositETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKeys, amounts, ethValue);
     }
 
-    depositETHForStaking(blsPublicKey, amount, ethValue) {
+    depositETHForStaking(blsPublicKey: string | Bytes, amount: string | BigNumber, ethValue: BigNumber) {
         return _depositETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKey, amount, ethValue);
     }
 
-    burnLPTokensByBLS(blsPublicKeys, amounts) {
+    burnLPTokensByBLS(blsPublicKeys: Array<string | Bytes>, amounts: Array<string | BigNumber>) {
         return _burnLPTokensByBLS(this.etherSigner, this.savETHPoolAddress, blsPublicKeys, amounts);
     }
 
-    burnLPTokens(lpTokens, amounts) {
+    burnLPTokens(lpTokens: Array<string>, amounts: Array<string | BigNumber>) {
         return _burnLPTokens(this.etherSigner, this.savETHPoolAddress, lpTokens, amounts);
     }
 
-    burnLPToken(lpToken, amount) {
+    burnLPToken(lpToken: string, amount: string | BigNumber) {
         return _burnLPToken(this.etherSigner, this.savETHPoolAddress, lpToken, amount);
     }
 
-    isDETHReadyForWithdrawal(lpToken) {
+    isDETHReadyForWithdrawal(lpToken: string) {
         return _isDETHReadyForWithdrawal(this.etherSigner, this.savETHPoolAddress, lpToken);
     }
 
-    getdETHRequiredToIsolateWithdrawnKnot(blsPublicKey) {
+    getdETHRequiredToIsolateWithdrawnKnot(blsPublicKey: string | Bytes) {
         return _getdETHRequiredToIsolateWithdrawnKnot(this.etherSigner, this.savETHPoolAddress, blsPublicKey);
     }
 
-    depositDETHForStaking(blsPublicKey, amount) {
+    depositDETHForStaking(blsPublicKey: string | Bytes, amount: string | BigNumber) {
         return _depositDETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKey, amount);
     }
 
-    approveProtectedStakingPoolToTransferDETH(amount) {
+    approveProtectedStakingPoolToTransferDETH(amount: string | BigNumber) {
         return _approveProtectedStakingPoolToTransferDETH(this.etherSigner, this.savETHPoolAddress, amount);
     }
 }

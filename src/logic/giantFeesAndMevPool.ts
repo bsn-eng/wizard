@@ -1,11 +1,13 @@
+import { Provider } from '@ethersproject/abstract-provider';
+import { BigNumber, Bytes, Signer } from 'ethers';
 import { customErrors } from './constants.js';
 import { getContractInstance } from './contracts.js';
 import { _add0x } from './utils.js';
 
-export const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue) => {
+export const _batchDepositETHForStaking = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string | Bytes>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: string | BigNumber) => {
 
     const arrayLength = feesAndMevPoolAddresses.length;
-    if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts) {
+    if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
     }
 
@@ -35,7 +37,7 @@ export const _batchDepositETHForStaking = async (signer, feesAndMevPoolAddresses
     );
 };
 
-export const _claimRewards = async (signer, recipient, feesAndMevPoolAddresses, blsPublicKeys) => {
+export const _claimRewards = async (signer: Signer | Provider, recipient: string, feesAndMevPoolAddresses: Array<string>, blsPublicKeys: Array<Array<string | Bytes>>) => {
 
     const arrayLength = blsPublicKeys.length;
     if(arrayLength != feesAndMevPoolAddresses.length) {
@@ -59,7 +61,7 @@ export const _claimRewards = async (signer, recipient, feesAndMevPoolAddresses, 
     );
 };
 
-export const _previewAccumulatedETH = async (signer, userAddress, feesAndMevPoolAddresses, lpTokens) => {
+export const _previewAccumulatedETH = async (signer: Signer | Provider, userAddress: string, feesAndMevPoolAddresses: Array<string>, lpTokens: Array<Array<string>>) => {
 
     if(lpTokens.length != feesAndMevPoolAddresses.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -82,16 +84,16 @@ export const _previewAccumulatedETH = async (signer, userAddress, feesAndMevPool
     );
 };
 
-export const _batchRotateLPTokens = async (signer, feesAndMevPoolAddresses, oldLPTokens, newLPTokens, amounts) => {
+export const _batchRotateLPTokens = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, oldLPTokens: Array<Array<string>>, newLPTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
 
-    const arrayLength = feesAndMevPoolAddresses.length();
+    const arrayLength = feesAndMevPoolAddresses.length;
     if(arrayLength != oldLPTokens.length || arrayLength != newLPTokens.length || arrayLength != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
     }
 
     for(let i=0; i<arrayLength; ++i) {
-        const newLPArray = newLPTokens[i];
-        const oldLPArray = oldLPTokens[i];
+        let newLPArray = newLPTokens[i];
+        let oldLPArray = oldLPTokens[i];
         const amountArray = amounts[i];
 
         if(newLPArray.length != oldLPArray.length || newLPArray.length != amountArray.length) {
@@ -102,7 +104,7 @@ export const _batchRotateLPTokens = async (signer, feesAndMevPoolAddresses, oldL
 
         for(let j=0; j<newLPArray.length; ++j) {
             newLPArray[i][j] = _add0x(newLPArray[i][j]);
-            oldLPArray[i][j] = _add0x(oldLPArray[i][jj]);
+            oldLPArray[i][j] = _add0x(oldLPArray[i][j]);
         }
     }
 
@@ -116,7 +118,7 @@ export const _batchRotateLPTokens = async (signer, feesAndMevPoolAddresses, oldL
     );
 };
 
-export const _bringUnusedETHBackIntoGiantPool = async (signer, feesAndMevPoolAddresses, lpTokens, amounts) => {
+export const _bringUnusedETHBackIntoGiantPool = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<BigNumber | string>>) => {
 
     const arrayLength = feesAndMevPoolAddresses.length;
     if(arrayLength != lpTokens.length || arrayLength != amounts.length) {
@@ -147,14 +149,14 @@ export const _bringUnusedETHBackIntoGiantPool = async (signer, feesAndMevPoolAdd
     );
 };
 
-export const _updateAccumulatedETHPerLP = async (signer) => {
+export const _updateAccumulatedETHPerLP = async (signer: Signer | Provider) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
     return contract.updateAccumulatedETHPerLP();
 };
 
-export const _depositETH = async (signer, amount, ethValue) => {
+export const _depositETH = async (signer: Signer | Provider, amount: string | BigNumber, ethValue: BigNumber) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
@@ -164,14 +166,14 @@ export const _depositETH = async (signer, amount, ethValue) => {
     );
 };
 
-export const _getIdleETH = async (signer) => {
+export const _getIdleETH = async (signer: Signer | Provider) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
     return contract.idleETH();
 };
 
-export const _withdrawETH = async (signer, amount) => {
+export const _withdrawETH = async (signer: Signer | Provider, amount: string | BigNumber) => {
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 

@@ -1,11 +1,12 @@
 import { BigNumber, Signer } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import { _deployNewLiquidStakingDerivativeNetwork } from '../logic/deployer.js';
 
 export class DeployerSubPackage {
     
     etherSigner;
 
-    constructor(signer: Signer) {
+    constructor(signer: Signer | Provider) {
 		this.etherSigner = signer;
 	}
 

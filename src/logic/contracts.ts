@@ -1,4 +1,5 @@
 import { Signer } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import { _getChainSpecificConstants, _extractChainID } from './constants.js';
 import { 
     Lsdn_factory_abi__factory,
@@ -14,7 +15,7 @@ import {
 
 import { Erc20_generic_abi__factory } from '../contracts/stakehouse/index.js';
 
-export const getContractInstance = async (signer: Signer) => {
+export const getContractInstance = async (signer: Signer | Provider) => {
 
     const chainID = await _extractChainID(signer);
     const values = _getChainSpecificConstants(chainID);

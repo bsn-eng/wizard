@@ -37,7 +37,7 @@ export type FinalisedBeaconChainReportT = {
   currentCheckpointEpoch: number;
 };
 
-export type BalanceReportT = {
+export type AuthenticatedBalanceReportT = {
   report: {
     blsPublicKey: string;
     withdrawalCredentials: string;
@@ -58,32 +58,32 @@ export type BalanceReportT = {
   }
 };
 
-type BlsPublicKeyWith0x = { _blsPublicKeyWith0x: string };
-type BlsPublicKeyWithout0x = { _blsPublicKeyWithout0x: string };
+// type BlsPublicKeyWith0x = { _blsPublicKeyWith0x: string };
+// type BlsPublicKeyWithout0x = { _blsPublicKeyWithout0x: string };
 
-type HexString = BlsPublicKeyWith0x | BlsPublicKeyWithout0x;
+// type HexString = BlsPublicKeyWith0x | BlsPublicKeyWithout0x;
 
-function createBlsPublicKeyWith0x(s: string): BlsPublicKeyWith0x {
-  if (s.length !== 98 || !s.startsWith('0x')) {
-    throw new Error('Invalid hex string');
-  }
-  return { _blsPublicKeyWith0x: s };
-}
+// function createBlsPublicKeyWith0x(s: string): BlsPublicKeyWith0x {
+//   if (s.length !== 98 || !s.startsWith('0x')) {
+//     throw new Error('Invalid hex string');
+//   }
+//   return { _blsPublicKeyWith0x: s };
+// }
 
-function createBlsPublicKeyWithout0x(s: string): BlsPublicKeyWithout0x {
-  if (s.length !== 96) {
-    throw new Error('Invalid hex string');
-  }
-  if (s.startsWith('0x')) {
-    throw new Error('Invalid string length');
-  }
-  return { _blsPublicKeyWithout0x: `0x${s}` };
-}
+// function createBlsPublicKeyWithout0x(s: string): BlsPublicKeyWithout0x {
+//   if (s.length !== 96) {
+//     throw new Error('Invalid hex string');
+//   }
+//   if (s.startsWith('0x')) {
+//     throw new Error('Invalid string length');
+//   }
+//   return { _blsPublicKeyWithout0x: `0x${s}` };
+// }
 
-function isBlsPublicKeyWith0x(s: string): s is BlsPublicKeyWith0x {
-  return s.length === 98 && s.startsWith('0x');
-}
+// function isBlsPublicKeyWith0x(s: string): s is BlsPublicKeyWith0x {
+//   return s.length === 98 && s.startsWith('0x');
+// }
 
-function isBlsPublicKeyWithout0x(s: string): s is BlsPublicKeyWithout0x {
-  return s.length === 96 && !s.startsWith('0x');
-}
+// function isBlsPublicKeyWithout0x(s: string): s is BlsPublicKeyWithout0x {
+//   return s.length === 96 && !s.startsWith('0x');
+// }

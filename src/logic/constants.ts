@@ -34,7 +34,8 @@ const mainnetLSDUrls = {
 }
 
 export const customErrors = {
-	UNEQUAL_ARRAY_LENGTH: "Error: Unequal array size. Must provide arrays of equal length"
+	UNEQUAL_ARRAY_LENGTH: "Error: Unequal array size. Must provide arrays of equal length",
+	NULL_OR_UNDEFINED_VALUE: "Error: Null or undefined value provided"
 };
 
 export const _extractChainID = async (signerOrProvider: Signer | Provider) => {
