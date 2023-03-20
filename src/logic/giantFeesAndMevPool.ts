@@ -4,7 +4,7 @@ import { customErrors } from './constants.js';
 import { getContractInstance } from './contracts.js';
 import { _add0x } from './utils.js';
 
-export const _batchDepositETHForStaking = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string | Bytes>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: string | BigNumber) => {
+export const _batchDepositETHForStaking = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: string | BigNumber) => {
 
     const arrayLength = feesAndMevPoolAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {
@@ -37,7 +37,7 @@ export const _batchDepositETHForStaking = async (signer: Signer | Provider, fees
     );
 };
 
-export const _claimRewards = async (signer: Signer | Provider, recipient: string, feesAndMevPoolAddresses: Array<string>, blsPublicKeys: Array<Array<string | Bytes>>) => {
+export const _claimRewards = async (signer: Signer | Provider, recipient: string, feesAndMevPoolAddresses: Array<string>, blsPublicKeys: Array<Array<string>>) => {
 
     const arrayLength = blsPublicKeys.length;
     if(arrayLength != feesAndMevPoolAddresses.length) {

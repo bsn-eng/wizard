@@ -4,7 +4,7 @@ import { gql, request } from 'graphql-request';
 import { _getChainSpecificConstants, _extractChainID } from './constants.js';
 import { _add0x } from './utils.js';
 
-const _getValidatorFromSubgraph = async (signer: Signer | Provider, blsPublicKey: string | Bytes) => {
+const _getValidatorFromSubgraph = async (signer: Signer | Provider, blsPublicKey: string) => {
 
     const chainID = await _extractChainID(signer);
     const { lsdUrls } = _getChainSpecificConstants(chainID);
@@ -45,7 +45,7 @@ const _getValidatorFromSubgraph = async (signer: Signer | Provider, blsPublicKey
     return response.lsdvalidators[0];
 };
 
-export const _getValidatorDetails = async (signer: Signer | Provider, blsPublicKey: string | Bytes) => {
+export const _getValidatorDetails = async (signer: Signer | Provider, blsPublicKey: string) => {
     
     try {
         const res = await _getValidatorFromSubgraph(signer, blsPublicKey);

@@ -4,7 +4,7 @@ import { customErrors } from './constants.js';
 import { getContractInstance } from './contracts.js';
 import { _add0x } from './utils.js';
 
-export const _batchDepositETHForStaking = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string | Bytes>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) => {
+export const _batchDepositETHForStaking = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {

@@ -26,15 +26,15 @@ export class SavETHPoolSubPackage {
         return _getIndexOwnedByTheVault(this.etherSigner, this.savETHPoolAddress);
     }
 
-    batchDepositETHForStaking(blsPublicKeys: Array<string | Bytes>, amounts: Array<string | BigNumber>, ethValue: BigNumber) {
+    batchDepositETHForStaking(blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>, ethValue: BigNumber) {
         return _batchDepositETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKeys, amounts, ethValue);
     }
 
-    depositETHForStaking(blsPublicKey: string | Bytes, amount: string | BigNumber, ethValue: BigNumber) {
+    depositETHForStaking(blsPublicKey: string, amount: string | BigNumber, ethValue: BigNumber) {
         return _depositETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKey, amount, ethValue);
     }
 
-    burnLPTokensByBLS(blsPublicKeys: Array<string | Bytes>, amounts: Array<string | BigNumber>) {
+    burnLPTokensByBLS(blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>) {
         return _burnLPTokensByBLS(this.etherSigner, this.savETHPoolAddress, blsPublicKeys, amounts);
     }
 
@@ -50,11 +50,11 @@ export class SavETHPoolSubPackage {
         return _isDETHReadyForWithdrawal(this.etherSigner, this.savETHPoolAddress, lpToken);
     }
 
-    getdETHRequiredToIsolateWithdrawnKnot(blsPublicKey: string | Bytes) {
+    getdETHRequiredToIsolateWithdrawnKnot(blsPublicKey: string) {
         return _getdETHRequiredToIsolateWithdrawnKnot(this.etherSigner, this.savETHPoolAddress, blsPublicKey);
     }
 
-    depositDETHForStaking(blsPublicKey: string | Bytes, amount: string | BigNumber) {
+    depositDETHForStaking(blsPublicKey: string, amount: string | BigNumber) {
         return _depositDETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKey, amount);
     }
 

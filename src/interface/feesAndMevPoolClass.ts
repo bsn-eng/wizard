@@ -33,15 +33,15 @@ export class FeesAndMevPoolSubPackage {
         return _updateAccumulatedETHPerLP(this.etherSigner, this.feesAndMevPoolAddress);
     }
 
-    batchDepositETHForStaking(blsPublicKeys: Array<string | Bytes>, amounts: Array<string | BigNumber>, ethValue: BigNumber) {
+    batchDepositETHForStaking(blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>, ethValue: BigNumber) {
         return _batchDepositETHForStaking(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys, amounts, ethValue);
     }
 
-    depositETHForStaking(blsPublicKey: string| Bytes, amount: string | BigNumber, ethValue: BigNumber) {
+    depositETHForStaking(blsPublicKey: string, amount: string | BigNumber, ethValue: BigNumber) {
         return _depositETHForStaking(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKey, amount, ethValue);
     }
 
-    burnLPTokensForETHByBLS( blsPublicKeys: Array<string | Bytes>, amounts: Array<string | BigNumber>) {
+    burnLPTokensForETHByBLS( blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>) {
         return _burnLPTokensForETHByBLS(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys, amounts);
     }
 
@@ -53,11 +53,11 @@ export class FeesAndMevPoolSubPackage {
         return _burnLPTokenForETH(this.etherSigner, this.feesAndMevPoolAddress, lpToken, amount);
     }
 
-    claimRewards(recipient: string, blsPublicKeys: Array<string | Bytes>) {
+    claimRewards(recipient: string, blsPublicKeys: Array<string>) {
         return _claimRewards(this.etherSigner, this.feesAndMevPoolAddress, recipient, blsPublicKeys);
     }
 
-    batchPreviewAccumulatedETHByBLSKeys(userAddress: string, blsPublicKeys: Array<string | Bytes>) {
+    batchPreviewAccumulatedETHByBLSKeys(userAddress: string, blsPublicKeys: Array<string>) {
         return _batchPreviewAccumulatedETHByBLSKeys(this.etherSigner, this.feesAndMevPoolAddress, userAddress, blsPublicKeys);
     }
     
@@ -69,7 +69,7 @@ export class FeesAndMevPoolSubPackage {
         return _previewAccumulatedETH(this.etherSigner, this.feesAndMevPoolAddress, userAddress, lpToken);
     }
     
-    claimFundsFromSyndicateForDistribution(blsPublicKeys: Array<string | Bytes>) {
+    claimFundsFromSyndicateForDistribution(blsPublicKeys: Array<string>) {
         return _claimFundsFromSyndicateForDistribution(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys);
     }
 }

@@ -9,7 +9,7 @@ export class HelperSubPackage {
 		this.etherSigner = signer;
 	}
 
-    getValidatorDetails(blsPublicKey: string | Bytes) {
+    getValidatorDetails(blsPublicKey: string) {
         return _getValidatorDetails(this.etherSigner, blsPublicKey);
     }
 }
