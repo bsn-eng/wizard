@@ -1,3 +1,5 @@
+import { BigNumber, Signer, Bytes } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
 import {
     _totalShares,
     _updateAccumulatedETHPerLP,
@@ -7,15 +9,16 @@ import {
     _burnLPTokensForETH,
     _burnLPTokenForETH,
     _claimRewards,
-    _batchPreviewAccumulatedETHByBLSKeys,
     _batchPreviewAccumulatedETH,
-    _previewAccumulatedETH,
     _claimFundsFromSyndicateForDistribution,
-} from '../logic/feesAndMevPool.mjs';
+} from '../logic/feesAndMevPool';
 
 export class FeesAndMevPoolSubPackage {
+    
+    etherSigner: Signer | Provider;
+    feesAndMevPoolAddress: string;
 
-    constructor(signer, feesAndMevPoolAddress) {
+    constructor(signer: Signer | Provider, feesAndMevPoolAddress: string) {
         this.etherSigner = signer,
         this.feesAndMevPoolAddress = feesAndMevPoolAddress;
     }
@@ -28,43 +31,35 @@ export class FeesAndMevPoolSubPackage {
         return _updateAccumulatedETHPerLP(this.etherSigner, this.feesAndMevPoolAddress);
     }
 
-    batchDepositETHForStaking(blsPublicKeys, amounts, ethValue) {
+    batchDepositETHForStaking(blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>, ethValue: BigNumber) {
         return _batchDepositETHForStaking(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys, amounts, ethValue);
     }
 
-    depositETHForStaking(blsPublicKey, amount, ethValue) {
+    depositETHForStaking(blsPublicKey: string, amount: string | BigNumber, ethValue: BigNumber) {
         return _depositETHForStaking(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKey, amount, ethValue);
     }
 
-    burnLPTokensForETHByBLS(blsPublicKeys, amounts) {
+    burnLPTokensForETHByBLS( blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>) {
         return _burnLPTokensForETHByBLS(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys, amounts);
     }
 
-    burnLPTokensForETH(lpTokens, amounts) {
+    burnLPTokensForETH(lpTokens: Array<string>, amounts: Array<string | BigNumber>) {
         return _burnLPTokensForETH(this.etherSigner, this.feesAndMevPoolAddress, lpTokens, amounts);
     }
 
-    burnLPTokenForETH(lpToken, amount) {
+    burnLPTokenForETH(lpToken: string, amount: string | BigNumber) {
         return _burnLPTokenForETH(this.etherSigner, this.feesAndMevPoolAddress, lpToken, amount);
     }
 
-    claimRewards(recipient, blsPublicKeys) {
+    claimRewards(recipient: string, blsPublicKeys: Array<string>) {
         return _claimRewards(this.etherSigner, this.feesAndMevPoolAddress, recipient, blsPublicKeys);
     }
-
-    batchPreviewAccumulatedETHByBLSKeys(userAddress, blsPublicKeys) {
-        return _batchPreviewAccumulatedETHByBLSKeys(this.etherSigner, this.feesAndMevPoolAddress, userAddress, blsPublicKeys);
-    }
     
-    batchPreviewAccumulatedETH(userAddress, lpTokens) {
+    batchPreviewAccumulatedETH(userAddress: string, lpTokens: Array<string>) {
         return _batchPreviewAccumulatedETH(this.etherSigner, this.feesAndMevPoolAddress, userAddress, lpTokens);
     }
     
-    previewAccumulatedETH(userAddress, lpToken) {
-        return _previewAccumulatedETH(this.etherSigner, this.feesAndMevPoolAddress, userAddress, lpToken);
-    }
-    
-    claimFundsFromSyndicateForDistribution(blsPublicKeys) {
+    claimFundsFromSyndicateForDistribution(blsPublicKeys: Array<string>) {
         return _claimFundsFromSyndicateForDistribution(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys);
     }
 }

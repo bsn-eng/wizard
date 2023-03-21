@@ -1,15 +1,17 @@
-import { customErrors } from './constants.mjs';
-import { getContractInstance } from './contracts.mjs';
-import { _add0x } from './utils.mjs';
+import { BigNumber, Bytes, Signer } from 'ethers';
+import { Provider } from '@ethersproject/abstract-provider';
+import { customErrors } from './constants';
+import { getContractInstance } from './contracts';
+import { _add0x } from './utils';
 
-export const _getIndexOwnedByTheVault = async (signer, savETHVaultAddress) => {
+export const _getIndexOwnedByTheVault = async (signer: Signer | Provider, savETHVaultAddress: string) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
     return contract.indexOwnedByTheVault();
 };
 
-export const _batchDepositETHForStaking = async (signer, savETHVaultAddress, blsPublicKeys, amounts, ethValue) => {
+export const _batchDepositETHForStaking = async (signer: Signer | Provider, savETHVaultAddress: string, blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>, ethValue: BigNumber) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -28,7 +30,7 @@ export const _batchDepositETHForStaking = async (signer, savETHVaultAddress, bls
     );
 };
 
-export const _depositETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount, ethValue) => {
+export const _depositETHForStaking = async (signer: Signer | Provider, savETHVaultAddress: string, blsPublicKey: string, amount: string | BigNumber, ethValue: BigNumber) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -39,7 +41,7 @@ export const _depositETHForStaking = async (signer, savETHVaultAddress, blsPubli
     );
 };
 
-export const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKeys, amounts) => {
+export const _burnLPTokensByBLS = async (signer: Signer | Provider, savETHVaultAddress: string, blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>) => {
 
     if(blsPublicKeys.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -57,7 +59,7 @@ export const _burnLPTokensByBLS = async (signer, savETHVaultAddress, blsPublicKe
     );
 };
 
-export const _burnLPTokens = async (signer, savETHVaultAddress, lpTokens, amounts) => {
+export const _burnLPTokens = async (signer: Signer | Provider, savETHVaultAddress: string, lpTokens: Array<string>, amounts: Array<string | BigNumber>) => {
 
     if(lpTokens.length != amounts.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -75,7 +77,7 @@ export const _burnLPTokens = async (signer, savETHVaultAddress, lpTokens, amount
     );
 };
 
-export const _burnLPToken = async (signer, savETHVaultAddress, lpToken, amount) => {
+export const _burnLPToken = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string, amount: string | BigNumber) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -85,7 +87,7 @@ export const _burnLPToken = async (signer, savETHVaultAddress, lpToken, amount) 
     );
 };
 
-export const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpToken) => {
+export const _isDETHReadyForWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -94,7 +96,7 @@ export const _isDETHReadyForWithdrawal = async (signer, savETHVaultAddress, lpTo
     );
 };
 
-export const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPublicKey, amount) => {
+export const _depositDETHForStaking = async (signer: Signer | Provider, savETHVaultAddress: string, blsPublicKey: string, amount: string | BigNumber) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -104,7 +106,7 @@ export const _depositDETHForStaking = async (signer, savETHVaultAddress, blsPubl
     );
 };
 
-export const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVaultAddress, blsPublicKey) => {
+export const _getdETHRequiredToIsolateWithdrawnKnot = async (signer: Signer | Provider, savETHVaultAddress: string, blsPublicKey: string) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
@@ -113,7 +115,7 @@ export const _getdETHRequiredToIsolateWithdrawnKnot = async (signer, savETHVault
     );
 };
 
-export const _approveProtectedStakingPoolToTransferDETH = async (signer, spender, amount) => {
+export const _approveProtectedStakingPoolToTransferDETH = async (signer: Signer | Provider, spender: string, amount: string | BigNumber) => {
 
     const contract = (await getContractInstance(signer)).dETH();
 
