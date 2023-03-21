@@ -19,24 +19,23 @@ import {
     _getNumberOfKnots,
     _getDaoCommissionPercentage,
     _isBLSPublicKeyBanned,
-    _executeAsSmartWallet,
     _deRegisterKnotsFromSyndicate,
-    _restoreFreeFloatingSharesToSmartWalletForRageQuit,
     _updateDaoAddress,
     _updateDaoRevenueCommission,
     _updateStakehouseTicker,
     _updateWhitelisting,
     _rotateEOARepresentative,
     _updateNodeRunnerWhitelistStatus,
-    _rotateEOARepresentativeOfNodeRunner,
     _withdrawETHForKnot,
-    _rotateNodeRunnerOfSmartWallet,
+    _manageNodeRunnerSmartWallet,
     _claimRewardsAsNodeRunner,
     _registerBLSPublicKeys,
-    _isKnotDeregistered,
     _stake,
     _mintDerivatives,
     _getNetworkFeeRecipient,
+    _toggleHouseGatekeeper,
+    _transferSmartWalletOwnership,
+    _recoverSigningKey
 } from '../logic/utils.js';
 import { AuthenticatedBalanceReportT, FinalisedBeaconChainReportT } from '../types.js';
 
@@ -121,16 +120,8 @@ export class UtilsSubPackage {
         return _isBLSPublicKeyBanned(this.etherSigner, this.liquidStakingManagerAddress, blsPublicKey);
     }
 
-    executeAsSmartWallet(nodeRunnerAddress: string, targetContractAddress: string, encodedFunctionData: string, ethValue: BigNumber) {
-        return _executeAsSmartWallet(this.etherSigner, this.liquidStakingManagerAddress, nodeRunnerAddress, targetContractAddress, encodedFunctionData, ethValue);
-    }
-
     deRegisterKnotsFromSyndicate(blsPublicKeys: Array<string>) {
         return _deRegisterKnotsFromSyndicate(this.etherSigner, this.liquidStakingManagerAddress, blsPublicKeys);
-    }
-
-    restoreFreeFloatingSharesToSmartWalletForRageQuit(smartWalletAddress: string, blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>) {
-        return _restoreFreeFloatingSharesToSmartWalletForRageQuit(this.etherSigner, this.liquidStakingManagerAddress, smartWalletAddress, blsPublicKeys, amounts);
     }
 
     updateDaoAddress(newDaoAddress: string) {
@@ -157,16 +148,12 @@ export class UtilsSubPackage {
         return _rotateEOARepresentative(this.etherSigner, this.liquidStakingManagerAddress, newRepresentativeAddress);
     }
 
-    rotateEOARepresentativeOfNodeRunner(nodeRunnerAddress: string, newRepresentativeAddress: string) {
-        return _rotateEOARepresentativeOfNodeRunner(this.etherSigner, this.liquidStakingManagerAddress, nodeRunnerAddress, newRepresentativeAddress);
-    }
-
     withdrawETHForKnot(recipientAddress: string, blsPublicKey: string) {
         return _withdrawETHForKnot(this.etherSigner, this.liquidStakingManagerAddress, recipientAddress, blsPublicKey);
     }
 
-    rotateNodeRunnerOfSmartWallet(currentNodeRunner: string, newNodeRunner: string, wasCurrentNodeRunnerMalicious: boolean) {
-        return _rotateNodeRunnerOfSmartWallet(this.etherSigner, this.liquidStakingManagerAddress, currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
+    manageNodeRunnerSmartWallet(currentNodeRunner: string, newNodeRunner: string, wasCurrentNodeRunnerMalicious: boolean) {
+        return _manageNodeRunnerSmartWallet(this.etherSigner, this.liquidStakingManagerAddress, currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
     }
 
     claimRewardsAsNodeRunner(recipientAddress: string, blsPublicKeys: Array<string>) {
@@ -175,10 +162,6 @@ export class UtilsSubPackage {
 
     registerBLSPublicKeys(blsPublicKeys: Array<string>, blsSignatures: Array<string>, representativeAddress: string, ethValue: BigNumber) {
         return _registerBLSPublicKeys(this.etherSigner, this.liquidStakingManagerAddress, blsPublicKeys, blsSignatures, representativeAddress, ethValue);
-    }
-
-    isKnotDeregistered(blsPublicKey: string) {
-        return _isKnotDeregistered(this.etherSigner, this.liquidStakingManagerAddress, blsPublicKey);
     }
 
     stake(blsPublicKeys: Array<string>, cipherTexts: Array<string>, aesEncryptorKeys: Array<string>, encryptionSignatures: Array<AuthenticatedBalanceReportT>, dataRoots: Array<string>) {
@@ -191,5 +174,17 @@ export class UtilsSubPackage {
 
     getNetworkFeeRecipient() {
         return _getNetworkFeeRecipient(this.etherSigner, this.liquidStakingManagerAddress);
+    }
+
+    toggleHouseGatekeeper(enable: boolean) {
+        return _toggleHouseGatekeeper(this.etherSigner, this.liquidStakingManagerAddress, enable);
+    }
+
+    transferSmartWalletOwnership(newOwner: string) {
+        return _transferSmartWalletOwnership(this.etherSigner, this.liquidStakingManagerAddress, newOwner);
+    }
+
+    recoverSigningKey(safeBoxAddress: string, nodeRunnerAddress: string, blsPublicKey: string, hAesPublicKey: string) {
+        return _recoverSigningKey(this.etherSigner, this.liquidStakingManagerAddress, safeBoxAddress, nodeRunnerAddress, blsPublicKey, hAesPublicKey);
     }
 }
