@@ -277,7 +277,7 @@ export const _claimRewardsAsNodeRunner = async (signer: Signer | Provider, liqui
     );
 };
 
-export const _registerBLSPublicKeys = async (signer: Signer | Provider, liquidStakingManagerAddress: string, blsPublicKeys: Array<string>, blsSignatures: Array<string>, representativeAddress: string, ethValue: string | BigNumber) => {
+export const _registerBLSPublicKeys = async (signer: Signer | Provider, liquidStakingManagerAddress: string, blsPublicKeys: Array<string>, blsSignatures: Array<string>, representativeAddress: string, ethValue: BigNumber) => {
 
     if(blsPublicKeys.length != blsSignatures.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);

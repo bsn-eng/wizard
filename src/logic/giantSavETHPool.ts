@@ -1,8 +1,25 @@
 import { BigNumber, Bytes, Signer } from 'ethers';
+import { Overrides } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/abstract-provider';
 import { customErrors } from './constants.js';
 import { getContractInstance } from './contracts.js';
 import { _add0x } from './utils.js';
+
+interface CustomOverride extends Overrides {
+    value?: BigNumber;
+}
+
+function overrides(value: BigNumber, options: CustomOverride = {}): CustomOverride {
+    const { gasLimit, gasPrice, nonce, type, ...rest } = options;
+    return {
+      ...rest,
+      value,
+      gasLimit,
+      gasPrice,
+      nonce,
+      type
+    };
+}
 
 export const _batchDepositETHForStaking = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) => {
 
@@ -26,6 +43,8 @@ export const _batchDepositETHForStaking = async (signer: Signer | Provider, savE
         }
     }
 
+    const overrideEthValue = overrides(ethValue, { gasLimit: 500000 });
+
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
     return contract.batchDepositETHForStaking(
@@ -33,7 +52,7 @@ export const _batchDepositETHForStaking = async (signer: Signer | Provider, savE
         amounts,
         blsPublicKeys,
         stakeAmounts,
-        { value: ethValue }
+        overrideEthValue
     )
 };
 

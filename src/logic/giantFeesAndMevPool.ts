@@ -1,10 +1,27 @@
 import { Provider } from '@ethersproject/abstract-provider';
+import { Overrides } from '@ethersproject/contracts';
 import { BigNumber, Bytes, Signer } from 'ethers';
 import { customErrors } from './constants.js';
 import { getContractInstance } from './contracts.js';
 import { _add0x } from './utils.js';
 
-export const _batchDepositETHForStaking = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: string | BigNumber) => {
+interface CustomOverride extends Overrides {
+    value?: BigNumber;
+}
+
+function overrides(value: BigNumber, options: CustomOverride = {}): CustomOverride {
+    const { gasLimit, gasPrice, nonce, type, ...rest } = options;
+    return {
+      ...rest,
+      value,
+      gasLimit,
+      gasPrice,
+      nonce,
+      type
+    };
+}
+
+export const _batchDepositETHForStaking = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) => {
 
     const arrayLength = feesAndMevPoolAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {
@@ -26,6 +43,8 @@ export const _batchDepositETHForStaking = async (signer: Signer | Provider, fees
         }
     }
 
+    const overrideEthValue = overrides(ethValue, { gasLimit: 500000 });
+
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
 
     return contract.batchDepositETHForStaking(
@@ -33,7 +52,7 @@ export const _batchDepositETHForStaking = async (signer: Signer | Provider, fees
         amounts,
         blsPublicKeys,
         stakeAmounts,
-        { value: ethValue }
+        overrideEthValue
     );
 };
 
