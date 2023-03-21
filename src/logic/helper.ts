@@ -7,7 +7,7 @@ import { _add0x } from './utils.js';
 const _getValidatorFromSubgraph = async (signer: Signer | Provider, blsPublicKey: string) => {
 
     const chainID = await _extractChainID(signer);
-    const { lsdUrls } = _getChainSpecificConstants(chainID);
+    const lsdUrls = _getChainSpecificConstants(chainID).lsdUrls;
 
     const lookupQuery = gql`
         query Knot($blsPublicKey: String!) {

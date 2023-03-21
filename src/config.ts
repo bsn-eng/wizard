@@ -12,21 +12,40 @@ import { HelperSubPackage } from './interface/helperClass.js';
 
 export class Wizard {
 
-    etherSigner; deployer; utils; savETHPool; feesAndMevPool; giantSavETHPool;
-    giantFeesAndMevPool; helper; contractInstance; constants;
+    etherSigner: Signer | Provider; 
+    deployer: DeployerSubPackage; 
+    utils?: UtilsSubPackage; 
+    savETHPool?: SavETHPoolSubPackage; 
+    feesAndMevPool?: FeesAndMevPoolSubPackage; 
+    giantSavETHPool: GiantSavETHPoolSubPackage;
+    giantFeesAndMevPool: GiantFeesAndMevPoolSubPackage; 
+    helper: HelperSubPackage; 
+    contractInstance: ContractSubPackage; 
+    constants: ConstantsSubPackage;
 
     constructor({
-        signerOrProvider: Signer | Provider, 
-        liquidStakingManagerAddress?: string, 
+        signerOrProvider,
+        liquidStakingManagerAddress,
+        savETHPoolAddress,
+        feesAndMevPoolAddress
+    }: {
+        signerOrProvider: Signer | Provider,
+        liquidStakingManagerAddress?: string,
         savETHPoolAddress?: string,
         feesAndMevPoolAddress?: string
     }) {
         
         this.etherSigner = signerOrProvider;
         this.deployer = new DeployerSubPackage(this.etherSigner);
-        this.utils = new UtilsSubPackage(this.etherSigner, liquidStakingManagerAddress);
-        this.savETHPool = new SavETHPoolSubPackage(this.etherSigner, savETHPoolAddress);
-        this.feesAndMevPool = new FeesAndMevPoolSubPackage(this.etherSigner, feesAndMevPoolAddress);
+        this.utils = liquidStakingManagerAddress
+            ? new UtilsSubPackage(this.etherSigner, liquidStakingManagerAddress)
+            : undefined;
+        this.savETHPool = savETHPoolAddress
+            ? new SavETHPoolSubPackage(this.etherSigner, savETHPoolAddress)
+            : undefined;
+        this.feesAndMevPool = feesAndMevPoolAddress
+            ? new FeesAndMevPoolSubPackage(this.etherSigner, feesAndMevPoolAddress)
+            : undefined;
         this.giantSavETHPool = new GiantSavETHPoolSubPackage(this.etherSigner);
         this.giantFeesAndMevPool = new GiantFeesAndMevPoolSubPackage(this.etherSigner);
         this.helper = new HelperSubPackage(this.etherSigner);

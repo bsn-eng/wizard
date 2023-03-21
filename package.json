@@ -2,17 +2,17 @@
     "name": "@blockswaplab/lsd-wizard",
     "version": "1.7.0",
     "description": "SDK for Liquid Staking Derivative Network",
-    "main": "src/config.mjs",
+    "main": "src/config.ts",
     "type": "module",
     "exports": {
-        ".": "./config.mjs"
+        ".": "./src/config.ts"
     },
     "scripts": {
         "postinstall": "typechain --target ethers-v5 --out-dir src/contracts/stakehouse './node_modules/@blockswaplab/stakehouse-protocol-abis/artifacts/*.json' && typechain --target ethers-v5 --out-dir src/contracts/lsd './node_modules/@blockswaplab/lsd-protocol-abis/artifacts/*.json'",
         "test": "mocha ./test/**/*.test.js --timeout 20000 --recursive"
     },
     "dependencies": {
-        "@blockswaplab/lsd-protocol-abis": "1.2.1",
+        "@blockswaplab/lsd-protocol-abis": "1.3.0",
         "@blockswaplab/stakehouse-protocol-abis": "2.1.9",
         "@ethersproject/abstract-provider": "^5.7.0",
         "ethers": "^5.5.3",

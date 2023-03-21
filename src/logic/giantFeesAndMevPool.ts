@@ -103,9 +103,12 @@ export const _batchRotateLPTokens = async (signer: Signer | Provider, feesAndMev
         feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
 
         for(let j=0; j<newLPArray.length; ++j) {
-            newLPArray[i][j] = _add0x(newLPArray[i][j]);
-            oldLPArray[i][j] = _add0x(oldLPArray[i][j]);
+            newLPArray[j] = _add0x(newLPArray[j]);
+            oldLPArray[j] = _add0x(oldLPArray[j]);
         }
+
+        newLPTokens[i] = newLPArray;
+        oldLPTokens[i] = oldLPArray;
     }
 
     const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
