@@ -36,8 +36,8 @@ import {
     _toggleHouseGatekeeper,
     _transferSmartWalletOwnership,
     _recoverSigningKey
-} from '../logic/utils.js';
-import { AuthenticatedBalanceReportT, FinalisedBeaconChainReportT } from '../types.js';
+} from '../logic/utils';
+import { AuthenticatedBalanceReportT, FinalisedBeaconChainReportT } from '../types';
 
 export class UtilsSubPackage {
 

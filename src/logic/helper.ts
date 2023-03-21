@@ -1,8 +1,8 @@
 import { Provider } from '@ethersproject/abstract-provider';
 import { Signer, Bytes } from 'ethers';
 import { gql, request } from 'graphql-request';
-import { _getChainSpecificConstants, _extractChainID } from './constants.js';
-import { _add0x } from './utils.js';
+import { _getChainSpecificConstants, _extractChainID } from './constants';
+import { _add0x } from './utils';
 
 const _getValidatorFromSubgraph = async (signer: Signer | Provider, blsPublicKey: string) => {
 

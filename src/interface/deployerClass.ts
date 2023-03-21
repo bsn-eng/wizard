@@ -1,6 +1,6 @@
 import { BigNumber, Signer } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { _deployNewLiquidStakingDerivativeNetwork } from '../logic/deployer.js';
+import { _deployNewLiquidStakingDerivativeNetwork } from '../logic/deployer';
 
 export class DeployerSubPackage {
     

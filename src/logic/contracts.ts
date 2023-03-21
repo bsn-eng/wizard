@@ -1,6 +1,6 @@
 import { Signer } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { _getChainSpecificConstants, _extractChainID } from './constants.js';
+import { _getChainSpecificConstants, _extractChainID } from './constants';
 import { 
     Lsdn_factory_abi__factory,
     Lsm_abi__factory,
@@ -11,9 +11,9 @@ import {
     Syndicate_abi__factory,
     Smart_wallet_abi__factory,
     Smart_wallet_naming_abi__factory
-} from '../contracts/lsd/index.js';
+} from '../contracts/lsd/index';
 
-import { Erc20_generic_abi__factory } from '../contracts/stakehouse/index.js';
+import { Erc20_generic_abi__factory } from '../contracts/stakehouse/index';
 
 export const getContractInstance = async (signer: Signer | Provider) => {
 

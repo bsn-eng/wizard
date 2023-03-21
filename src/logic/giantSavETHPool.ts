@@ -1,9 +1,9 @@
 import { BigNumber, Bytes, Signer } from 'ethers';
 import { Overrides } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/abstract-provider';
-import { customErrors } from './constants.js';
-import { getContractInstance } from './contracts.js';
-import { _add0x } from './utils.js';
+import { customErrors } from './constants';
+import { getContractInstance } from './contracts';
+import { _add0x } from './utils';
 
 interface CustomOverride extends Overrides {
     value?: BigNumber;

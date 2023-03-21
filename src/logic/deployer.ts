@@ -1,6 +1,6 @@
 import { BigNumber, ethers, Signer } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { getContractInstance } from './contracts.js';
+import { getContractInstance } from './contracts';
 
 export const _deployNewLiquidStakingDerivativeNetwork = async (
     signer: Signer | Provider,

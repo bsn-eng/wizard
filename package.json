@@ -2,7 +2,7 @@
     "name": "@blockswaplab/lsd-wizard",
     "version": "1.7.0",
     "description": "SDK for Liquid Staking Derivative Network",
-    "main": "src/config.ts",
+    "main": "dist/config.js",
     "type": "module",
     "exports": {
         ".": "./src/config.ts"

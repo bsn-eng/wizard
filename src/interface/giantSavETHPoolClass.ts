@@ -7,7 +7,7 @@ import {
     _depositETH,
     _getIdleETH,
     _withdrawETH,
-} from '../logic/giantSavETHPool.js';
+} from '../logic/giantSavETHPool';
 
 export class GiantSavETHPoolSubPackage {
 

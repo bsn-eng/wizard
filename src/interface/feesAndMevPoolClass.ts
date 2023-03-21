@@ -11,7 +11,7 @@ import {
     _claimRewards,
     _batchPreviewAccumulatedETH,
     _claimFundsFromSyndicateForDistribution,
-} from '../logic/feesAndMevPool.js';
+} from '../logic/feesAndMevPool';
 
 export class FeesAndMevPoolSubPackage {
     

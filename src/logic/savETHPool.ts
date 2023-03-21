@@ -1,8 +1,8 @@
 import { BigNumber, Bytes, Signer } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { customErrors } from './constants.js';
-import { getContractInstance } from './contracts.js';
-import { _add0x } from './utils.js';
+import { customErrors } from './constants';
+import { getContractInstance } from './contracts';
+import { _add0x } from './utils';
 
 export const _getIndexOwnedByTheVault = async (signer: Signer | Provider, savETHVaultAddress: string) => {
 

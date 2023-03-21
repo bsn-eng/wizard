@@ -9,7 +9,7 @@ import {
     _depositETH,
     _getIdleETH,
     _withdrawETH,
-} from '../logic/giantFeesAndMevPool.js';
+} from '../logic/giantFeesAndMevPool';
 
 export class GiantFeesAndMevPoolSubPackage {
 

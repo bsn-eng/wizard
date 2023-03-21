@@ -1,14 +1,14 @@
 import { Signer } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { DeployerSubPackage } from './interface/deployerClass.js';
-import { ConstantsSubPackage } from './interface/constantsClass.js';
-import { ContractSubPackage } from './interface/contractClass.js';
-import { UtilsSubPackage } from './interface/utilsClass.js';
-import { SavETHPoolSubPackage } from './interface/savETHPoolClass.js';
-import { FeesAndMevPoolSubPackage } from './interface/feesAndMevPoolClass.js';
-import { GiantSavETHPoolSubPackage } from './interface/giantSavETHPoolClass.js';
-import { GiantFeesAndMevPoolSubPackage } from './interface/giantFeesAndMevPoolClass.js';
-import { HelperSubPackage } from './interface/helperClass.js';
+import { DeployerSubPackage } from './interface/deployerClass';
+import { ConstantsSubPackage } from './interface/constantsClass';
+import { ContractSubPackage } from './interface/contractClass';
+import { UtilsSubPackage } from './interface/utilsClass';
+import { SavETHPoolSubPackage } from './interface/savETHPoolClass';
+import { FeesAndMevPoolSubPackage } from './interface/feesAndMevPoolClass';
+import { GiantSavETHPoolSubPackage } from './interface/giantSavETHPoolClass';
+import { GiantFeesAndMevPoolSubPackage } from './interface/giantFeesAndMevPoolClass';
+import { HelperSubPackage } from './interface/helperClass';
 
 export class Wizard {
 

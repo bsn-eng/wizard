@@ -1,9 +1,9 @@
-import { customErrors } from './constants.js';
-import { getContractInstance } from './contracts.js';
+import { customErrors } from './constants';
+import { getContractInstance } from './contracts';
 import _ from 'lodash';
 import { BigNumber, Bytes, Signer } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { AuthenticatedBalanceReportT, FinalisedBeaconChainReportT } from '../types.js';
+import { AuthenticatedBalanceReportT, FinalisedBeaconChainReportT } from '../types';
 
 export const _add0x = (data: string) => {
 

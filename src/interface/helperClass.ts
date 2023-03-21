@@ -1,6 +1,6 @@
 import { Signer, Bytes } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { _getValidatorDetails } from '../logic/helper.js';
+import { _getValidatorDetails } from '../logic/helper';
 
 export class HelperSubPackage {
     etherSigner;
