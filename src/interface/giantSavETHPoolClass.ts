@@ -3,7 +3,6 @@ import { Provider } from '@ethersproject/abstract-provider';
 import {
     _batchDepositETHForStaking,
     _withdrawDETH,
-    _batchRotateLPTokens,
     _bringUnusedETHBackIntoGiantPool,
     _depositETH,
     _getIdleETH,
@@ -24,10 +23,6 @@ export class GiantSavETHPoolSubPackage {
 
     withdrawDETH(savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
         return _withdrawDETH(this.etherSigner, savETHVaultAddresses, lpTokens, amounts);
-    }
-
-    batchRotateLPTokens(savETHVaultAddresses: Array<string>, oldLPTokens: Array<Array<string>>, newLPTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
-        return _batchRotateLPTokens(this.etherSigner, savETHVaultAddresses, oldLPTokens, newLPTokens, amounts);
     }
     
     bringUnusedETHBackIntoGiantPool(savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {

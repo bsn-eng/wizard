@@ -84,43 +84,6 @@ export const _previewAccumulatedETH = async (signer: Signer | Provider, userAddr
     );
 };
 
-export const _batchRotateLPTokens = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, oldLPTokens: Array<Array<string>>, newLPTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
-
-    const arrayLength = feesAndMevPoolAddresses.length;
-    if(arrayLength != oldLPTokens.length || arrayLength != newLPTokens.length || arrayLength != amounts.length) {
-        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
-    }
-
-    for(let i=0; i<arrayLength; ++i) {
-        let newLPArray = newLPTokens[i];
-        let oldLPArray = oldLPTokens[i];
-        const amountArray = amounts[i];
-
-        if(newLPArray.length != oldLPArray.length || newLPArray.length != amountArray.length) {
-            throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
-        }
-
-        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
-
-        for(let j=0; j<newLPArray.length; ++j) {
-            newLPArray[j] = _add0x(newLPArray[j]);
-            oldLPArray[j] = _add0x(oldLPArray[j]);
-        }
-
-        newLPTokens[i] = newLPArray;
-        oldLPTokens[i] = oldLPArray;
-    }
-
-    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
-
-    return contract.batchRotateLPTokens(
-        feesAndMevPoolAddresses,
-        oldLPTokens,
-        newLPTokens,
-        amounts
-    );
-};
-
 export const _bringUnusedETHBackIntoGiantPool = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<BigNumber | string>>) => {
 
     const arrayLength = feesAndMevPoolAddresses.length;

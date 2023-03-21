@@ -9,9 +9,7 @@ import {
     _burnLPTokensForETH,
     _burnLPTokenForETH,
     _claimRewards,
-    _batchPreviewAccumulatedETHByBLSKeys,
     _batchPreviewAccumulatedETH,
-    _previewAccumulatedETH,
     _claimFundsFromSyndicateForDistribution,
 } from '../logic/feesAndMevPool.js';
 
@@ -56,17 +54,9 @@ export class FeesAndMevPoolSubPackage {
     claimRewards(recipient: string, blsPublicKeys: Array<string>) {
         return _claimRewards(this.etherSigner, this.feesAndMevPoolAddress, recipient, blsPublicKeys);
     }
-
-    batchPreviewAccumulatedETHByBLSKeys(userAddress: string, blsPublicKeys: Array<string>) {
-        return _batchPreviewAccumulatedETHByBLSKeys(this.etherSigner, this.feesAndMevPoolAddress, userAddress, blsPublicKeys);
-    }
     
     batchPreviewAccumulatedETH(userAddress: string, lpTokens: Array<string>) {
         return _batchPreviewAccumulatedETH(this.etherSigner, this.feesAndMevPoolAddress, userAddress, lpTokens);
-    }
-    
-    previewAccumulatedETH(userAddress: string, lpToken: string) {
-        return _previewAccumulatedETH(this.etherSigner, this.feesAndMevPoolAddress, userAddress, lpToken);
     }
     
     claimFundsFromSyndicateForDistribution(blsPublicKeys: Array<string>) {

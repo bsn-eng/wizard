@@ -108,20 +108,6 @@ export const _claimRewards = async (signer: Signer| Provider, feesAndMevPoolAddr
     );
 };
 
-export const _batchPreviewAccumulatedETHByBLSKeys = async (signer: Signer| Provider, feesAndMevPoolAddress: string, userAddress: string, blsPublicKeys: Array<string>) => {
-
-    for(let i=0; i<blsPublicKeys.length; ++i) {
-        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
-    }
-
-    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
-
-    return contract.batchPreviewAccumulatedETHByBLSKeys(
-        _add0x(userAddress),
-        blsPublicKeys
-    );
-};
-
 export const _batchPreviewAccumulatedETH = async (signer: Signer| Provider, feesAndMevPoolAddress: string, userAddress: string, lpTokens: Array<string>) => {
 
     for(let i=0; i<lpTokens.length; ++i) {
@@ -133,16 +119,6 @@ export const _batchPreviewAccumulatedETH = async (signer: Signer| Provider, fees
     return contract.batchPreviewAccumulatedETH(
         _add0x(userAddress),
         lpTokens
-    );
-};
-
-export const _previewAccumulatedETH = async (signer: Signer| Provider, feesAndMevPoolAddress: string, userAddress: string, lpToken: string) => {
-
-    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
-
-    return contract.previewAccumulatedETH(
-        _add0x(userAddress),
-        _add0x(lpToken)
     );
 };
 

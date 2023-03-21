@@ -4,7 +4,6 @@ import {
     _batchDepositETHForStaking,
     _claimRewards,
     _previewAccumulatedETH,
-    _batchRotateLPTokens,
     _bringUnusedETHBackIntoGiantPool,
     _updateAccumulatedETHPerLP,
     _depositETH,
@@ -30,10 +29,6 @@ export class GiantFeesAndMevPoolSubPackage {
     
     previewAccumulatedETH(userAddress: string, feesAndMevPoolAddresses: Array<string>, lpTokens:Array<Array<string>>) {
         return _previewAccumulatedETH(this.etherSigner, userAddress, feesAndMevPoolAddresses, lpTokens);
-    }
-
-    batchRotateLPTokens(feesAndMevPoolAddresses: Array<string>, oldLPTokens: Array<Array<string>>, newLPToken: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
-        return _batchRotateLPTokens(this.etherSigner, feesAndMevPoolAddresses, oldLPTokens, newLPToken, amounts);
     }
     
     bringUnusedETHBackIntoGiantPool(feesAndMevPoolAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) {
