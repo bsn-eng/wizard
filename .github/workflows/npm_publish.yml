@@ -14,16 +14,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - name: Authenticate with npm
-        uses: npm/auth@v1
-        with:
-          registry: 'https://registry.npmjs.org/'
-          token: ${{ secrets.NPM_TOKEN }}
-      - name: Install dependencies
-        run: npm install
-      - name: Build package
-        run: npm run postinstall
-      - name: Publish package
-        run: npm publish --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
