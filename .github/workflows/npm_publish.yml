@@ -14,8 +14,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - name: Who am I?
-        uses: npm whoami --registry https://registry.npmjs.org
-      - run: npm publish --registry=https://npm.pkg.github.com/ --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
