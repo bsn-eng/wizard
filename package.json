@@ -2,10 +2,13 @@
     "name": "@blockswaplab/lsd-wizard",
     "version": "3.0.0",
     "description": "SDK for Liquid Staking Derivative Network",
-    "main": "dist/config.js",
-    "type": "module",
+    "main": "./dist/config.js",
+    "type": "commonjs",
     "exports": {
-        ".": "./src/config.ts"
+        ".": {
+            "import": "./src/config.ts",
+            "require": "./dist/config.js"
+        }
     },
     "scripts": {
         "postinstall": "typechain --target ethers-v5 --out-dir src/contracts/stakehouse './node_modules/@blockswaplab/stakehouse-protocol-abis/artifacts/*.json' && typechain --target ethers-v5 --out-dir src/contracts/lsd './node_modules/@blockswaplab/lsd-protocol-abis/artifacts/*.json' && tsc",
