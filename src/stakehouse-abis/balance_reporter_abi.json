@@ -1,0 +1,99 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_stakeHouse",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_memberId",
+        "type": "bytes"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes",
+            "name": "blsPublicKey",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bytes",
+            "name": "withdrawalCredentials",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bool",
+            "name": "slashed",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint64",
+            "name": "activeBalance",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "effectiveBalance",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "exitEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "activationEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "withdrawalEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "currentCheckpointEpoch",
+            "type": "uint64"
+          }
+        ],
+        "internalType": "struct ETH2Validation.ETH2DataReport",
+        "name": "_eth2Report",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint248",
+            "name": "deadline",
+            "type": "uint248"
+          },
+          {
+            "internalType": "uint8",
+            "name": "v",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "r",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "s",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct ETH2Validation.EIP712Signature",
+        "name": "_signatureMetadata",
+        "type": "tuple"
+      }
+    ],
+    "name": "balanceIncrease",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
