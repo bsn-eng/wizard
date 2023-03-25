@@ -1,7 +1,13 @@
 # Wizard SDK
-The Wizard SDK allows users to interact with the LSD network and Giant pools. Using the SDK anyone can deploy their own LSD, interact with the new or the existing LSDs.
+The Wizard SDK allows users to interact with the LSD network and Giant pools. Using the SDK anyone can deploy their own LSD, interact with the new or the existing LSDs. The SDK is written in typescript and uses typechain to generate types from the ABIs.  
 
 > It is recommended to use `ethers.js` as the SDK uses it throughout.  
+
+## Pre-installations
+The LSD Wizard typescript SDK needs following pre-installations to compile:
+```bash
+yarn add typescript typechain @typechain/ethers-v5 @types/lodash
+```
 
 ## Installation
 To install the SDK use the command `yarn add @blockswaplab/wizard`  
@@ -9,27 +15,30 @@ To install the SDK use the command `yarn add @blockswaplab/wizard`
 ## Using the SDK
 One of the ways to import and initialize the Wizard SDK is:
 ```js
-const { Wizard } = require('@blockswaplab/wizard');
+const { Wizard } = require('@blockswaplab/lsd-wizard');
+// or import
+// import { Wizard } from '@blockswaplab/lsd-wizard';
 
-const provider = new ethers.providers.InfuraProvider("ropsten", {
+const provider = new ethers.providers.InfuraProvider("goerli", {
     projectId: INFURA_PROJECT_ID,
     projectSecret: INFURA_PROJECT_SECRET
 });
 const signer = new ethers.Wallet(PRIV_KEY, provider);
 
+// The addresses used below are for representation. Anyone is free to initialise the SDK with their own LSD's respective addresses.  
 const wizard = new Wizard({
-    signer: signer, // signer or provider
+    signerOrProvider: signer, // signer or provider
     liquidStakingManagerAddress: "0x1779642181f0f799582e9ebe9615f96c744e527b", // optional
     savETHPoolAddress: "0x4857819f7a29c73f4a005dd907e01333383d2f81", // optional
     feesAndMevPoolAddress: "0x7635c5d48b0c0b99a66628b3c1297ed5bb395bb9" // optional
 });
 ```
-`signer` parameter: ethers.js `signer` or `provider` instance. With `provider` instance only the `view` functions from the smart contract are executable.  
+`signerOrProvider` parameter: ethers.js `signer` or `provider` instance. With `provider` instance only the `view` functions from the smart contract are executable.  
 `liquidStakingManagerAddress` parameter: Address of the specific LSD to execute functions from. This is an optional parameter. When `null`, none of the functions from LSD's Liquid Staking Manager can be executed via the SDK.  
 `savETHPoolAddress` parameter: Address of the Protected Staking pool of any LSD. This is an optional parameter. When `null`, none of none of the functions from the LSD's Protected Staking pool can be executed via the SDK. This address can be from any LSD, which means a user can query a function from Liquid Staking Manager of LSD-1 and also execute a function from Protected Staking pool of LSD-2.  
 `feesAndMevPoolAddress` parameter: Address of the Fess and MEV pool of any LSD. This is an optional parameter. When `null`, none of the functions from the LSD's Fees and MEV pool can be executed via the SDK. This address can be from any LSD, which means a user can query a function from Liquid Staking Manager of LSD-1 and also execute a function from Fees and MEV pool of LSD-2.  
 
-To deploy a new LSD network, the SDK only needs the `signer` parameter.  
+To deploy a new LSD network, the SDK only needs the `signerOrProvider` parameter.  
 
 ## Sub classes
 The SDK exposes various sub-classes:  
@@ -43,7 +52,7 @@ The SDK exposes various sub-classes:
 * constants  
 
 ## Deployer sub-class:  
-This sub package deals with deployment of a new LSD network. Any user that initializes the Wizard SDK with `signer` instance can access this sub-class.  
+This sub package deals with deployment of a new LSD network. Any user that initializes the Wizard SDK with `signerOrProvider` instance can access this sub-class.  
 
 ### deployNewLiquidStakingDerivativeNetwork function
 Used to deploy a new LSD network.  
@@ -293,19 +302,6 @@ await wizard.utils.isBLSPublicKeyBanned(blsPublicKey);
 #### Returns
 Boolean. `true` if banned, `false` otherwise.  
 
-### executeAsSmartWallet function
-Enables operations proxied through DAO contract to another contract. Can only be called by the DAO address set during deployment of the LSD. DAO address can be any EOA.  
-
-#### Input params
-`nodeRunnerAddress`: Address of the node runner  
-`targetContractAddress`: Address of the target smart contract  
-`encodedFunctionData`: encoded data of the function to be called on the target smart contract  `ethValue`: ETH attached with the transaction  
-
-#### Using the function
-```js
-await wizard.utils.executeAsSmartWallet(nodeRunnerAddress, targetContractAddress, encodedFunctionData, ethValue);
-```
-
 ### deRegisterKnotsFromSyndicate function
 For knots no longer operational, DAO can de register the knot from the syndicate.  
 
@@ -315,19 +311,6 @@ For knots no longer operational, DAO can de register the knot from the syndicate
 #### Using the function
 ```js
 await wizard.utils.deRegisterKnotsFromSyndicate(blsPublicKeys);
-```
-
-### restoreFreeFloatingSharesToSmartWalletForRageQuit function
-In preparation of a Rage Quit, restore sETH to a smart wallet which are recoverable with the execution methods in the event this step does not go to plan. Can be only called by the DAO address.  
-
-#### Input params
-`smartWalletAddress`: Address of the smart wallet associated with the KNOT  
-`blsPublicKeys`: List of BLS public key of the KNOT  
-`amounts`: List of amount. Amounts are number of free floating sETH that will be unstaked for the BLS public keys.  
-
-#### Using the function
-```js
-await wizard.utils.restoreFreeFloatingSharesToSmartWalletForRageQuit(smartWalletAddress, blsPublicKeys, amounts);
 ```
 
 ### updateDaoAddress function
@@ -397,18 +380,6 @@ Appoint a new representative for the node runner. Should be called by the node r
 await wizard.utils.rotateEOARepresentative(newRepresentativeAddress);
 ```
 
-### rotateEOARepresentativeOfNodeRunner function
-Allows the DAO to rotate representative in the case that node runner is not available (to facilitate staking). Can be only called by the DAO address.  
-
-#### Input params
-`nodeRunnerAddress`: Address of the node runner  
-`newRepresentativeAddress`: Address of the new EOA representative of the node runner  
-
-#### Using the function
-```js
-await wizard.utils.rotateEOARepresentativeOfNodeRunner(nodeRunnerAddress, newRepresentativeAddress);
-```
-
 ### withdrawETHForKnot function
 Allow node runners to withdraw ETH from their smart wallet. ETH can only be withdrawn until the KNOT has not been staked. Once the ETh is withdrawn for the BLS public key, this key will be banned from the LSD and can no longer be used to stake.  
 
@@ -421,7 +392,7 @@ Allow node runners to withdraw ETH from their smart wallet. ETH can only be with
 await wizard.utils.withdrawETHForKnot(recipientAddress, blsPublicKey);
 ```
 
-### rotateNodeRunnerOfSmartWallet function
+### manageNodeRunnerSmartWallet function
 Allow appointing a new node runner if the existing node runner coordinates with the DAO to sell their wallet. Can be only called by the DAO address or the current owner of the smart wallet.  
 
 #### Input params
@@ -431,7 +402,7 @@ Allow appointing a new node runner if the existing node runner coordinates with 
 
 #### Using the function
 ```js
-await wizard.utils.rotateNodeRunnerOfSmartWallet(currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
+await wizard.utils.manageNodeRunnerSmartWallet(currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
 ```
 
 ### claimRewardsAsNodeRunner function
@@ -459,20 +430,6 @@ Allows node runners to register a new BLS public key. If the node runner is inte
 ```js
 await wizard.utils.registerBLSPublicKeys(blsPublicKeys, blsSignatures, representativeAddress, ethValue);
 ```
-
-### isKnotDeregistered function
-Check if a KNOT has been de-registered from the LSD network.  
-
-#### Input params
-`blsPublicKey`: BLS public key of the KNOT  
-
-#### Using the function
-```js
-await wizard.utils.isKnotDeregistered(blsPublicKey);
-```
-
-#### Returns
-Boolean. `true` if de-registered, `false` otherwise.  
 
 ### stake function
 Stake a list of BLS public keys. Make sure that there is enough ETH for all the BLS public keys. Can be only called by a node runner who has registered BLS public keys in the LSD network.  
@@ -512,6 +469,42 @@ await wizard.utils.getNetworkFeeRecipient();
 #### Returns
 Ethereum address of the LSD's fee recipient  
 
+
+### toggleHouseGatekeeper function
+Update the gatkeeping status of the LSD. This function can only be called by the DAO address of the LSD.  
+
+#### Input params
+`enable`: Boolean value. When set to `true`, will enable gatekeeping and disable when set to `false`.  
+
+#### Using the function
+```js
+await wizard.utils.toggleHouseGatekeeper(enable);
+``` 
+
+### transferSmartWalletOwnership function
+Allows an LSD node operator to transfer their smart wallet to another address.    
+
+#### Input params
+`newOwner`: Address of the new owner of the smart wallet  
+
+#### Using the function
+```js
+await wizard.utils.transferSmartWalletOwnership(newOwner);
+``` 
+
+### recoverSigningKey function
+This function allows DAO address or the node operator to recover the signing key of a validator.  
+
+#### Input params
+`safeBoxAddress`: Address of the safe box performing the recovery procedure  
+`nodeRunnerAddress`: Address of the node operator associated with the BLS public key  
+`blsPublicKey`: BLS public key to be recovered  
+`hAesPublicKey`: Hybrid encryption public key that can unlock multiparty computation used for recovery  
+
+#### Using the function
+```js
+await wizard.utils.recoverSigningKey(safeBoxAddress, nodeRunnerAddress, blsPublicKey, hAesPublicKey);
+``` 
 
 ## SavETH Pool sub-class
 This sub-class exposes all the necessary functions from the SavETHVault smart contract. For anyone to use this sub-class it is necessary to initialize the Wizard SDK with the `signer` instance and `savETHPoolAddress`. SavETH Pool Address is the Protected Staking Pool address of the respective LSD.  
@@ -611,7 +604,7 @@ Boolean. `true` if ready for withdrawal, `false` otherwise.
 
 
 ## Fees and MEV sub-class
-This sub-class exposes all the necessary functions required for user to interact with the Fees and MEV Pool of the LSD network. The sub-class exposes all the necessary functions from the StakingFundsVault smart contract. For a user to interact with this sub-class, it is necessary to initialize the Wizard SDK with `signer` instance and `feesAndMevPoolAddress`.  
+This sub-class exposes all the necessary functions required for user to interact with the Fees and MEV Pool of the LSD network. The sub-class exposes all the necessary functions from the StakingFundsVault smart contract. For a user to interact with this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance and `feesAndMevPoolAddress`.  
 
 ### totalShares function
 Fetches the total number of LP tokens issued by the pool.  
@@ -709,21 +702,6 @@ Allows users to claim ETH from the syndicate contract if the respective BLS publ
 await wizard.feesAndMevPool.claimRewards(recipient, blsPublicKeys);
 ```
 
-### batchPreviewAccumulatedETHByBLSKeys function
-Preview total ETH accumulated by a staking funds LP token holder associated with many KNOTs that have minted derivatives.  
-
-#### Input params
-`userAddress`: Ethereum execution layer address of the LP token holder  
-`blsPublicKeys`: List of BLS public keys associated with the LP tokens held by the user  
-
-#### Using the function
-```js
-await wizard.feesAndMevPool.batchPreviewAccumulatedETHByBLSKeys(userAddress, blsPublicKeys);
-```
-
-#### Returns
-Total accumulated ETH in Big Numbers.  
-
 ### batchPreviewAccumulatedETH function
 Preview total ETH accumulated by a user for multiple LP tokens.  
 
@@ -739,21 +717,6 @@ await wizard.feesAndMevPool.batchPreviewAccumulatedETH(userAddress, lpTokens);
 #### Returns
 Total ETH accumulated by the user in Big NUmbers.  
 
-###  function
-Preview ETH accumulated by the user for a single LP token.  
-
-#### Input params
-`userAddress`: Ethereum execution layer address of the LP token holder  
-`lpTokens`: Address of the LP token that the user holds  
-
-#### Using the function
-```js
-await wizard.feesAndMevPool.previewAccumulatedETH(userAddress, lpToken);
-```
-
-#### Returns
-Total ETH accumulated by the user for the LP token.  
-
 ### claimFundsFromSyndicateForDistribution function
 Claim ETH to the Fees and MEV Pool, from the syndicate, that was accrued by a list of actively staked validators.  
 
@@ -766,7 +729,7 @@ await wizard.feesAndMevPool.claimFundsFromSyndicateForDistribution(blsPublicKeys
 ```
 
 ## Giant SavETH Pool sub-class
-This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signer` instance.  
+This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance and `savETHVaultAddress`.  
 
 ### batchDepositETHForStaking function
 Allows users to stake ETH in batches for different LSD Networks at once. The ETH that has been sitting idle is sent to the Protected Staking Pools of respective LSD Networks when this function is called by the node runner. A node runner should be on a look out and can use the funds if his LSD Network's Protected Staking Pool is falling short of ETH.  
@@ -794,20 +757,6 @@ Allow a user to burn their Giant Protected Staking LP token in exchange of dETH 
 #### Using the function
 ```js
 await wizard.giantSavETHPool.withdrawDETH(savETHVaultAddresses, lpTokens, amounts);
-```
-
-### batchRotateLPTokens function
-Allow users to rotate their ETH from one BLS public key of an LSD Network to another.  
-
-#### Input params
-`savETHVaultAddresses`: List of address of Protected Staking Pools  
-`oldLPTokens`: 2 dimensional array of LP tokens that need to be rotated  
-`newLPTokens`: 2 dimensional array of LP tokens that will be minted in exchange of old LP tokens  
-`amounts`: 2 dimensional array of number of LP tokens to be rotated.  
-
-#### Using the function
-```js
-await wizard.giantSavETHPool.batchRotateLPTokens(savETHVaultAddresses, oldLPTokens, newLPTokens, amounts);
 ```
 
 ### bringUnusedETHBackIntoGiantPool function
@@ -858,7 +807,7 @@ await wizard.giantSavETHPool.withdrawETH(amount);
 ```
 
 ## Giant Fees and MEV sub-class
-This sub-class exposes all the necessary functions from the Giant Fees and MEV pool of the LSD Network. For anyone to use this sub-class, it is necessary to initialize the sub-class with `signer` instance.  
+This sub-class exposes all the necessary functions from the Giant Fees and MEV pool of the LSD Network. For anyone to use this sub-class, it is necessary to initialize the sub-class with `signerOrProvider` instance and `feesAndMevPoolAddress`.  
 
 ### batchDepositETHForStaking function
 This function allows users to deposit ETH in batches from the Giant Fees and MEV pool to multiple Fees and MEV pools of different LSD Networks. A node runner should be on a lookout in case the pool is falling short of ETH and when the Giant pool gets funded with ETH, he can then use these ETH in the respective LSD network to get them staked.  
@@ -903,20 +852,6 @@ await wizard.giantFeesAndMevPool.previewAccumulatedETH(userAddress, feesAndMevPo
 
 #### Returns
 Accumulated ETH in Big Numbers.  
-
-### batchRotateLPTokens function
-Allows users to batch rotate their existing deposited ETH from one BLS public key to another.  
-
-#### Input params
-`feesAndMevPoolAddresses`: List of address of Fees and MEV pools that hold the LP tokens  
-`oldLPTokens`: 2 dimensional array of address of old LP tokens to be rotated  
-`newLPToken`: 2 dimensional array of address of new LP tokens to be minted after burning the old LP tokens  
-`amounts`: 2 dimensional array of number of old LP tokens of each type to be rotated.  
-
-#### Using the function
-```js
-await wizard.giantFeesAndMevPool.batchRotateLPTokens(feesAndMevPoolAddresses, oldLPTokens, newLPToken, amounts);
-```
 
 ### bringUnusedETHBackIntoGiantPool function
 Allows user to bring back unstaked ETH from the Fees and MEV pool of different LSD Networks to the Giant Fees and MEV Pool.  
