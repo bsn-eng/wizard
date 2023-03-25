@@ -1,0 +1,698 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "previousAdmin",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "AdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "beacon",
+        "type": "address"
+      }
+    ],
+    "name": "BeaconUpgraded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [],
+    "name": "CoreModulesInit",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "stakeHouse",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "memberId",
+        "type": "bytes"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "applicant",
+        "type": "address"
+      }
+    ],
+    "name": "MemberAddedAndSharesIssued",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "stakeHouse",
+        "type": "address"
+      }
+    ],
+    "name": "MemberAddedToExistingStakeHouse",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "stakeHouse",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "brandId",
+        "type": "uint256"
+      }
+    ],
+    "name": "MemberAddedToExistingStakeHouseAndBrandCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "stakeHouse",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "brandId",
+        "type": "uint256"
+      }
+    ],
+    "name": "NewStakeHouse",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "accessControls",
+    "outputs": [
+      {
+        "internalType": "contract StakeHouseAccessControls",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "accountManager",
+    "outputs": [
+      {
+        "internalType": "contract AccountManager",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_stakeHouse",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_memberId",
+        "type": "bytes"
+      },
+      {
+        "internalType": "address",
+        "name": "_applicant",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_brandTokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_savETHIndexId",
+        "type": "uint256"
+      }
+    ],
+    "name": "addMemberToExistingHouse",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_stakeHouse",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_memberId",
+        "type": "bytes"
+      },
+      {
+        "internalType": "address",
+        "name": "_applicant",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_ticker",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_savETHIndexId",
+        "type": "uint256"
+      }
+    ],
+    "name": "addMemberToHouseAndCreateBrand",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "communityCentral",
+    "outputs": [
+      {
+        "internalType": "contract CommunityCentral",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract StakeHouseAccessControls",
+        "name": "_accessControls",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_slotRegistryLogic",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_sETHBeacon",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_saveETHRegistryLogic",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_dETHLogic",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_saveETHLogic",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_stakeHouseRegistryBeacon",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_accountManagerLogic",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_transactionManagerLogic",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_savETHManagerLogic",
+        "type": "address"
+      },
+      {
+        "internalType": "contract CommunityCentral",
+        "name": "_communityCentral",
+        "type": "address"
+      }
+    ],
+    "name": "init",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "knotIndexToStakeHouse",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "memberKnotToStakeHouse",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_summoner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_ticker",
+        "type": "string"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_firstMember",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_savETHIndexId",
+        "type": "uint256"
+      }
+    ],
+    "name": "newStakeHouse",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "numberOfStakeHouses",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "numberOfSubKNOTsAtIndex",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_stakeHouse",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_memberId",
+        "type": "bytes"
+      },
+      {
+        "internalType": "address",
+        "name": "_rageQuitter",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amountOfETHInDepositQueue",
+        "type": "uint256"
+      }
+    ],
+    "name": "rageQuitKnot",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "savETHMan",
+    "outputs": [
+      {
+        "internalType": "contract savETHManager",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "saveETHRegistry",
+    "outputs": [
+      {
+        "internalType": "contract savETHRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "slotRegistry",
+    "outputs": [
+      {
+        "internalType": "contract SlotSettlementRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "stakeHouseAtIndex",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "stakeHouseKNOTIndexPointer",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "_memberId",
+        "type": "bytes"
+      }
+    ],
+    "name": "stakeHouseKnotInfo",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "stakeHouse",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "sETHAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "applicant",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "knotMemberIndex",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "flags",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isActive",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_subIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "stakeHouseKnotInfoGivenCoordinates",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "stakeHouse",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "sETHAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "applicant",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "knotMemberIndex",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "flags",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isActive",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "stakeHouseToKNOTIndex",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_subIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "subKNOTAtIndexCoordinates",
+    "outputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "transactionManager",
+    "outputs": [
+      {
+        "internalType": "contract TransactionRouter",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "universe",
+    "outputs": [
+      {
+        "internalType": "contract StakeHouseUniverse",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      }
+    ],
+    "name": "upgradeTo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  }
+]

@@ -1,25 +1,33 @@
 {
     "name": "@blockswaplab/lsd-wizard",
-    "version": "1.7.0",
+    "version": "3.2.1",
     "description": "SDK for Liquid Staking Derivative Network",
-    "main": "config.mjs",
-    "type": "module",
+    "main": "./dist/config.js",
+    "type": "commonjs",
     "exports": {
-        ".": "./config.mjs"
+        ".": "./dist/config.js"
     },
     "scripts": {
+        "postinstall": "typechain --target ethers-v5 --out-dir src/contracts/lsd './src/lsd-abis/*.json' && typechain --target ethers-v5 --out-dir src/contracts/stakehouse './src/stakehouse-abis/*.json' && tsc",
         "test": "mocha ./test/**/*.test.js --timeout 20000 --recursive"
     },
     "dependencies": {
-        "@blockswaplab/lsd-protocol-abis": "1.2.1",
+        "@blockswaplab/lsd-protocol-abis": "1.3.0",
         "@blockswaplab/stakehouse-protocol-abis": "2.1.9",
+        "@ethersproject/abstract-provider": "^5.7.0",
+        "@ethersproject/contracts": "^5.7.0",
         "ethers": "^5.5.3",
         "graphql": "^16.1.0",
         "graphql-request": "^3.7.0",
         "lodash": "^4.17.21"
     },
     "devDependencies": {
+        "@typechain/ethers-v5": "^10.2.0",
+        "@types/lodash": "^4.14.191",
+        "@types/node": "^18.15.3",
         "chai": "^4.3.4",
-        "mocha": "^10.0.0"
+        "mocha": "^10.0.0",
+        "typechain": "^8.1.1",
+        "typescript": "^4.9.5"
     }
 }

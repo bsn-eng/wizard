@@ -1,0 +1,230 @@
+[
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes",
+              "name": "knotId",
+              "type": "bytes"
+            },
+            {
+              "internalType": "address",
+              "name": "stakehouse",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "aesPublicKey",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct ISafeBoxManager.DecryptionApplication",
+          "name": "_decryptionApplication",
+          "type": "tuple"
+        }
+      ],
+      "name": "applyForDecryption",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "decryptionValidityPeriod",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_knotId",
+          "type": "bytes"
+        }
+      ],
+      "name": "getDecryptionRequestByKnotId",
+      "outputs": [
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "internalType": "bytes",
+                  "name": "knotId",
+                  "type": "bytes"
+                },
+                {
+                  "internalType": "address",
+                  "name": "stakehouse",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "aesPublicKey",
+                  "type": "bytes"
+                }
+              ],
+              "internalType": "struct ISafeBoxManager.DecryptionApplication",
+              "name": "application",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint256",
+              "name": "expirationBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "requester",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISafeBoxManager.DecryptionRequest",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getEncryptionKey",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract StakeHouseUniverse",
+          "name": "_universe",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_safeBoxPublicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "init",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "knotIdToInternalNonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "knotIdToRequest",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes",
+              "name": "knotId",
+              "type": "bytes"
+            },
+            {
+              "internalType": "address",
+              "name": "stakehouse",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "aesPublicKey",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct ISafeBoxManager.DecryptionApplication",
+          "name": "application",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expirationBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "requester",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "safeBoxPublicKey",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "universe",
+      "outputs": [
+        {
+          "internalType": "contract StakeHouseUniverse",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
