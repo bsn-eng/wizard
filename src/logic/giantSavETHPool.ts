@@ -9,19 +9,7 @@ interface CustomOverride extends Overrides {
     value?: BigNumber;
 }
 
-function overrides(value: BigNumber, options: CustomOverride = {}): CustomOverride {
-    const { gasLimit, gasPrice, nonce, type, ...rest } = options;
-    return {
-      ...rest,
-      value,
-      gasLimit,
-      gasPrice,
-      nonce,
-      type
-    };
-}
-
-export const _batchDepositETHForStaking = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string>>, stakeAmounts: Array<Array<string | BigNumber>>, ethValue: BigNumber) => {
+export const _batchDepositETHForStaking = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, amounts: Array<string | BigNumber>, blsPublicKeys: Array<Array<string>>, stakeAmounts: Array<Array<string | BigNumber>>) => {
 
     const arrayLength = savETHVaultAddresses.length;
     if(arrayLength != amounts.length || arrayLength != blsPublicKeys.length || arrayLength != stakeAmounts.length) {
@@ -43,16 +31,13 @@ export const _batchDepositETHForStaking = async (signer: Signer | Provider, savE
         }
     }
 
-    const overrideEthValue = overrides(ethValue, { gasLimit: 500000 });
-
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
     return contract.batchDepositETHForStaking(
         savETHVaultAddresses,
         amounts,
         blsPublicKeys,
-        stakeAmounts,
-        overrideEthValue
+        stakeAmounts
     )
 };
 
