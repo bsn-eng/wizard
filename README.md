@@ -739,11 +739,10 @@ Allows users to stake ETH in batches for different LSD Networks at once. The ETH
 `amounts`: List of number of ETH being set to each of the Protected Staking Pools  
 `blsPublicKeys`: 2 dimensional array of BLS public keys of specific LSD Network to receive ETH for staking  
 `stakeAmounts`: 2 dimensional array of number of ETH being sent to each of the BLS public keys  
-`ethValue`: Total ETH sent along with the transaction  
 
 #### Using the function
 ```js
-await wizard.giantSavETHPool.batchDepositETHForStaking(savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue);
+await wizard.giantSavETHPool.batchDepositETHForStaking(savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts);
 ```
 
 ### withdrawDETH function
@@ -817,11 +816,10 @@ This function allows users to deposit ETH in batches from the Giant Fees and MEV
 `amounts`: List of number of ETH to be transferred to each of the Fees and MEV pools  
 `blsPublicKeys`: 2 dimensional array of address of BLS public keys which receive ETH  
 `stakeAmounts`: 2 dimensional array of amount of ETH to be transferred to each of the BLS public keys  
-`ethValue`: Amount of ETH attached with the transaction  
 
 #### Using the function
 ```js
-await wizard.giantFeesAndMevPool.batchDepositETHForStaking(feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue);
+await wizard.giantFeesAndMevPool.batchDepositETHForStaking(feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts);
 ```
 
 ### claimRewards function
