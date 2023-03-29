@@ -1,5 +1,5 @@
 # Giant Fees and MEV sub-class
-This sub-class exposes all the necessary functions from the Giant Fees and MEV pool of the LSD Network. For anyone to use this sub-class, it is necessary to initialize the sub-class with `signerOrProvider` instance and `feesAndMevPoolAddress`.  
+This sub-class exposes all the necessary functions from the Giant Fees and MEV pool of the LSD Network. For anyone to use this sub-class, it is necessary to initialize the sub-class with `signerOrProvider` instance.  
 
 ## batchDepositETHForStaking function
 This function allows users to deposit ETH in batches from the Giant Fees and MEV pool to multiple Fees and MEV pools of different LSD Networks. A node runner should be on a lookout in case the pool is falling short of ETH and when the Giant pool gets funded with ETH, he can then use these ETH in the respective LSD network to get them staked.  
