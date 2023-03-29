@@ -729,7 +729,7 @@ await wizard.feesAndMevPool.claimFundsFromSyndicateForDistribution(blsPublicKeys
 ```
 
 ## Giant SavETH Pool sub-class
-This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance and `savETHVaultAddress`.  
+This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance.  
 
 ### batchDepositETHForStaking function
 Allows users to stake ETH in batches for different LSD Networks at once. The ETH that has been sitting idle is sent to the Protected Staking Pools of respective LSD Networks when this function is called by the node runner. A node runner should be on a look out and can use the funds if his LSD Network's Protected Staking Pool is falling short of ETH.  

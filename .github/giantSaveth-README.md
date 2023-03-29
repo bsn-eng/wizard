@@ -1,5 +1,5 @@
 # Giant SavETH Pool sub-class
-This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signer` instance.  
+This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance.  
 
 ## batchDepositETHForStaking function
 Allows users to stake ETH in batches for different LSD Networks at once. The ETH that has been sitting idle is sent to the Protected Staking Pools of respective LSD Networks when this function is called by the node runner. A node runner should be on a look out and can use the funds if his LSD Network's Protected Staking Pool is falling short of ETH.  
@@ -9,11 +9,10 @@ Allows users to stake ETH in batches for different LSD Networks at once. The ETH
 `amounts`: List of number of ETH being set to each of the Protected Staking Pools  
 `blsPublicKeys`: 2 dimensional array of BLS public keys of specific LSD Network to receive ETH for staking  
 `stakeAmounts`: 2 dimensional array of number of ETH being sent to each of the BLS public keys  
-`ethValue`: Total ETH sent along with the transaction  
 
 ### Using the function
 ```js
-await wizard.giantSavETHPool.batchDepositETHForStaking(savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue);
+await wizard.giantSavETHPool.batchDepositETHForStaking(savETHVaultAddresses, amounts, blsPublicKeys, stakeAmounts);
 ```
 
 ## withdrawDETH function
@@ -27,20 +26,6 @@ Allow a user to burn their Giant Protected Staking LP token in exchange of dETH 
 ### Using the function
 ```js
 await wizard.giantSavETHPool.withdrawDETH(savETHVaultAddresses, lpTokens, amounts);
-```
-
-## batchRotateLPTokens function
-Allow users to rotate their ETH from one BLS public key of an LSD Network to another.  
-
-### Input params
-`savETHVaultAddresses`: List of address of Protected Staking Pools  
-`oldLPTokens`: 2 dimensional array of LP tokens that need to be rotated  
-`newLPTokens`: 2 dimensional array of LP tokens that will be minted in exchange of old LP tokens  
-`amounts`: 2 dimensional array of number of LP tokens to be rotated.  
-
-### Using the function
-```js
-await wizard.giantSavETHPool.batchRotateLPTokens(savETHVaultAddresses, oldLPTokens, newLPTokens, amounts);
 ```
 
 ## bringUnusedETHBackIntoGiantPool function
