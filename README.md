@@ -907,7 +907,7 @@ await wizard.giantFeesAndMevPool.withdrawETH(amount);
 ```
 
 ## Contract Instance sub-class
-This sub-class allows users to get the contract instance of specific smart contracts of the LSD network. This turns out to be useful when a function from one of the smart contracts is not exposed in Wizard SDK directly. For a user to use this sub-class, it is necessary to initialize the Wizard SDK with the `signer` instance.  
+This sub-class allows users to get the contract instance of specific smart contracts of the LSD network. This turns out to be useful when a function from one of the smart contracts is not exposed in Wizard SDK directly. For a user to use this sub-class, it is necessary to initialize the Wizard SDK with the `signerOrProvider` instance.  
 
 ### Contracts exposed via the sub-class
 * lsdnFactory: LSDN factory (used to deploy a new LSD Network)  
