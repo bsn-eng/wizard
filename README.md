@@ -507,7 +507,7 @@ await wizard.utils.recoverSigningKey(safeBoxAddress, nodeRunnerAddress, blsPubli
 ``` 
 
 ## SavETH Pool sub-class
-This sub-class exposes all the necessary functions from the SavETHVault smart contract. For anyone to use this sub-class it is necessary to initialize the Wizard SDK with the `signer` instance and `savETHPoolAddress`. SavETH Pool Address is the Protected Staking Pool address of the respective LSD.  
+This sub-class exposes all the necessary functions from the SavETHVault smart contract. For anyone to use this sub-class it is necessary to initialize the Wizard SDK with the `signerOrProvider` instance and `savETHPoolAddress`. SavETH Pool Address is the Protected Staking Pool address of the respective LSD.  
 
 ### getIndexOwnedByTheVault function
 Fetches the savETH index created upon deployment of the Protected Staking Pool of the LSD. Every LSD network has it's own unique savETH index which holds dETH for users that have their validator minted.  
