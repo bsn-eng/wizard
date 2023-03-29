@@ -191,6 +191,19 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "blsPublicKey",
+        "type": "bytes"
+      }
+    ],
+    "name": "savETHManuallyAddedToOpenIndex",
+    "type": "event"
+  },
+  {
     "inputs": [],
     "name": "KNOT_BATCH_AMOUNT",
     "outputs": [
@@ -233,6 +246,19 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "_blsPublicKeyOfKnot",
+        "type": "bytes"
+      }
+    ],
+    "name": "addSavETHToOpenIndex",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

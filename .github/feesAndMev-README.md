@@ -1,5 +1,5 @@
 # Fees and MEV sub-class
-This sub-class exposes all the necessary functions required for user to interact with the Fees and MEV Pool of the LSD network. The sub-class exposes all the necessary functions from the StakingFundsVault smart contract. For a user to interact with this sub-class, it is necessary to initialize the Wizard SDK with `signer` instance and `feesAndMevPoolAddress`.  
+This sub-class exposes all the necessary functions required for user to interact with the Fees and MEV Pool of the LSD network. The sub-class exposes all the necessary functions from the StakingFundsVault smart contract. For a user to interact with this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance and `feesAndMevPoolAddress`.  
 
 ## totalShares function
 Fetches the total number of LP tokens issued by the pool.  
@@ -97,21 +97,6 @@ Allows users to claim ETH from the syndicate contract if the respective BLS publ
 await wizard.feesAndMevPool.claimRewards(recipient, blsPublicKeys);
 ```
 
-## batchPreviewAccumulatedETHByBLSKeys function
-Preview total ETH accumulated by a staking funds LP token holder associated with many KNOTs that have minted derivatives.  
-
-### Input params
-`userAddress`: Ethereum execution layer address of the LP token holder  
-`blsPublicKeys`: List of BLS public keys associated with the LP tokens held by the user  
-
-### Using the function
-```js
-await wizard.feesAndMevPool.batchPreviewAccumulatedETHByBLSKeys(userAddress, blsPublicKeys);
-```
-
-### Returns
-Total accumulated ETH in Big Numbers.  
-
 ## batchPreviewAccumulatedETH function
 Preview total ETH accumulated by a user for multiple LP tokens.  
 
@@ -126,21 +111,6 @@ await wizard.feesAndMevPool.batchPreviewAccumulatedETH(userAddress, lpTokens);
 
 ### Returns
 Total ETH accumulated by the user in Big NUmbers.  
-
-##  function
-Preview ETH accumulated by the user for a single LP token.  
-
-### Input params
-`userAddress`: Ethereum execution layer address of the LP token holder  
-`lpTokens`: Address of the LP token that the user holds  
-
-### Using the function
-```js
-await wizard.feesAndMevPool.previewAccumulatedETH(userAddress, lpToken);
-```
-
-### Returns
-Total ETH accumulated by the user for the LP token.  
 
 ## claimFundsFromSyndicateForDistribution function
 Claim ETH to the Fees and MEV Pool, from the syndicate, that was accrued by a list of actively staked validators.  
