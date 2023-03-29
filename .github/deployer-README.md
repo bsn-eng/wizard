@@ -1,5 +1,5 @@
 # Deployer sub-class:  
-This sub package deals with deployment of a new LSD network. Any user that initializes the Wizard SDK with `signer` instance can access this sub-class.  
+This sub package deals with deployment of a new LSD network. Any user that initializes the Wizard SDK with `signerOrProvider` instance can access this sub-class.  
 
 ## deployNewLiquidStakingDerivativeNetwork function
 Used to deploy a new LSD network.  
