@@ -1,5 +1,5 @@
 # Giant Fees and MEV sub-class
-This sub-class exposes all the necessary functions from the Giant Fees and MEV pool of the LSD Network. For anyone to use this sub-class, it is necessary to initialize the sub-class with `signer` instance.  
+This sub-class exposes all the necessary functions from the Giant Fees and MEV pool of the LSD Network. For anyone to use this sub-class, it is necessary to initialize the sub-class with `signerOrProvider` instance and `feesAndMevPoolAddress`.  
 
 ## batchDepositETHForStaking function
 This function allows users to deposit ETH in batches from the Giant Fees and MEV pool to multiple Fees and MEV pools of different LSD Networks. A node runner should be on a lookout in case the pool is falling short of ETH and when the Giant pool gets funded with ETH, he can then use these ETH in the respective LSD network to get them staked.  
@@ -9,11 +9,10 @@ This function allows users to deposit ETH in batches from the Giant Fees and MEV
 `amounts`: List of number of ETH to be transferred to each of the Fees and MEV pools  
 `blsPublicKeys`: 2 dimensional array of address of BLS public keys which receive ETH  
 `stakeAmounts`: 2 dimensional array of amount of ETH to be transferred to each of the BLS public keys  
-`ethValue`: Amount of ETH attached with the transaction  
 
 ### Using the function
 ```js
-await wizard.giantFeesAndMevPool.batchDepositETHForStaking(feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts, ethValue);
+await wizard.giantFeesAndMevPool.batchDepositETHForStaking(feesAndMevPoolAddresses, amounts, blsPublicKeys, stakeAmounts);
 ```
 
 ## claimRewards function
@@ -44,20 +43,6 @@ await wizard.giantFeesAndMevPool.previewAccumulatedETH(userAddress, feesAndMevPo
 
 ### Returns
 Accumulated ETH in Big Numbers.  
-
-## batchRotateLPTokens function
-Allows users to batch rotate their existing deposited ETH from one BLS public key to another.  
-
-### Input params
-`feesAndMevPoolAddresses`: List of address of Fees and MEV pools that hold the LP tokens  
-`oldLPTokens`: 2 dimensional array of address of old LP tokens to be rotated  
-`newLPToken`: 2 dimensional array of address of new LP tokens to be minted after burning the old LP tokens  
-`amounts`: 2 dimensional array of number of old LP tokens of each type to be rotated.  
-
-### Using the function
-```js
-await wizard.giantFeesAndMevPool.batchRotateLPTokens(feesAndMevPoolAddresses, oldLPTokens, newLPToken, amounts);
-```
 
 ## bringUnusedETHBackIntoGiantPool function
 Allows user to bring back unstaked ETH from the Fees and MEV pool of different LSD Networks to the Giant Fees and MEV Pool.  
