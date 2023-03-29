@@ -10,7 +10,7 @@ yarn add typescript typechain @typechain/ethers-v5 @types/lodash
 ```
 
 ## Installation
-To install the SDK use the command `yarn add @blockswaplab/wizard`  
+To install the SDK use the command `yarn add @blockswaplab/lsd-wizard`  
 
 ## Using the SDK
 One of the ways to import and initialize the Wizard SDK is:
