@@ -279,6 +279,31 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "blsPubKey",
+        "type": "bytes"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "smartWallet",
+        "type": "address"
+      }
+    ],
+    "name": "sETHUnstakedForRageQuit",
+    "type": "event"
+  },
+  {
     "inputs": [
       {
         "internalType": "contract LPToken",
@@ -699,6 +724,19 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract LPToken",
+        "name": "_lpToken",
+        "type": "address"
+      }
+    ],
+    "name": "restoreFreeFloatingSlotToSmartWalletForRageQuit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

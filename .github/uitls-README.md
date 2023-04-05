@@ -232,19 +232,6 @@ await wizard.utils.isBLSPublicKeyBanned(blsPublicKey);
 ### Returns
 Boolean. `true` if banned, `false` otherwise.  
 
-## executeAsSmartWallet function
-Enables operations proxied through DAO contract to another contract. Can only be called by the DAO address set during deployment of the LSD. DAO address can be any EOA.  
-
-### Input params
-`nodeRunnerAddress`: Address of the node runner  
-`targetContractAddress`: Address of the target smart contract  
-`encodedFunctionData`: encoded data of the function to be called on the target smart contract  `ethValue`: ETH attached with the transaction  
-
-### Using the function
-```js
-await wizard.utils.executeAsSmartWallet(nodeRunnerAddress, targetContractAddress, encodedFunctionData, ethValue);
-```
-
 ## deRegisterKnotsFromSyndicate function
 For knots no longer operational, DAO can de register the knot from the syndicate.  
 
@@ -254,19 +241,6 @@ For knots no longer operational, DAO can de register the knot from the syndicate
 ### Using the function
 ```js
 await wizard.utils.deRegisterKnotsFromSyndicate(blsPublicKeys);
-```
-
-## restoreFreeFloatingSharesToSmartWalletForRageQuit function
-In preparation of a Rage Quit, restore sETH to a smart wallet which are recoverable with the execution methods in the event this step does not go to plan. Can be only called by the DAO address.  
-
-### Input params
-`smartWalletAddress`: Address of the smart wallet associated with the KNOT  
-`blsPublicKeys`: List of BLS public key of the KNOT  
-`amounts`: List of amount. Amounts are number of free floating sETH that will be unstaked for the BLS public keys.  
-
-### Using the function
-```js
-await wizard.utils.restoreFreeFloatingSharesToSmartWalletForRageQuit(smartWalletAddress, blsPublicKeys, amounts);
 ```
 
 ## updateDaoAddress function
@@ -336,18 +310,6 @@ Appoint a new representative for the node runner. Should be called by the node r
 await wizard.utils.rotateEOARepresentative(newRepresentativeAddress);
 ```
 
-## rotateEOARepresentativeOfNodeRunner function
-Allows the DAO to rotate representative in the case that node runner is not available (to facilitate staking). Can be only called by the DAO address.  
-
-### Input params
-`nodeRunnerAddress`: Address of the node runner  
-`newRepresentativeAddress`: Address of the new EOA representative of the node runner  
-
-### Using the function
-```js
-await wizard.utils.rotateEOARepresentativeOfNodeRunner(nodeRunnerAddress, newRepresentativeAddress);
-```
-
 ## withdrawETHForKnot function
 Allow node runners to withdraw ETH from their smart wallet. ETH can only be withdrawn until the KNOT has not been staked. Once the ETh is withdrawn for the BLS public key, this key will be banned from the LSD and can no longer be used to stake.  
 
@@ -360,7 +322,7 @@ Allow node runners to withdraw ETH from their smart wallet. ETH can only be with
 await wizard.utils.withdrawETHForKnot(recipientAddress, blsPublicKey);
 ```
 
-## rotateNodeRunnerOfSmartWallet function
+## manageNodeRunnerSmartWallet function
 Allow appointing a new node runner if the existing node runner coordinates with the DAO to sell their wallet. Can be only called by the DAO address or the current owner of the smart wallet.  
 
 ### Input params
@@ -370,7 +332,7 @@ Allow appointing a new node runner if the existing node runner coordinates with 
 
 ### Using the function
 ```js
-await wizard.utils.rotateNodeRunnerOfSmartWallet(currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
+await wizard.utils.manageNodeRunnerSmartWallet(currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
 ```
 
 ## claimRewardsAsNodeRunner function
@@ -398,20 +360,6 @@ Allows node runners to register a new BLS public key. If the node runner is inte
 ```js
 await wizard.utils.registerBLSPublicKeys(blsPublicKeys, blsSignatures, representativeAddress, ethValue);
 ```
-
-## isKnotDeregistered function
-Check if a KNOT has been de-registered from the LSD network.  
-
-### Input params
-`blsPublicKey`: BLS public key of the KNOT  
-
-### Using the function
-```js
-await wizard.utils.isKnotDeregistered(blsPublicKey);
-```
-
-### Returns
-Boolean. `true` if de-registered, `false` otherwise.  
 
 ## stake function
 Stake a list of BLS public keys. Make sure that there is enough ETH for all the BLS public keys. Can be only called by a node runner who has registered BLS public keys in the LSD network.  
@@ -450,3 +398,40 @@ await wizard.utils.getNetworkFeeRecipient();
 
 ### Returns
 Ethereum address of the LSD's fee recipient  
+
+
+## toggleHouseGatekeeper function
+Update the gatkeeping status of the LSD. This function can only be called by the DAO address of the LSD.  
+
+### Input params
+`enable`: Boolean value. When set to `true`, will enable gatekeeping and disable when set to `false`.  
+
+### Using the function
+```js
+await wizard.utils.toggleHouseGatekeeper(enable);
+``` 
+
+## transferSmartWalletOwnership function
+Allows an LSD node operator to transfer their smart wallet to another address.    
+
+### Input params
+`newOwner`: Address of the new owner of the smart wallet  
+
+### Using the function
+```js
+await wizard.utils.transferSmartWalletOwnership(newOwner);
+``` 
+
+## recoverSigningKey function
+This function allows DAO address or the node operator to recover the signing key of a validator.  
+
+### Input params
+`safeBoxAddress`: Address of the safe box performing the recovery procedure  
+`nodeRunnerAddress`: Address of the node operator associated with the BLS public key  
+`blsPublicKey`: BLS public key to be recovered  
+`hAesPublicKey`: Hybrid encryption public key that can unlock multiparty computation used for recovery  
+
+### Using the function
+```js
+await wizard.utils.recoverSigningKey(safeBoxAddress, nodeRunnerAddress, blsPublicKey, hAesPublicKey);
+``` 

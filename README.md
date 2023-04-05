@@ -10,7 +10,7 @@ yarn add typescript typechain @typechain/ethers-v5 @types/lodash
 ```
 
 ## Installation
-To install the SDK use the command `yarn add @blockswaplab/wizard`  
+To install the SDK use the command `yarn add @blockswaplab/lsd-wizard`  
 
 ## Using the SDK
 One of the ways to import and initialize the Wizard SDK is:
@@ -507,7 +507,7 @@ await wizard.utils.recoverSigningKey(safeBoxAddress, nodeRunnerAddress, blsPubli
 ``` 
 
 ## SavETH Pool sub-class
-This sub-class exposes all the necessary functions from the SavETHVault smart contract. For anyone to use this sub-class it is necessary to initialize the Wizard SDK with the `signer` instance and `savETHPoolAddress`. SavETH Pool Address is the Protected Staking Pool address of the respective LSD.  
+This sub-class exposes all the necessary functions from the SavETHVault smart contract. For anyone to use this sub-class it is necessary to initialize the Wizard SDK with the `signerOrProvider` instance and `savETHPoolAddress`. SavETH Pool Address is the Protected Staking Pool address of the respective LSD.  
 
 ### getIndexOwnedByTheVault function
 Fetches the savETH index created upon deployment of the Protected Staking Pool of the LSD. Every LSD network has it's own unique savETH index which holds dETH for users that have their validator minted.  
@@ -729,7 +729,7 @@ await wizard.feesAndMevPool.claimFundsFromSyndicateForDistribution(blsPublicKeys
 ```
 
 ## Giant SavETH Pool sub-class
-This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance and `savETHVaultAddress`.  
+This sub-class exposes all the necessary functions required to interact with the Giant Protected Staking pool, which is present as the GiantSavETHVaultPool smart contract of LSD Network. To use this sub-class, it is necessary to initialize the Wizard SDK with `signerOrProvider` instance.  
 
 ### batchDepositETHForStaking function
 Allows users to stake ETH in batches for different LSD Networks at once. The ETH that has been sitting idle is sent to the Protected Staking Pools of respective LSD Networks when this function is called by the node runner. A node runner should be on a look out and can use the funds if his LSD Network's Protected Staking Pool is falling short of ETH.  
@@ -907,7 +907,7 @@ await wizard.giantFeesAndMevPool.withdrawETH(amount);
 ```
 
 ## Contract Instance sub-class
-This sub-class allows users to get the contract instance of specific smart contracts of the LSD network. This turns out to be useful when a function from one of the smart contracts is not exposed in Wizard SDK directly. For a user to use this sub-class, it is necessary to initialize the Wizard SDK with the `signer` instance.  
+This sub-class allows users to get the contract instance of specific smart contracts of the LSD network. This turns out to be useful when a function from one of the smart contracts is not exposed in Wizard SDK directly. For a user to use this sub-class, it is necessary to initialize the Wizard SDK with the `signerOrProvider` instance.  
 
 ### Contracts exposed via the sub-class
 * lsdnFactory: LSDN factory (used to deploy a new LSD Network)  

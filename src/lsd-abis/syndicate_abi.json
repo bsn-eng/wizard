@@ -272,6 +272,19 @@
   },
   {
     "inputs": [],
+    "name": "ACTIVATION_BATCH_SIZE",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "PRECISION",
     "outputs": [
       {

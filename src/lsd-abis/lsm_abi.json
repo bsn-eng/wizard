@@ -76,6 +76,11 @@
   },
   {
     "inputs": [],
+    "name": "InvalidSelector",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "InvalidTickerLength",
     "type": "error"
   },
@@ -921,92 +926,13 @@
       },
       {
         "internalType": "bytes",
-        "name": "_blsPublicKey",
+        "name": "_data",
         "type": "bytes"
-      },
-      {
-        "components": [
-          {
-            "internalType": "bytes",
-            "name": "blsPublicKey",
-            "type": "bytes"
-          },
-          {
-            "internalType": "bytes",
-            "name": "withdrawalCredentials",
-            "type": "bytes"
-          },
-          {
-            "internalType": "bool",
-            "name": "slashed",
-            "type": "bool"
-          },
-          {
-            "internalType": "uint64",
-            "name": "activeBalance",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "effectiveBalance",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "exitEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "activationEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "withdrawalEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "currentCheckpointEpoch",
-            "type": "uint64"
-          }
-        ],
-        "internalType": "struct IDataStructures.ETH2DataReport",
-        "name": "_balanceReport",
-        "type": "tuple"
-      },
-      {
-        "components": [
-          {
-            "internalType": "uint248",
-            "name": "deadline",
-            "type": "uint248"
-          },
-          {
-            "internalType": "uint8",
-            "name": "v",
-            "type": "uint8"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "r",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "s",
-            "type": "bytes32"
-          }
-        ],
-        "internalType": "struct IDataStructures.EIP712Signature",
-        "name": "_signature",
-        "type": "tuple"
       }
     ],
     "name": "rageQuit",
     "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -1058,6 +984,24 @@
     "name": "registerBLSPublicKeys",
     "outputs": [],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_buildingType",
+        "type": "uint256"
+      }
+    ],
+    "name": "registerBuildingTypeToBrand",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
