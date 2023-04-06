@@ -35,7 +35,9 @@ import {
     _getNetworkFeeRecipient,
     _toggleHouseGatekeeper,
     _transferSmartWalletOwnership,
-    _recoverSigningKey
+    _recoverSigningKey,
+    _updateSyndicateActivationDistanceInBlocks,
+    _getGateKeeperAddress
 } from '../logic/utils';
 import { AuthenticatedBalanceReportT, FinalisedBeaconChainReportT } from '../types';
 
@@ -186,5 +188,13 @@ export class UtilsSubPackage {
 
     recoverSigningKey(safeBoxAddress: string, nodeRunnerAddress: string, blsPublicKey: string, hAesPublicKey: string) {
         return _recoverSigningKey(this.etherSigner, this.liquidStakingManagerAddress, safeBoxAddress, nodeRunnerAddress, blsPublicKey, hAesPublicKey);
+    }
+
+    updateSyndicateActivationDistanceInBlocks(distance: BigNumber) {
+        return _updateSyndicateActivationDistanceInBlocks(this.etherSigner, this.liquidStakingManagerAddress, distance);
+    }
+
+    getGateKeeperAddress() {
+        return _getGateKeeperAddress(this.etherSigner, this.liquidStakingManagerAddress);
     }
 }
