@@ -374,3 +374,19 @@ export const _recoverSigningKey = async (signer: Signer | Provider, liquidStakin
         _add0x(hAesPublicKey)
     );
 };
+
+export const _updateSyndicateActivationDistanceInBlocks = async (signer: Signer | Provider, liquidStakingManagerAddress: string, distance: BigNumber) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+
+    return contract.updateSyndicateActivationDistanceInBlocks(
+        distance
+    );
+};
+
+export const _getGateKeeperAddress = async (signer: Signer | Provider, liquidStakingManagerAddress: string) => {
+
+    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
+    
+    return contract.gatekeeper();
+};
