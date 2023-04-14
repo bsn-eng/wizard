@@ -37,7 +37,7 @@ export const goerliLSDUrls: Record<string, string> = {
 }
 
 export const mainnetLSDUrls: Record<string, string> = {
-	SUBGRAPH_ENDPOINT: "https://gateway.thegraph.com/api/403d404492bbd29f3d4e97044fe652e7/subgraphs/id/FXWYdAqgDbmfiahrDB85juPnZ123XiTsojSbosBAJkFK"
+	SUBGRAPH_ENDPOINT: "https://api.thegraph.com/subgraphs/name/stakehouse-dev/lsd"
 }
 
 export const customErrors: Record<string, string> = {
