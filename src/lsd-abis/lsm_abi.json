@@ -76,17 +76,7 @@
   },
   {
     "inputs": [],
-    "name": "InvalidSelector",
-    "type": "error"
-  },
-  {
-    "inputs": [],
     "name": "InvalidTickerLength",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NewRunnerHasASmartWallet",
     "type": "error"
   },
   {
@@ -240,31 +230,6 @@
       }
     ],
     "name": "NodeRunnerBanned",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "wallet",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "oldRunner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newRunner",
-        "type": "address"
-      }
-    ],
-    "name": "NodeRunnerOfSmartWalletRotated",
     "type": "event"
   },
   {
@@ -456,6 +421,19 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nodeRunner",
+        "type": "address"
+      }
+    ],
+    "name": "banNodeRunnerFromSettingUpBLSKeys",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -773,29 +751,6 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_current",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_new",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "_wasPreviousNodeRunnerMalicious",
-        "type": "bool"
-      }
-    ],
-    "name": "manageNodeRunnerSmartWallet",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "bytes[]",
         "name": "_blsPublicKeyOfKnots",
         "type": "bytes[]"
@@ -926,8 +881,87 @@
       },
       {
         "internalType": "bytes",
-        "name": "_data",
+        "name": "_blsPublicKey",
         "type": "bytes"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes",
+            "name": "blsPublicKey",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bytes",
+            "name": "withdrawalCredentials",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bool",
+            "name": "slashed",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint64",
+            "name": "activeBalance",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "effectiveBalance",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "exitEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "activationEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "withdrawalEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "currentCheckpointEpoch",
+            "type": "uint64"
+          }
+        ],
+        "internalType": "struct IDataStructures.ETH2DataReport",
+        "name": "_beaconChainReport",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint248",
+            "name": "deadline",
+            "type": "uint248"
+          },
+          {
+            "internalType": "uint8",
+            "name": "v",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "r",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "s",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct IDataStructures.EIP712Signature",
+        "name": "_signatureMetadata",
+        "type": "tuple"
       }
     ],
     "name": "rageQuit",
