@@ -282,29 +282,6 @@
   {
     "inputs": [
       {
-        "internalType": "contract LPToken[]",
-        "name": "_oldLPTokens",
-        "type": "address[]"
-      },
-      {
-        "internalType": "contract LPToken[]",
-        "name": "_newLPTokens",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_amounts",
-        "type": "uint256[]"
-      }
-    ],
-    "name": "batchRotateLPTokens",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "contract LPToken",
         "name": "_lpToken",
         "type": "address"
@@ -610,29 +587,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "contract LPToken",
-        "name": "_oldLPToken",
-        "type": "address"
-      },
-      {
-        "internalType": "contract LPToken",
-        "name": "_newLPToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "rotateLPTokens",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

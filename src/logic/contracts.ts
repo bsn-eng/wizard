@@ -10,7 +10,8 @@ import {
     Giant_fees_and_mev_abi__factory,
     Syndicate_abi__factory,
     Smart_wallet_abi__factory,
-    Smart_wallet_naming_abi__factory
+    Smart_wallet_naming_abi__factory,
+    Rage_quit_assistant_abi__factory
 } from '../contracts/lsd/index';
 
 import { Erc20_generic_abi__factory } from '../contracts/stakehouse/index';
@@ -70,6 +71,11 @@ export const getContractInstance = async (signer: Signer | Provider) => {
         signer
     );
 
+    const getRageQuitAssistant = (rageQuitAssistantAddress: string) => Rage_quit_assistant_abi__factory.connect(
+        rageQuitAssistantAddress,
+        signer
+    );
+
     return {
         lsdnFactory: getLSDNFactory,
         liquidStakingManager: getLiquidStakingManager,
@@ -80,6 +86,7 @@ export const getContractInstance = async (signer: Signer | Provider) => {
         syndicate: getSyndicate,
         smartWallet: getSmartWallet,
         smartWalletNamingRegistry: getSmartWalletNamingRegistry,
-        dETH: getDETH
+        dETH: getDETH,
+        rageQuitAssistant: getRageQuitAssistant
     }
 }
