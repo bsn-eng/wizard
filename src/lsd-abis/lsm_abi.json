@@ -875,11 +875,6 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_nodeRunner",
-        "type": "address"
-      },
-      {
         "internalType": "bytes",
         "name": "_blsPublicKey",
         "type": "bytes"

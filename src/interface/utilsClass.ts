@@ -27,7 +27,6 @@ import {
     _rotateEOARepresentative,
     _updateNodeRunnerWhitelistStatus,
     _withdrawETHForKnot,
-    _manageNodeRunnerSmartWallet,
     _claimRewardsAsNodeRunner,
     _registerBLSPublicKeys,
     _stake,
@@ -152,10 +151,6 @@ export class UtilsSubPackage {
 
     withdrawETHForKnot(recipientAddress: string, blsPublicKey: string) {
         return _withdrawETHForKnot(this.etherSigner, this.liquidStakingManagerAddress, recipientAddress, blsPublicKey);
-    }
-
-    manageNodeRunnerSmartWallet(currentNodeRunner: string, newNodeRunner: string, wasCurrentNodeRunnerMalicious: boolean) {
-        return _manageNodeRunnerSmartWallet(this.etherSigner, this.liquidStakingManagerAddress, currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
     }
 
     claimRewardsAsNodeRunner(recipientAddress: string, blsPublicKeys: Array<string>) {

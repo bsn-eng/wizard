@@ -252,17 +252,6 @@ export const _withdrawETHForKnot = async (signer: Signer | Provider, liquidStaki
     );
 };
 
-export const _manageNodeRunnerSmartWallet = async (signer: Signer | Provider, liquidStakingManagerAddress: string, currentNodeRunner: string, newNodeRunner: string, wasCurrentNodeRunnerMalicious: boolean) => {
-
-    const contract = (await getContractInstance(signer)).liquidStakingManager(liquidStakingManagerAddress);
-
-    return contract.manageNodeRunnerSmartWallet(
-        _add0x(currentNodeRunner),
-        _add0x(newNodeRunner),
-        wasCurrentNodeRunnerMalicious
-    );
-};
-
 export const _claimRewardsAsNodeRunner = async (signer: Signer | Provider, liquidStakingManagerAddress: string, recipientAddress: string, blsPublicKeys: Array<string>) => {
 
     for(let i=0; i<blsPublicKeys.length; ++i) {

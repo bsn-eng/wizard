@@ -19,33 +19,14 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "admin",
-        "type": "address"
+        "internalType": "bytes",
+        "name": "blsPubKey",
+        "type": "bytes"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
-        "name": "recipient",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "ERC20Recovered",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sender",
+        "name": "user",
         "type": "address"
       },
       {
@@ -55,7 +36,7 @@
         "type": "uint256"
       }
     ],
-    "name": "ETHDeposited",
+    "name": "ETHClaimedFromRageQuit",
     "type": "event"
   },
   {
@@ -138,32 +119,6 @@
       }
     ],
     "name": "ETHWithdrawnByDepositor",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "lpToken",
-        "type": "address"
-      }
-    ],
-    "name": "LPAddedForMigration",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "fromLPToken",
-        "type": "address"
-      }
-    ],
-    "name": "LPMigrated",
     "type": "event"
   },
   {
@@ -264,18 +219,18 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "admin",
-        "type": "address"
+        "internalType": "bytes",
+        "name": "blsPubKey",
+        "type": "bytes"
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
+        "indexed": true,
+        "internalType": "address",
+        "name": "assistant",
+        "type": "address"
       }
     ],
-    "name": "WETHUnwrapped",
+    "name": "RageQuitAssistantDeployed",
     "type": "event"
   },
   {
@@ -448,29 +403,6 @@
   {
     "inputs": [
       {
-        "internalType": "contract LPToken[]",
-        "name": "_oldLPTokens",
-        "type": "address[]"
-      },
-      {
-        "internalType": "contract LPToken[]",
-        "name": "_newLPTokens",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_amounts",
-        "type": "uint256[]"
-      }
-    ],
-    "name": "batchRotateLPTokens",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "_from",
         "type": "address"
@@ -548,6 +480,24 @@
   {
     "inputs": [
       {
+        "internalType": "contract LPToken",
+        "name": "_lpToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "claimETHFromRageQuit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "bytes[]",
         "name": "_blsPubKeys",
         "type": "bytes[]"
@@ -604,6 +554,24 @@
     "inputs": [
       {
         "internalType": "bytes",
+        "name": "_blsPublicKey",
+        "type": "bytes"
+      },
+      {
+        "internalType": "bool",
+        "name": "_depositSETH",
+        "type": "bool"
+      }
+    ],
+    "name": "deployRageQuitAssistant",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
         "name": "_blsPublicKeyOfKnot",
         "type": "bytes"
       },
@@ -622,6 +590,45 @@
       }
     ],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getFullWithdrawalsAdaptor",
+    "outputs": [
+      {
+        "internalType": "contract IFullWithdrawals",
+        "name": "withdrawals",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getRageQuitAssistantDeployer",
+    "outputs": [
+      {
+        "internalType": "contract RageQuitAssistantDeployer",
+        "name": "deployer",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getRageQuitLPDeployer",
+    "outputs": [
+      {
+        "internalType": "contract RageQuitLPDeployer",
+        "name": "deployer",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -729,12 +736,115 @@
   {
     "inputs": [
       {
-        "internalType": "contract LPToken",
-        "name": "_lpToken",
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "rageQuitAssistantForBlsPublicKey",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "restoreFreeFloatingSlotToSmartWalletForRageQuit",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_depositSETH",
+        "type": "bool"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_blsPublicKey",
+        "type": "bytes"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes",
+            "name": "blsPublicKey",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bytes",
+            "name": "withdrawalCredentials",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bool",
+            "name": "slashed",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint64",
+            "name": "activeBalance",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "effectiveBalance",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "exitEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "activationEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "withdrawalEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "currentCheckpointEpoch",
+            "type": "uint64"
+          }
+        ],
+        "internalType": "struct IDataStructures.ETH2DataReport",
+        "name": "_beaconChainReport",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint248",
+            "name": "deadline",
+            "type": "uint248"
+          },
+          {
+            "internalType": "uint8",
+            "name": "v",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "r",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "s",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct IDataStructures.EIP712Signature",
+        "name": "_signatureMetadata",
+        "type": "tuple"
+      }
+    ],
+    "name": "reportVoluntaryExitAndDeployRageQuitAssistant",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -743,21 +853,11 @@
     "inputs": [
       {
         "internalType": "contract LPToken",
-        "name": "_oldLPToken",
+        "name": "_lpToken",
         "type": "address"
-      },
-      {
-        "internalType": "contract LPToken",
-        "name": "_newLPToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
       }
     ],
-    "name": "rotateLPTokens",
+    "name": "sETHDepositIntoRageQuitAssistant",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
