@@ -182,6 +182,37 @@
       {
         "indexed": true,
         "internalType": "address",
+        "name": "lp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "blsPublicKey",
+        "type": "bytes"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "fundedInBatch",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "ClaimETHFromRageQuit",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
         "name": "sender",
         "type": "address"
       },
@@ -256,6 +287,31 @@
       }
     ],
     "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountOfETHSent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalLpBurnt",
+        "type": "uint256"
+      }
+    ],
+    "name": "PartialWithdrawal",
     "type": "event"
   },
   {
@@ -532,6 +588,47 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_savETHVaults",
+        "type": "address[]"
+      },
+      {
+        "internalType": "contract LPToken[][]",
+        "name": "_lpTokens",
+        "type": "address[][]"
+      },
+      {
+        "internalType": "uint256[][]",
+        "name": "_amounts",
+        "type": "uint256[][]"
+      }
+    ],
+    "name": "batchFetchETHFromRageQuit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_savETHVaults",
+        "type": "address[]"
+      },
+      {
+        "internalType": "contract LPToken[][]",
+        "name": "_lpTokens",
+        "type": "address[][]"
+      }
+    ],
+    "name": "batchPartialWithdrawal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "batchSize",
     "outputs": [
@@ -591,6 +688,19 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "_blsPublicKey",
+        "type": "bytes"
+      }
+    ],
+    "name": "claimETHFromRageQuit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "depositBatchCount",
     "outputs": [
@@ -614,6 +724,51 @@
     "name": "depositETH",
     "outputs": [],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "_blsPublicKey",
+        "type": "bytes"
+      }
+    ],
+    "name": "depositETHForRageQuit",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "ethFromRageQuit",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "ethFromRageQuitForBlsKey",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -646,6 +801,24 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_savETHVault",
+        "type": "address"
+      },
+      {
+        "internalType": "contract LPToken",
+        "name": "_lpToken",
+        "type": "address"
+      }
+    ],
+    "name": "fetchETHFromRageQuit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -899,6 +1072,30 @@
         "internalType": "bytes32",
         "name": "",
         "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "rageQuitETHClaimedFromBatch",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
