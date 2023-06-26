@@ -58,49 +58,6 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "lpBal",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "dETHReceived",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "dETHMinted",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "userShareOfInflation",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "userShareOfDETH",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountOfLpBurnt",
-        "type": "uint256"
-      }
-    ],
-    "name": "Data",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
         "internalType": "bytes",
         "name": "blsPubKey",
         "type": "bytes"
@@ -892,17 +849,27 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "previewDETH",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "contract LPToken[]",
+        "name": "_lpTokens",
+        "type": "address[]"
+      }
+    ],
     "name": "previewPartialETHWithdrawalAmount",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {

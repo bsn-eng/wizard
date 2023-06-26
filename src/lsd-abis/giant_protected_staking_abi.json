@@ -562,6 +562,19 @@
   {
     "inputs": [
       {
+        "internalType": "bytes[]",
+        "name": "_blsPublicKeys",
+        "type": "bytes[]"
+      }
+    ],
+    "name": "batchClaimETHFromRageQuit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address[]",
         "name": "_savETHVaults",
         "type": "address[]"
