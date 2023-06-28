@@ -361,6 +361,24 @@
   {
     "inputs": [
       {
+        "internalType": "contract LPToken[]",
+        "name": "_lpTokens",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_amounts",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "batchClaimETHFromRageQuit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "bytes[]",
         "name": "_blsPublicKeyOfKnots",
         "type": "bytes[]"
@@ -559,7 +577,7 @@
       },
       {
         "internalType": "bool",
-        "name": "_depositSETH",
+        "name": "_borrowFunds",
         "type": "bool"
       }
     ],
@@ -625,6 +643,19 @@
       {
         "internalType": "contract RageQuitLPDeployer",
         "name": "deployer",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getSweepReportingAdaptor",
+    "outputs": [
+      {
+        "internalType": "contract ISweepReporter",
+        "name": "reporter",
         "type": "address"
       }
     ],

@@ -149,3 +149,59 @@ export const _withdrawETH = async (signer: Signer | Provider, amount: string | B
 
     return contract.withdrawETH(amount);
 };
+
+export const _batchFetchETHFromRageQuit = async (signer: Signer | Provider, feesAndMevPoolAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
+
+    const arrayLength = feesAndMevPoolAddresses.length;
+    if(arrayLength != amounts.length || arrayLength != lpTokens.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<arrayLength; ++i) {
+        const lpTokensArray = lpTokens[i];
+        const amountsArray = amounts[i];
+
+        if(lpTokensArray.length != amountsArray.length) {
+            throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+        }
+
+        feesAndMevPoolAddresses[i] = _add0x(feesAndMevPoolAddresses[i]);
+
+        for(let j=0; j<lpTokensArray.length; ++j) {
+            lpTokens[i][j] = _add0x(lpTokens[i][j]);
+        }
+    }
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.batchFetchETHFromRageQuit(feesAndMevPoolAddresses, lpTokens, amounts);
+}
+
+
+export const _fetchETHFromRageQuit = async (signer: Signer | Provider, feesAndMevPoolAddress: string, lpToken: string) => {
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.fetchETHFromRageQuit(
+        _add0x(feesAndMevPoolAddress),
+        _add0x(lpToken)
+    );
+}
+
+export const _batchClaimETHFromRageQuit = async (signer: Signer | Provider, blsPublicKeys: Array<string>) => {
+
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    for(let i=0; i<blsPublicKeys.length; ++i) {
+        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
+    }
+
+    return contract.batchClaimETHFromRageQuit(blsPublicKeys);
+}
+
+export const _claimETHFromRageQuit = async (signer: Signer | Provider, blsPublicKey: string) => {
+    
+    const contract = (await getContractInstance(signer)).giantFeesAndMevPool();
+
+    return contract.claimETHFromRageQuit(_add0x(blsPublicKey));
+}

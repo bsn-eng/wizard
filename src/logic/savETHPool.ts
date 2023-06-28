@@ -124,3 +124,60 @@ export const _approveProtectedStakingPoolToTransferDETH = async (signer: Signer 
         amount
     );
 };
+
+export const _previewPartialETHWithdrawalAmount = async (signer: Signer | Provider, savETHVaultAddress: string, user: string, lpTokens: Array<string>) => {
+
+    for(let i=0; i<lpTokens.length; ++i) {
+        lpTokens[i] = _add0x(lpTokens[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.previewPartialETHWithdrawalAmount(
+        _add0x(user),
+        lpTokens
+    );
+}
+
+export const _batchPartialWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpTokens: Array<string>) => {
+    
+    for(let i=0; i<lpTokens.length; ++i) {
+        lpTokens[i] = _add0x(lpTokens[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.batchPartialWithdrawal(lpTokens);
+}
+
+export const _partialWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string) => {
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.partialWithdrawal(_add0x(lpToken));
+}
+
+export const _batchClaimETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddress: string, lpTokens: Array<string>, amounts: Array<string | BigNumber>) => {
+
+    if(lpTokens.length != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for (let i=0; i<lpTokens.length; ++i) {
+        lpTokens[i] = _add0x(lpTokens[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.batchClaimETHFromRageQuit(lpTokens, amounts);
+}
+
+export const _claimETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string, amount: string | BigNumber) => {
+
+    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
+
+    return contract.claimETHFromRageQuit(
+        _add0x(lpToken),
+        amount
+    );
+}
