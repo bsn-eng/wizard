@@ -134,3 +134,28 @@ export const _claimFundsFromSyndicateForDistribution = async (signer: Signer| Pr
         blsPublicKeys
     );
 };
+
+export const _batchClaimETHFromRageQuit = async (signer: Signer | Provider, feesAndMevPoolAddress: string, lpTokens: Array<string>, amounts: Array<string | BigNumber>) => {
+
+    if(lpTokens.length != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for (let i=0; i<lpTokens.length; ++i) {
+        lpTokens[i] = _add0x(lpTokens[i]);
+    }
+
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.batchClaimETHFromRageQuit(lpTokens, amounts);
+}
+
+export const _claimETHFromRageQuit = async (signer: Signer | Provider, feesAndMevPoolAddress: string, lpToken: string, amount: string | BigNumber) => {
+
+    const contract = (await getContractInstance(signer)).feesAndMevPool(feesAndMevPoolAddress);
+
+    return contract.claimETHFromRageQuit(
+        _add0x(lpToken),
+        amount
+    );
+}

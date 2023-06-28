@@ -9,6 +9,10 @@ import {
     _depositETH,
     _getIdleETH,
     _withdrawETH,
+    _batchFetchETHFromRageQuit,
+    _batchClaimETHFromRageQuit,
+    _fetchETHFromRageQuit,
+    _claimETHFromRageQuit
 } from '../logic/giantFeesAndMevPool';
 
 export class GiantFeesAndMevPoolSubPackage {
@@ -49,5 +53,21 @@ export class GiantFeesAndMevPoolSubPackage {
 
     withdrawETH(amount: string | BigNumber) {
         return _withdrawETH(this.etherSigner, amount);
+    }
+
+    batchFetchETHFromRageQuit(feesAndMevPoolAddresses: Array<string>, lpTokens: Array<Array<string>>,  amounts: Array<Array<string | BigNumber>>) {
+        return _batchFetchETHFromRageQuit(this.etherSigner, feesAndMevPoolAddresses, lpTokens, amounts);
+    }
+
+    fetchETHFromRageQuit(feesAndMevPoolAddress: string, lpToken: string) {
+        return _fetchETHFromRageQuit(this.etherSigner, feesAndMevPoolAddress, lpToken);
+    }
+
+    batchClaimETHFromRageQuit(blsPublicKeys: Array<string>) {
+        return _batchClaimETHFromRageQuit(this.etherSigner, blsPublicKeys);
+    }
+
+    claimETHFromRageQuit(blsPublicKey: string) {
+        return _claimETHFromRageQuit(this.etherSigner, blsPublicKey);
     }
 }
