@@ -73,4 +73,3 @@ export class FeesAndMevPoolSubPackage {
         return _claimETHFromRageQuit(this.etherSigner, this.feesAndMevPoolAddress, lpToken, amount);
     }
 }
-}
