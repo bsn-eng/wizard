@@ -11,6 +11,11 @@ import {
     _getdETHRequiredToIsolateWithdrawnKnot,
     _depositDETHForStaking,
     _approveProtectedStakingPoolToTransferDETH,
+    _previewPartialETHWithdrawalAmount,
+    _batchPartialWithdrawal,
+    _partialWithdrawal,
+    _batchClaimETHFromRageQuit,
+    _claimETHFromRageQuit
 } from '../logic/savETHPool';
 
 export class SavETHPoolSubPackage {
@@ -60,5 +65,25 @@ export class SavETHPoolSubPackage {
 
     approveProtectedStakingPoolToTransferDETH(amount: string | BigNumber) {
         return _approveProtectedStakingPoolToTransferDETH(this.etherSigner, this.savETHPoolAddress, amount);
+    }
+
+    previewPartialETHWithdrawalAmount(user: string, lpTokens: Array<string>) {
+        return _previewPartialETHWithdrawalAmount(this.etherSigner, this.savETHPoolAddress, user, lpTokens);
+    }
+
+    batchPartialWithdrawal(lpTokens: Array<string>) {
+        return _batchPartialWithdrawal(this.etherSigner, this.savETHPoolAddress, lpTokens);
+    }
+
+    partialWithdrawal(lpToken: string) {
+        return _partialWithdrawal(this.etherSigner, this.savETHPoolAddress, lpToken);
+    }
+
+    batchClaimETHFromRageQuit(lpTokens: Array<string>, amounts: Array<string | BigNumber>) {
+        return _batchClaimETHFromRageQuit(this.etherSigner, this.savETHPoolAddress, lpTokens, amounts);
+    }
+
+    claimETHFromRageQuit(lpToken: string, amount: string | BigNumber) {
+        return _claimETHFromRageQuit(this.etherSigner, this.savETHPoolAddress, lpToken, amount);
     }
 }

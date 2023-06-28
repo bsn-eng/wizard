@@ -11,6 +11,8 @@ import {
     _claimRewards,
     _batchPreviewAccumulatedETH,
     _claimFundsFromSyndicateForDistribution,
+    _batchClaimETHFromRageQuit,
+    _claimETHFromRageQuit,
 } from '../logic/feesAndMevPool';
 
 export class FeesAndMevPoolSubPackage {
@@ -62,4 +64,13 @@ export class FeesAndMevPoolSubPackage {
     claimFundsFromSyndicateForDistribution(blsPublicKeys: Array<string>) {
         return _claimFundsFromSyndicateForDistribution(this.etherSigner, this.feesAndMevPoolAddress, blsPublicKeys);
     }
+
+    batchClaimETHFromRageQuit(lpTokens: Array<string>, amounts: Array<string | BigNumber>) {
+        return _batchClaimETHFromRageQuit(this.etherSigner, this.feesAndMevPoolAddress, lpTokens, amounts);
+    }
+
+    claimETHFromRageQuit(lpToken: string, amount: string | BigNumber) {
+        return _claimETHFromRageQuit(this.etherSigner, this.feesAndMevPoolAddress, lpToken, amount);
+    }
+}
 }

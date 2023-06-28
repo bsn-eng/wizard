@@ -7,6 +7,11 @@ import {
     _depositETH,
     _getIdleETH,
     _withdrawETH,
+    _batchPartialWithdrawal,
+    _batchFetchETHFromRageQuit,
+    _batchClaimETHFromRageQuit,
+    _fetchETHFromRageQuit,
+    _claimETHFromRageQuit
 } from '../logic/giantSavETHPool';
 
 export class GiantSavETHPoolSubPackage {
@@ -39,5 +44,25 @@ export class GiantSavETHPoolSubPackage {
 
     withdrawETH(amount: string | BigNumber) {
         return _withdrawETH(this.etherSigner, amount);
+    }
+
+    batchPartialWithdrawal(savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>) {
+        return _batchPartialWithdrawal(this.etherSigner, savETHVaultAddresses, lpTokens);
+    }
+
+    batchFetchETHFromRageQuit(savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>,  amounts: Array<Array<string | BigNumber>>) {
+        return _batchFetchETHFromRageQuit(this.etherSigner, savETHVaultAddresses, lpTokens, amounts);
+    }
+
+    fetchETHFromRageQuit(savETHVaultAddress: string, lpToken: string) {
+        return _fetchETHFromRageQuit(this.etherSigner, savETHVaultAddress, lpToken);
+    }
+
+    batchClaimETHFromRageQuit(blsPublicKeys: Array<string>) {
+        return _batchClaimETHFromRageQuit(this.etherSigner, blsPublicKeys);
+    }
+
+    claimETHFromRageQuit(blsPublicKey: string) {
+        return _claimETHFromRageQuit(this.etherSigner, blsPublicKey);
     }
 }
