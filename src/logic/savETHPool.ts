@@ -139,22 +139,26 @@ export const _previewPartialETHWithdrawalAmount = async (signer: Signer | Provid
     );
 }
 
-export const _batchPartialWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpTokens: Array<string>) => {
+export const _batchPartialWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpTokens: Array<string>, amounts: Array<string | BigNumber>) => {
     
+    if (lpTokens.length != amounts.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
     for(let i=0; i<lpTokens.length; ++i) {
         lpTokens[i] = _add0x(lpTokens[i]);
     }
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
-    return contract.batchPartialWithdrawal(lpTokens);
+    return contract.batchPartialWithdrawal(lpTokens, amounts);
 }
 
-export const _partialWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string) => {
+export const _partialWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string, amount: string | BigNumber) => {
 
     const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
 
-    return contract.partialWithdrawal(_add0x(lpToken));
+    return contract.partialWithdrawal(_add0x(lpToken), amount);
 }
 
 export const _batchClaimETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddress: string, lpTokens: Array<string>, amounts: Array<string | BigNumber>) => {

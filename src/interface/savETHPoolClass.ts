@@ -71,12 +71,12 @@ export class SavETHPoolSubPackage {
         return _previewPartialETHWithdrawalAmount(this.etherSigner, this.savETHPoolAddress, user, lpTokens);
     }
 
-    batchPartialWithdrawal(lpTokens: Array<string>) {
-        return _batchPartialWithdrawal(this.etherSigner, this.savETHPoolAddress, lpTokens);
+    batchPartialWithdrawal(lpTokens: Array<string>, amounts: Array<string | BigNumber>) {
+        return _batchPartialWithdrawal(this.etherSigner, this.savETHPoolAddress, lpTokens, amounts);
     }
 
-    partialWithdrawal(lpToken: string) {
-        return _partialWithdrawal(this.etherSigner, this.savETHPoolAddress, lpToken);
+    partialWithdrawal(lpToken: string, amount: string | BigNumber) {
+        return _partialWithdrawal(this.etherSigner, this.savETHPoolAddress, lpToken, amount);
     }
 
     batchClaimETHFromRageQuit(lpTokens: Array<string>, amounts: Array<string | BigNumber>) {

@@ -127,7 +127,8 @@ export const _withdrawETH = async (signer: Signer | Provider, amount: string | B
     return contract.withdrawETH(amount);
 };
 
-export const _batchPartialWithdrawal = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>) => {
+
+export const _previewPartialWithdrawalClaimableETH = async (signer: Signer | Provider, user: string, savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>) => {
 
     if(savETHVaultAddresses.length != lpTokens.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
@@ -143,7 +144,38 @@ export const _batchPartialWithdrawal = async (signer: Signer | Provider, savETHV
 
     const contract = (await getContractInstance(signer)).giantSavETHPool();
 
-    return contract.batchPartialWithdrawal(savETHVaultAddresses, lpTokens);
+    return contract.previewPartialWithdrawalClaimableETH(
+        user,
+        savETHVaultAddresses,
+        lpTokens
+    );
+}
+
+export const _batchPartialWithdrawal = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
+
+    const arrayLength = savETHVaultAddresses.length;
+    if(arrayLength != amounts.length || arrayLength != lpTokens.length) {
+        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+    }
+
+    for(let i=0; i<arrayLength; ++i) {
+        const lpTokensArray = lpTokens[i];
+        const amountsArray = amounts[i];
+
+        if(lpTokensArray.length != amountsArray.length) {
+            throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
+        }
+
+        savETHVaultAddresses[i] = _add0x(savETHVaultAddresses[i]);
+
+        for(let j=0; j<lpTokensArray.length; ++j) {
+            lpTokens[i][j] = _add0x(lpTokens[i][j]);
+        }
+    }
+
+    const contract = (await getContractInstance(signer)).giantSavETHPool();
+
+    return contract.batchPartialWithdrawal(savETHVaultAddresses, lpTokens, amounts);
 }
 
 export const _batchFetchETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddresses: Array<string>, lpTokens: Array<Array<string>>, amounts: Array<Array<string | BigNumber>>) => {
