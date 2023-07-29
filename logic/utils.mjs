@@ -408,3 +408,13 @@ export const _getNetworkFeeRecipient = async (signer, liquidStakingManagerAddres
 
     return contract.getNetworkFeeRecipient();
 };
+
+export const _getFrenDelegationBribesByBLS = async (signer, bribeVaultAddress, blsKey) => {
+	if(!blsKey) {
+		throw customErrors.NULL_OR_UNDEFINED_VALUE;
+	}
+
+	const contract = (await getContractInstance(signer)).frenDelegationBribeVault(bribeVaultAddress);
+
+	return contract.deposits(_add0x(blsKey));
+};
