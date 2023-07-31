@@ -14,11 +14,12 @@ export class Wizard {
         signer, 
         liquidStakingManagerAddress=null, 
         savETHPoolAddress=null,
-        feesAndMevPoolAddress=null
+        feesAndMevPoolAddress=null,
+        frenDelegationBribeVaultAddress=null
     }) {
         
         this.deployer = new DeployerSubPackage(signer);
-        this.utils = new UtilsSubPackage(signer, liquidStakingManagerAddress);
+        this.utils = new UtilsSubPackage(signer, liquidStakingManagerAddress, frenDelegationBribeVaultAddress);
         this.savETHPool = new SavETHPoolSubPackage(signer, savETHPoolAddress);
         this.feesAndMevPool = new FeesAndMevPoolSubPackage(signer, feesAndMevPoolAddress);
         this.giantSavETHPool = new GiantSavETHPoolSubPackage(signer);

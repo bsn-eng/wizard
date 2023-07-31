@@ -30,6 +30,12 @@ export const getContractInstance = async (signer) => {
         feesAndMevPoolAddress,
         lsdContracts.FEES_AND_MEV,
         signer
+    );   
+
+	const getFrenDelegationBribeVault = (frenDelegationBribeVaultAddress) => new ethers.Contract(
+        frenDelegationBribeVaultAddress,
+        lsdContracts.FREN_DELEGATION_BRIBES,
+        signer
     );
 
     const getGiantSavETHPool = () => new ethers.Contract(
@@ -68,11 +74,19 @@ export const getContractInstance = async (signer) => {
         signer
     );
 
+	const getERC20 = (erc20Address) => new ethers.Contract(
+        erc20Address,
+        stakehouseContracts.ERC20_GENERIC,
+        signer
+    );
+
     return {
         lsdnFactory: getLSDNFactory,
         liquidStakingManager: getLiquidStakingManager,
         savETHVault: getSavETHVault,
+		erc20: getERC20,
         feesAndMevPool: getFeesAndMevPool,
+        frenDelegationBribeVault: getFrenDelegationBribeVault,
         giantSavETHPool: getGiantSavETHPool,
         giantFeesAndMevPool: getGiantFeesAndMevPool,
         syndicate: getSyndicate,

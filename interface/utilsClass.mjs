@@ -35,13 +35,15 @@ import {
     _stake,
     _mintDerivatives,
     _getNetworkFeeRecipient,
+	_getFrenDelegationBribesByBLS,
 } from '../logic/utils.mjs';
 
 export class UtilsSubPackage {
 
-    constructor(signer, liquidStakingManagerAddress) {
+    constructor(signer, liquidStakingManagerAddress, frenDelegationBribeVaultAddress = '') {
         this.etherSigner = signer;
         this.liquidStakingManagerAddress = liquidStakingManagerAddress;
+		this.frenDelegationBribeVaultAddress = frenDelegationBribeVaultAddress;
     }
 
     add0x(data) {
@@ -187,4 +189,8 @@ export class UtilsSubPackage {
     getNetworkFeeRecipient() {
         return _getNetworkFeeRecipient(this.etherSigner, this.liquidStakingManagerAddress);
     }
+
+	getFrenDelegationBribesByBLS(blsPublicKey){
+		return _getFrenDelegationBribesByBLS(this.etherSigner, this.frenDelegationBribeVaultAddress, blsPublicKey);
+	}
 }
