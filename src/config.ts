@@ -27,7 +27,8 @@ export class Wizard {
         signerOrProvider,
         liquidStakingManagerAddress,
         savETHPoolAddress,
-        feesAndMevPoolAddress
+        feesAndMevPoolAddress,
+        frenDelegationBribeVaultAddress
     }: {
         signerOrProvider: Signer | Provider,
         liquidStakingManagerAddress?: string,

@@ -380,7 +380,7 @@ export const _getGateKeeperAddress = async (signer: Signer | Provider, liquidSta
     return contract.gatekeeper();
 };
 
-export const _getFrenDelegationBribesByBLS = async (signer, bribeVaultAddress, blsKey) => {
+export const _getFrenDelegationBribesByBLS = async (signer: Signer | Provider, bribeVaultAddress: string, blsKey: string) => {
 	if(!blsKey) {
 		throw customErrors.NULL_OR_UNDEFINED_VALUE;
 	}
