@@ -36,17 +36,19 @@ import {
     _transferSmartWalletOwnership,
     _recoverSigningKey,
     _updateSyndicateActivationDistanceInBlocks,
-    _getGateKeeperAddress
+    _getGateKeeperAddress,
+    _getFrenDelegationBribesByBLS
 } from '../logic/utils';
 import { AuthenticatedBalanceReportT, FinalisedBeaconChainReportT } from '../types';
 
 export class UtilsSubPackage {
 
-    etherSigner; liquidStakingManagerAddress;
+    etherSigner; liquidStakingManagerAddress; frenDelegationBribeVaultAddress;
 
-    constructor(signer: Signer | Provider, liquidStakingManagerAddress: string) {
+    constructor(signer: Signer | Provider, liquidStakingManagerAddress: string, frenDelegationBribeVaultAddress: string = '') {
         this.etherSigner = signer;
         this.liquidStakingManagerAddress = liquidStakingManagerAddress;
+		this.frenDelegationBribeVaultAddress = frenDelegationBribeVaultAddress;
     }
 
     add0x(data: string) {
@@ -192,4 +194,8 @@ export class UtilsSubPackage {
     getGateKeeperAddress() {
         return _getGateKeeperAddress(this.etherSigner, this.liquidStakingManagerAddress);
     }
+
+	getFrenDelegationBribesByBLS(blsPublicKey: string){
+		return _getFrenDelegationBribesByBLS(this.etherSigner, this.frenDelegationBribeVaultAddress, blsPublicKey);
+	}
 }
