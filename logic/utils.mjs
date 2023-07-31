@@ -416,5 +416,22 @@ export const _getFrenDelegationBribesByBLS = async (signer, bribeVaultAddress, b
 
 	const contract = (await getContractInstance(signer)).frenDelegationBribeVault(bribeVaultAddress);
 
-	return contract.deposits(_add0x(blsKey));
+	const bribeDepositData = await contract.deposits(_add0x(blsKey));
+
+	const erc20Contract = (await getContractInstance(signer)).erc20(_add0x(bribeDepositData.token));
+	const bribeTokenSymbol = await erc20Contract.symbol();
+	const bribeTokenDecimals = await erc20Contract.decimals();
+
+	const newBribeData = {
+		id: bribeDepositData.id,
+		token: bribeDepositData.token,
+		tokenAmount: bribeDepositData.tokenAmount,
+		tokenToEthRatio: bribeDepositData.tokenToEthRatio,
+		expiration: bribeDepositData.expiration,
+		snapshot: bribeDepositData.snapshot,
+		tokenName: bribeTokenSymbol,
+		tokenDecimals: bribeTokenDecimals
+	};
+	
+	return newBribeData;
 };
