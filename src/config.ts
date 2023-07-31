@@ -32,13 +32,14 @@ export class Wizard {
         signerOrProvider: Signer | Provider,
         liquidStakingManagerAddress?: string,
         savETHPoolAddress?: string,
-        feesAndMevPoolAddress?: string
+        feesAndMevPoolAddress?: string,
+        frenDelegationBribeVaultAddress?: string,
     }) {
         
         this.etherSigner = signerOrProvider;
         this.deployer = new DeployerSubPackage(this.etherSigner);
         this.utils = liquidStakingManagerAddress
-            ? new UtilsSubPackage(this.etherSigner, liquidStakingManagerAddress)
+            ? new UtilsSubPackage(this.etherSigner, liquidStakingManagerAddress, frenDelegationBribeVaultAddress)
             : undefined;
         this.savETHPool = savETHPoolAddress
             ? new SavETHPoolSubPackage(this.etherSigner, savETHPoolAddress)
