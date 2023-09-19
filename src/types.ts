@@ -37,6 +37,13 @@ export type FinalisedBeaconChainReportT = {
   currentCheckpointEpoch: number;
 };
 
+export type SignatureT = {
+  deadline: number;
+  v: number;
+  r: string;
+  s: string;
+}
+
 export type AuthenticatedBalanceReportT = {
   report: {
     blsPublicKey: string;
