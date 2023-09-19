@@ -96,7 +96,7 @@ export const _depositETH = async (signer: Signer | Provider, amount: string, eth
     );
 };
 
-export const _batchDepositETHForStaking = async (signer: Signer | Provider, blsPublicKeys: Array<string>, blsSignatures: Array<string>, eoaRepresentative: string, stakeGiantPoolFunds: boolean, ethValue: BigNumber) => {
+export const _batchRegisterBLSPublicKeysAndETH = async (signer: Signer | Provider, blsPublicKeys: Array<string>, blsSignatures: Array<string>, eoaRepresentative: string, stakeGiantPoolFunds: boolean, ethValue: BigNumber) => {
 
     if(blsPublicKeys.length != blsSignatures.length) {
         throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);

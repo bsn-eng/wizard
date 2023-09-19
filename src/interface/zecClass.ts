@@ -11,7 +11,7 @@ import {
     _batchWhitelistNodeOperators,
     _banNodeOperator,
     _depositETH,
-    _batchDepositETHForStaking,
+    _batchRegisterBLSPublicKeysAndETH,
     _sendETHFromGiantPools,
     _callBackETH,
     _recoverSigningKeyViaStakehouseProtocol,
@@ -77,8 +77,8 @@ export class ZECSubPackage {
         return _depositETH(this.etherSigner, amount, ethValue);
     }
 
-    batchDepositETHForStaking(blsPublicKeys: Array<string>, blsSignatures: Array<string>, eoaRepresentative: string, stakeGiantPoolFunds: boolean, ethValue: BigNumber) {
-        return _batchDepositETHForStaking(this.etherSigner, blsPublicKeys, blsSignatures, eoaRepresentative, stakeGiantPoolFunds, ethValue)
+    batchRegisterBLSPublicKeysAndETH(blsPublicKeys: Array<string>, blsSignatures: Array<string>, eoaRepresentative: string, stakeGiantPoolFunds: boolean, ethValue: BigNumber) {
+        return _batchRegisterBLSPublicKeysAndETH(this.etherSigner, blsPublicKeys, blsSignatures, eoaRepresentative, stakeGiantPoolFunds, ethValue)
     }
 
     sendETHFromGiantPools(liquidStakingManagerAddress: string, blsPublicKeys: Array<string>, blsSignatures: Array<string>, appointNewEOARepresentative: boolean) {
