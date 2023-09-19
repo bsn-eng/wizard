@@ -10,7 +10,7 @@ import {
     _whitelistNodeOperators,
     _batchWhitelistNodeOperators,
     _banNodeOperator,
-    _depositETHForStaking,
+    _depositETH,
     _batchDepositETHForStaking,
     _sendETHFromGiantPools,
     _callBackETH,
@@ -73,8 +73,8 @@ export class ZECSubPackage {
         return _banNodeOperator(this.etherSigner, nodeOperator);
     }
 
-    depositETHForStaking(amount: string, ethValue: BigNumber) {
-        return _depositETHForStaking(this.etherSigner, amount, ethValue);
+    depositETH(amount: string, ethValue: BigNumber) {
+        return _depositETH(this.etherSigner, amount, ethValue);
     }
 
     batchDepositETHForStaking(blsPublicKeys: Array<string>, blsSignatures: Array<string>, eoaRepresentative: string, stakeGiantPoolFunds: boolean, ethValue: BigNumber) {

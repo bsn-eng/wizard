@@ -86,7 +86,7 @@ export const _banNodeOperator = async (signer: Signer | Provider, nodeOperator: 
     return contract.banNodeOperator(_add0x(nodeOperator));
 };
 
-export const _depositETHForStaking = async (signer: Signer | Provider, amount: string, ethValue: BigNumber) => {
+export const _depositETH = async (signer: Signer | Provider, amount: string, ethValue: BigNumber) => {
 
     const contract = (await getContractInstance(signer)).zec();
 
