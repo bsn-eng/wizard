@@ -284,3 +284,10 @@ export const _slash = async (signer: Signer | Provider, stakehouseAddress: strin
         { value: ethValue }
     );
 };
+
+export const _withdrawETH = async (signer: Signer | Provider, amount: string) => {
+
+    const contract = (await getContractInstance(signer)).zec();
+
+    return contract.withdrawETH(amount);
+};

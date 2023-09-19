@@ -25,7 +25,8 @@ import {
     _depositRagequitETH,
     _claimRagequitETH,
     _previewNodeOperatorRewards,
-    _slash
+    _slash,
+    _withdrawETH
 } from '../logic/zec';
 import { FinalisedBeaconChainReportT, SignatureT } from '../types';
 
@@ -67,7 +68,7 @@ export class ZECSubPackage {
     batchWhitelistNodeOperators(liquidStakingManagerAddress: string, nodeOperators: Array<string>) {
         _batchWhitelistNodeOperators(this.etherSigner, liquidStakingManagerAddress, nodeOperators);
     }
-    
+
     banNodeOperator(nodeOperator: string) {
         return _banNodeOperator(this.etherSigner, nodeOperator);
     }
@@ -134,5 +135,9 @@ export class ZECSubPackage {
 
     slash(stakehouseAddress: string, liquidStakingManagerAddress: string, blsPublicKey: string, finalisedEpochReport: FinalisedBeaconChainReportT, reportSignature: SignatureT, ethValue: BigNumber) {
         return _slash(this.etherSigner, stakehouseAddress, liquidStakingManagerAddress, blsPublicKey, finalisedEpochReport, reportSignature, ethValue);
+    }
+
+    withdrawETH(amount: string) {
+        return _withdrawETH(this.etherSigner, amount);
     }
 }
