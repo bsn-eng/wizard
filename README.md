@@ -392,19 +392,6 @@ Allow node runners to withdraw ETH from their smart wallet. ETH can only be with
 await wizard.utils.withdrawETHForKnot(recipientAddress, blsPublicKey);
 ```
 
-### manageNodeRunnerSmartWallet function
-Allow appointing a new node runner if the existing node runner coordinates with the DAO to sell their wallet. Can be only called by the DAO address or the current owner of the smart wallet.  
-
-#### Input params
-`currentNodeRunner`: Address of the current owner of the smart wallet  
-`newNodeRunner`: Address of the new node runner to be associated with the smart wallet  
-`wasCurrentNodeRunnerMalicious`: Boolean. `true` if the current node runner was malicious, `false` otherwise  
-
-#### Using the function
-```js
-await wizard.utils.manageNodeRunnerSmartWallet(currentNodeRunner, newNodeRunner, wasCurrentNodeRunnerMalicious);
-```
-
 ### claimRewardsAsNodeRunner function
 Allows a node runner to claim ETH from the syndicate from their smart wallet. Can be only called by the node runner that owns a smart wallet in the LSD network.  
 
