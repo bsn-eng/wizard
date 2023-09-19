@@ -12,7 +12,8 @@ import {
     Smart_wallet_abi__factory,
     Smart_wallet_naming_abi__factory,
     Rage_quit_assistant_abi__factory,
-    Fren_delegation_bribes_abi__factory
+    Fren_delegation_bribes_abi__factory,
+    Zec_abi__factory
 } from '../contracts/lsd/index';
 
 import { Erc20_generic_abi__factory } from '../contracts/stakehouse/index';
@@ -87,6 +88,11 @@ export const getContractInstance = async (signer: Signer | Provider) => {
         signer
     );
 
+    const getZEC = () => Zec_abi__factory.connect(
+        values?.factoryAddresses.ZEC as string,
+        signer
+    );
+
     return {
         lsdnFactory: getLSDNFactory,
         liquidStakingManager: getLiquidStakingManager,
@@ -100,6 +106,7 @@ export const getContractInstance = async (signer: Signer | Provider) => {
         dETH: getDETH,
         erc20: getERC20,
         frenDelegationBribeVault: getFrenDelegationBribeVault,
-        rageQuitAssistant: getRageQuitAssistant
+        rageQuitAssistant: getRageQuitAssistant,
+        zec: getZEC
     }
 }

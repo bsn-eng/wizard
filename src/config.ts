@@ -9,6 +9,7 @@ import { FeesAndMevPoolSubPackage } from './interface/feesAndMevPoolClass';
 import { GiantSavETHPoolSubPackage } from './interface/giantSavETHPoolClass';
 import { GiantFeesAndMevPoolSubPackage } from './interface/giantFeesAndMevPoolClass';
 import { HelperSubPackage } from './interface/helperClass';
+import { ZECSubPackage } from './interface/zecClass';
 
 export class Wizard {
 
@@ -22,6 +23,7 @@ export class Wizard {
     helper: HelperSubPackage; 
     contractInstance: ContractSubPackage; 
     constants: ConstantsSubPackage;
+    zec: ZECSubPackage;
 
     constructor({
         signerOrProvider,
@@ -54,5 +56,6 @@ export class Wizard {
         
         this.contractInstance = new ContractSubPackage(this.etherSigner);
         this.constants = new ConstantsSubPackage(this.etherSigner);
+        this.zec = new ZECSubPackage(this.etherSigner);
     }
 }
