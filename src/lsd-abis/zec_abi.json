@@ -977,7 +977,7 @@
 				"type": "address"
 			}
 		],
-		"name": "banNodeOperators",
+		"name": "banNodeOperator",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -2013,7 +2013,7 @@
 		],
 		"name": "sendETHFromGiantPools",
 		"outputs": [],
-		"stateMutability": "payable",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
