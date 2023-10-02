@@ -121,6 +121,11 @@
 	},
 	{
 		"inputs": [],
+		"name": "OnlyUtilsContract",
+		"type": "error"
+	},
+	{
+		"inputs": [],
 		"name": "OnlyWhitelistedNodeOperator",
 		"type": "error"
 	},
@@ -142,6 +147,11 @@
 	{
 		"inputs": [],
 		"name": "UnableToDeleteRecycledBatch",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "UtilsContractNotSet",
 		"type": "error"
 	},
 	{
@@ -326,6 +336,31 @@
 			}
 		],
 		"name": "ETHReceived",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "nodeOperator",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bytes",
+				"name": "blsPublicKey",
+				"type": "bytes"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "topUpAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "ETHSentToUtilsContractForTopUp",
 		"type": "event"
 	},
 	{
@@ -998,11 +1033,6 @@
 				"internalType": "address",
 				"name": "_eoaRepresentative",
 				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "_stakeGiantPoolFunds",
-				"type": "bool"
 			}
 		],
 		"name": "batchDepositETHForStaking",
@@ -1326,6 +1356,19 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "feesAndMevGiantPool",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address[]",
@@ -1485,64 +1528,76 @@
 	{
 		"inputs": [
 			{
-				"internalType": "contract LSDNFactory",
-				"name": "_factory",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_lpDeployer",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_upgradeManager",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_blockswapDAO",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_cipBondAmount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_nodeOperatorRewardsClaimDelay",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_blsPublicKeyProposerLimit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_totalZecBLSPublicKeyLimit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_feesAndMevGiantPool",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_savETHGiantPool",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_stakehouseSafeBox",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_zecSafeBox",
-				"type": "address"
+				"components": [
+					{
+						"internalType": "contract LSDNFactory",
+						"name": "_factory",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_giantLPDeployer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_upgradeManager",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_blockswapDAO",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_cipBondAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_nodeOperatorRewardsClaimDelay",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_blsPublicKeyProposerLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_totalZecBLSPublicKeyLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_feesAndMevGiantPool",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_savETHGiantPool",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_stakehouseSafeBox",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_zecSafeBox",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_utilsContract",
+						"type": "address"
+					}
+				],
+				"internalType": "struct ZEC.InitParams",
+				"name": "_params",
+				"type": "tuple"
 			}
 		],
 		"name": "init",
@@ -1989,181 +2044,16 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "savETHGiantPool",
+		"outputs": [
 			{
 				"internalType": "address",
-				"name": "_liquidStakingManagerAddress",
+				"name": "",
 				"type": "address"
-			},
-			{
-				"internalType": "bytes[]",
-				"name": "_blsPublicKeys",
-				"type": "bytes[]"
-			},
-			{
-				"internalType": "bytes[]",
-				"name": "_blsSignatures",
-				"type": "bytes[]"
-			},
-			{
-				"internalType": "bool",
-				"name": "_appointNewEOARepresentative",
-				"type": "bool"
 			}
 		],
-		"name": "sendETHFromGiantPools",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "numberOfBLSPublicKeysToBeStaked",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address[]",
-				"name": "_savETHVaults",
-				"type": "address[]"
-			},
-			{
-				"internalType": "address[]",
-				"name": "_stakingFundsVault",
-				"type": "address[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "_savETHTransactionAmounts",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "_feesAndMevETHTransactionAmounts",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "bytes[][]",
-				"name": "_blsPublicKeys",
-				"type": "bytes[][]"
-			},
-			{
-				"internalType": "uint256[][]",
-				"name": "_savETHStakeAmounts",
-				"type": "uint256[][]"
-			},
-			{
-				"internalType": "uint256[][]",
-				"name": "_feesAndMevStakeAmounts",
-				"type": "uint256[][]"
-			}
-		],
-		"name": "sendGiantPoolFunds",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_stakehouse",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_liquidStakingManagerAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "_blsPublicKey",
-				"type": "bytes"
-			},
-			{
-				"components": [
-					{
-						"internalType": "bytes",
-						"name": "blsPublicKey",
-						"type": "bytes"
-					},
-					{
-						"internalType": "bytes",
-						"name": "withdrawalCredentials",
-						"type": "bytes"
-					},
-					{
-						"internalType": "bool",
-						"name": "slashed",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint64",
-						"name": "activeBalance",
-						"type": "uint64"
-					},
-					{
-						"internalType": "uint64",
-						"name": "effectiveBalance",
-						"type": "uint64"
-					},
-					{
-						"internalType": "uint64",
-						"name": "exitEpoch",
-						"type": "uint64"
-					},
-					{
-						"internalType": "uint64",
-						"name": "activationEpoch",
-						"type": "uint64"
-					},
-					{
-						"internalType": "uint64",
-						"name": "withdrawalEpoch",
-						"type": "uint64"
-					},
-					{
-						"internalType": "uint64",
-						"name": "currentCheckpointEpoch",
-						"type": "uint64"
-					}
-				],
-				"internalType": "struct IDataStructures.ETH2DataReport",
-				"name": "_eth2Report",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint248",
-						"name": "deadline",
-						"type": "uint248"
-					},
-					{
-						"internalType": "uint8",
-						"name": "v",
-						"type": "uint8"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "r",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "s",
-						"type": "bytes32"
-					}
-				],
-				"internalType": "struct IDataStructures.EIP712Signature",
-				"name": "_signatureMetadata",
-				"type": "tuple"
-			}
-		],
-		"name": "slash",
-		"outputs": [],
-		"stateMutability": "payable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2174,6 +2064,19 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "stakehouseSafeBox",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -2297,6 +2200,30 @@
 	{
 		"inputs": [
 			{
+				"internalType": "bytes",
+				"name": "_blsPublicKey",
+				"type": "bytes"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_currentSlashedAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "transferETHForTopUp",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "newOwner",
 				"type": "address"
@@ -2389,21 +2316,16 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "utilsContract",
+		"outputs": [
 			{
 				"internalType": "address",
-				"name": "_nodeOperator",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_liquidStakingManagerAddress",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "whitelistNodeOperators",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -2454,6 +2376,19 @@
 	{
 		"inputs": [],
 		"name": "zecRepresentative",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "zecSafeBox",
 		"outputs": [
 			{
 				"internalType": "address",
