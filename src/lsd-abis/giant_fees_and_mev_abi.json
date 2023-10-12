@@ -192,18 +192,6 @@
       },
       {
         "indexed": false,
-        "internalType": "bytes",
-        "name": "blsPublicKey",
-        "type": "bytes"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "fundedInBatch",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
         "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
@@ -711,7 +699,7 @@
     "inputs": [
       {
         "internalType": "bytes",
-        "name": "_blsPublicKey",
+        "name": "_blsPubKey",
         "type": "bytes"
       }
     ],
@@ -1071,29 +1059,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "_targetPosition",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_existingPosition",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "jumpTheQueue",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -1425,25 +1390,6 @@
     "name": "withdrawETH",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "withdrawableAmountOfETH",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {

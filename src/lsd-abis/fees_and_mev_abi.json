@@ -516,6 +516,24 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_recipient",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes[]",
+        "name": "_blsPubKeys",
+        "type": "bytes[]"
+      }
+    ],
+    "name": "claimExistingRewards",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "bytes[]",
         "name": "_blsPubKeys",
         "type": "bytes[]"
@@ -617,6 +635,19 @@
       {
         "internalType": "contract IFullWithdrawals",
         "name": "withdrawals",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getLSDNFactory",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "factory",
         "type": "address"
       }
     ],

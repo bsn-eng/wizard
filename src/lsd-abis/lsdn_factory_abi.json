@@ -466,5 +466,18 @@
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "zecContract",
+    "outputs": [
+      {
+        "internalType": "contract GiantPoolBase",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   }
 ]
