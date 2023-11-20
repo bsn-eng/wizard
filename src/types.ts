@@ -26,6 +26,7 @@ export type ValidatorT = {
 };
   
 export type FinalisedBeaconChainReportT = {  
+  validatorIndex: string;
   blsPublicKey: string;
   withdrawalCredentials: string;
   slashed: boolean;
@@ -35,6 +36,7 @@ export type FinalisedBeaconChainReportT = {
   activationEpoch: string;
   withdrawalEpoch: string;
   currentCheckpointEpoch: number;
+  lastDepositIndex: string
 };
 
 export type SignatureT = {

@@ -1,6 +1,6 @@
 import { Signer, Bytes } from 'ethers';
 import { Provider } from '@ethersproject/abstract-provider';
-import { _getValidatorDetails } from '../logic/helper';
+import { _getValidatorDetails, _getFinalisedEpochReportForMultipleBlsKeys } from '../logic/helper';
 
 export class HelperSubPackage {
     etherSigner;
@@ -11,5 +11,10 @@ export class HelperSubPackage {
 
     getValidatorDetails(blsPublicKey: string) {
         return _getValidatorDetails(this.etherSigner, blsPublicKey);
+    }
+
+    
+    getFinalisedEpochReportForMultipleBlsKeys(beaconNodeURL: string, blsPublicKeys: Array <string>, status?: Array <string>){
+        return _getFinalisedEpochReportForMultipleBlsKeys(this.etherSigner, beaconNodeURL, blsPublicKeys, status);
     }
 }
