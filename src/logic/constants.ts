@@ -35,11 +35,13 @@ export const mainnetFactoryAddresses: Record<string, string> = {
 };
 
 export const goerliLSDUrls: Record<string, string> = {
-	SUBGRAPH_ENDPOINT: "https://api.thegraph.com/subgraphs/name/bsn-eng/liquid-staking-derivative"
+	SUBGRAPH_ENDPOINT: "https://goerli-lsd-subgraph.joinstakehouse.com",
+	STAKEHOUSE_SUBGRAPH_ENDPOINT: "https://goerli-stakehouse-subgraph.joinstakehouse.com"
 }
 
 export const mainnetLSDUrls: Record<string, string> = {
-	SUBGRAPH_ENDPOINT: "https://api.thegraph.com/subgraphs/name/stakehouse-dev/lsd"
+	SUBGRAPH_ENDPOINT: "https://lsd-subgraph.joinstakehouse.com",
+	STAKEHOUSE_SUBGRAPH_ENDPOINT: "https://stakehouse-subgraph.joinstakehouse.com"
 }
 
 export const customErrors: Record<string, string> = {
