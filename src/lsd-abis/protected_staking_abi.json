@@ -273,19 +273,6 @@
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "blsPublicKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "savETHManuallyAddedToOpenIndex",
-    "type": "event"
-  },
-  {
     "inputs": [],
     "name": "KNOT_BATCH_AMOUNT",
     "outputs": [
@@ -347,19 +334,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "addSavETHToOpenIndex",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -482,13 +456,7 @@
       }
     ],
     "name": "burnLPToken",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -506,42 +474,6 @@
       }
     ],
     "name": "burnLPTokens",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "_blsPublicKeys",
-        "type": "bytes[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_amounts",
-        "type": "uint256[]"
-      }
-    ],
-    "name": "burnLPTokensByBLS",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "contract LPToken",
-        "name": "_lpToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "claimETHFromRageQuit",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -630,30 +562,6 @@
     "inputs": [
       {
         "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "depositETHForStaking",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
         "name": "",
         "type": "bytes"
       },
@@ -681,6 +589,19 @@
       {
         "internalType": "contract IFullWithdrawals",
         "name": "withdrawals",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getLSDNFactory",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "factory",
         "type": "address"
       }
     ],
@@ -755,44 +676,6 @@
     "name": "init",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "isBLSPublicKeyBanned",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "isBLSPublicKeyPartOfLSDNetwork",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -907,24 +790,33 @@
   {
     "inputs": [
       {
-        "internalType": "contract LPToken",
-        "name": "_lpToken",
+        "internalType": "address",
+        "name": "",
         "type": "address"
       },
       {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "partialWithdrawal",
-    "outputs": [
+        "internalType": "bytes",
+        "name": "_blsPublicKey",
+        "type": "bytes"
+      },
       {
         "internalType": "uint256",
-        "name": "ethPaid",
+        "name": "_associatedIndexBeforeBeingAddedToOpenIndex",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_savETHMinted",
         "type": "uint256"
       }
     ],
+    "name": "onSavETHPushedIntoOpenIndex",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -950,19 +842,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "reverseBorrow",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

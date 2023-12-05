@@ -506,19 +506,6 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "configureStakeHouse",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "dao",
     "outputs": [
