@@ -13,7 +13,8 @@ export interface ChainSpecificConstants {
 
 export enum CHAIN_ID {
 	MAINNET = 1,
-	GOERLI = 5
+	GOERLI = 5,
+	HOLESKY = 17000
 };
 
 export const goerliFactoryAddresses: Record<string, string> = {
@@ -34,6 +35,15 @@ export const mainnetFactoryAddresses: Record<string, string> = {
 	ZEC: ""
 };
 
+export const holeskyFactoryAddresses: Record<string, string> = {
+    LSDN_FACTORY: "0xa38042b7109bb777E6dE177C065e98465039b81c",
+	GIANT_SAVETH_POOL: "0x01eFEC3E88604a87bE4dfAa6E9Dac7699b2829d1",
+	GIANT_FEES_AND_MEV_POOL: "0xdC1837DA5D8E5A4C332B871820C43f594Aa0D2a5",
+	SMART_WALLET_NAMING_REGISTRY: "0xa987Ce47C76584fC9cDc1E5192A393360693a487",
+	DETH: "0x4Bfc9573a96B883c477EeD548b5fCC30C5Dfeb82",
+	ZEC: ""
+};
+
 export const goerliLSDUrls: Record<string, string> = {
 	SUBGRAPH_ENDPOINT: "https://goerli-lsd-subgraph.joinstakehouse.com",
 	STAKEHOUSE_SUBGRAPH_ENDPOINT: "https://goerli-stakehouse-subgraph.joinstakehouse.com"
@@ -42,6 +52,11 @@ export const goerliLSDUrls: Record<string, string> = {
 export const mainnetLSDUrls: Record<string, string> = {
 	SUBGRAPH_ENDPOINT: "https://lsd-subgraph.joinstakehouse.com",
 	STAKEHOUSE_SUBGRAPH_ENDPOINT: "https://stakehouse-subgraph.joinstakehouse.com"
+}
+
+export const holeskyLSDUrls: Record<string, string> = {
+	SUBGRAPH_ENDPOINT: "https://holesky-lsd-subgraph.joinstakehouse.com",
+	STAKEHOUSE_SUBGRAPH_ENDPOINT: "https://holesky-stakehouse-subgraph.joinstakehouse.com"
 }
 
 export const customErrors: Record<string, string> = {
@@ -67,13 +82,20 @@ export const _extractChainID = async (signerOrProvider: Signer | Provider) => {
 	return network.chainId;
 };
 
-export const _getChainSpecificConstants = (chainID: CHAIN_ID.GOERLI | CHAIN_ID.MAINNET): ChainSpecificConstants => {
+export const _getChainSpecificConstants = (chainID: CHAIN_ID.GOERLI | CHAIN_ID.MAINNET | CHAIN_ID.HOLESKY): ChainSpecificConstants => {
 
 	if(chainID === CHAIN_ID.GOERLI) {
 		return {
 			factoryAddresses: goerliFactoryAddresses,
 			customErrors: customErrors,
 			lsdUrls: goerliLSDUrls
+		};
+	}
+	else if(chainID === CHAIN_ID.HOLESKY) {
+		return {
+			factoryAddresses: holeskyFactoryAddresses,
+			customErrors: customErrors,
+			lsdUrls: holeskyLSDUrls
 		};
 	}
 	else {
