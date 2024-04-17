@@ -32,30 +32,12 @@ export const _batchDepositETHForStaking = async (signer: Signer | Provider, savE
 
 export const _depositETHForStaking = async (signer: Signer | Provider, savETHVaultAddress: string, blsPublicKey: string, amount: string | BigNumber, ethValue: BigNumber) => {
 
-    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
-
-    return contract.depositETHForStaking(
-        _add0x(blsPublicKey),
-        amount,
-        { value: ethValue }
-    );
-};
-
-export const _burnLPTokensByBLS = async (signer: Signer | Provider, savETHVaultAddress: string, blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>) => {
-
-    if(blsPublicKeys.length != amounts.length) {
-        throw new Error(customErrors.UNEQUAL_ARRAY_LENGTH);
-    }
-
-    for(let i=0; i<blsPublicKeys.length; ++i) {
-        blsPublicKeys[i] = _add0x(blsPublicKeys[i]);
-    }
-
-    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
-
-    return contract.burnLPTokensByBLS(
-        blsPublicKeys,
-        amounts
+    return _batchDepositETHForStaking(
+        signer,
+        savETHVaultAddress,
+        [blsPublicKey],
+        [amount],
+        ethValue
     );
 };
 
@@ -156,9 +138,12 @@ export const _batchPartialWithdrawal = async (signer: Signer | Provider, savETHV
 
 export const _partialWithdrawal = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string, amount: string | BigNumber) => {
 
-    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
-
-    return contract.partialWithdrawal(_add0x(lpToken), amount);
+    return _batchPartialWithdrawal(
+        signer,
+        savETHVaultAddress,
+        [lpToken],
+        [amount]
+    );
 }
 
 export const _batchClaimETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddress: string, lpTokens: Array<string>, amounts: Array<string | BigNumber>) => {
@@ -178,10 +163,10 @@ export const _batchClaimETHFromRageQuit = async (signer: Signer | Provider, savE
 
 export const _claimETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string, amount: string | BigNumber) => {
 
-    const contract = (await getContractInstance(signer)).savETHVault(savETHVaultAddress);
-
-    return contract.claimETHFromRageQuit(
-        _add0x(lpToken),
-        amount
-    );
+    return _batchClaimETHFromRageQuit(
+        signer,
+        savETHVaultAddress,
+        [lpToken],
+        [amount]
+    )
 }

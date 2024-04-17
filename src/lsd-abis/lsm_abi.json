@@ -1,1463 +1,1450 @@
 [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
   },
   {
-    "inputs": [],
-    "name": "BLSKeyAlreadyRegistered",
-    "type": "error"
+      "inputs": [],
+      "name": "BLSKeyAlreadyRegistered",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "BLSKeyNotRegistered",
-    "type": "error"
+      "inputs": [],
+      "name": "BLSKeyNotRegistered",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "BLSPubKeyBanned",
-    "type": "error"
+      "inputs": [],
+      "name": "BLSPubKeyBanned",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "DAOKillSwitchNotActivated",
-    "type": "error"
+      "inputs": [],
+      "name": "DAOKillSwitchNotActivated",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "DepositNotCompleted",
-    "type": "error"
+      "inputs": [],
+      "name": "DepositNotCompleted",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "EmptyArray",
-    "type": "error"
+      "inputs": [],
+      "name": "EmptyArray",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "FailedToTransfer",
-    "type": "error"
+      "inputs": [],
+      "name": "FailedToTransfer",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "GoMintDerivatives",
-    "type": "error"
+      "inputs": [],
+      "name": "GoMintDerivatives",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "HouseAlreadyCreated",
-    "type": "error"
+      "inputs": [],
+      "name": "HouseAlreadyCreated",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InconsistentArrayLength",
-    "type": "error"
+      "inputs": [],
+      "name": "InconsistentArrayLength",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InitialsNotRegistered",
-    "type": "error"
+      "inputs": [],
+      "name": "InitialsNotRegistered",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidAmount",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidAmount",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidCommission",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidCommission",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidEOA",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidEOA",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidTickerLength",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidTickerLength",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "NodeRunnerNotPermitted",
-    "type": "error"
+      "inputs": [],
+      "name": "NodeRunnerNotPermitted",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "NotEnoughETHToStake",
-    "type": "error"
+      "inputs": [],
+      "name": "NotEnoughETHToStake",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "NothingReceived",
-    "type": "error"
+      "inputs": [],
+      "name": "NothingReceived",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "OnlyDAO",
-    "type": "error"
+      "inputs": [],
+      "name": "OnlyDAO",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "OnlyDAOOrNodeRunner",
-    "type": "error"
+      "inputs": [],
+      "name": "OnlyDAOOrNodeRunner",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "OnlyEOA",
-    "type": "error"
+      "inputs": [],
+      "name": "OnlyEOA",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "OnlyNodeRunner",
-    "type": "error"
+      "inputs": [],
+      "name": "OnlyNodeRunner",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "TickerAlreadyTaken",
-    "type": "error"
+      "inputs": [],
+      "name": "TickerAlreadyTaken",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "ZeroAddress",
-    "type": "error"
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "old",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newCommission",
-        "type": "uint256"
-      }
-    ],
-    "name": "DAOCommissionUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "associatedSmartWallet",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "blsPublicKeyOfKnot",
-        "type": "bytes"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "nodeRunner",
-        "type": "address"
-      }
-    ],
-    "name": "ETHWithdrawnFromSmartWallet",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "trigerringAddress",
-        "type": "address"
-      }
-    ],
-    "name": "KnotStaked",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "newTicker",
-        "type": "string"
-      }
-    ],
-    "name": "NetworkTickerUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "nodeRunner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "blsPublicKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "NewLSDValidatorRegistered",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "nodeRunner",
-        "type": "address"
-      }
-    ],
-    "name": "NodeRunnerBanned",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "nodeRunner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "recipient",
-        "type": "address"
-      }
-    ],
-    "name": "NodeRunnerRewardsClaimed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "nodeRunner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "updatedStatus",
-        "type": "bool"
-      }
-    ],
-    "name": "NodeRunnerWhitelistingStatusChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "smartWallet",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "eoaRepresentative",
-        "type": "address"
-      }
-    ],
-    "name": "RepresentativeAppointed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "smartWallet",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "eoaRepresentative",
-        "type": "address"
-      }
-    ],
-    "name": "RepresentativeRemoved",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "smartWallet",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "nodeRunner",
-        "type": "address"
-      }
-    ],
-    "name": "SmartWalletCreated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "stakehouseTicker",
-        "type": "string"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "stakehouse",
-        "type": "address"
-      }
-    ],
-    "name": "StakehouseCreated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "blsPubKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "StakehouseJoined",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "oldAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newAddress",
-        "type": "address"
-      }
-    ],
-    "name": "UpdateDAOAddress",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "dao",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "updatedStatus",
-        "type": "bool"
-      }
-    ],
-    "name": "WhitelistingStatusChanged",
-    "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "MAX_COMMISSION",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "MODULO",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_nodeRunner",
-        "type": "address"
-      }
-    ],
-    "name": "banNodeRunnerFromSettingUpBLSKeys",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "bannedBLSPublicKeys",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "bannedNodeRunners",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "brand",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_recipient",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes[]",
-        "name": "_blsPubKeys",
-        "type": "bytes[]"
-      }
-    ],
-    "name": "claimRewardsAsNodeRunner",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "configureStakeHouse",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "dao",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "daoCommissionPercentage",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "_blsPublicKeys",
-        "type": "bytes[]"
-      }
-    ],
-    "name": "deRegisterKnotFromSyndicate",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "enableWhitelisting",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "factory",
-    "outputs": [
-      {
-        "internalType": "contract LSDNFactory",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "gatekeeper",
-    "outputs": [
-      {
-        "internalType": "contract OptionalHouseGatekeeper",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getNetworkFeeRecipient",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_dao",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_syndicateFactory",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_smartWalletFactory",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_lpTokenFactory",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_brand",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_savETHVaultDeployer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_stakingFundsVaultDeployer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_optionalGatekeeperDeployer",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_optionalCommission",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "_deployOptionalGatekeeper",
-        "type": "bool"
-      },
-      {
-        "internalType": "string",
-        "name": "_stakehouseTicker",
-        "type": "string"
-      }
-    ],
-    "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "isBLSPublicKeyBanned",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "isBLSPublicKeyPartOfLSDNetwork",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_nodeRunner",
-        "type": "address"
-      }
-    ],
-    "name": "isNodeRunnerBanned",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "isNodeRunnerWhitelisted",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "_blsPublicKeyOfKnots",
-        "type": "bytes[]"
-      },
-      {
-        "components": [
+      "anonymous": false,
+      "inputs": [
           {
-            "internalType": "bytes",
-            "name": "blsPublicKey",
-            "type": "bytes"
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "old",
+              "type": "uint256"
           },
           {
-            "internalType": "bytes",
-            "name": "withdrawalCredentials",
-            "type": "bytes"
-          },
-          {
-            "internalType": "bool",
-            "name": "slashed",
-            "type": "bool"
-          },
-          {
-            "internalType": "uint64",
-            "name": "activeBalance",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "effectiveBalance",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "exitEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "activationEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "withdrawalEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "currentCheckpointEpoch",
-            "type": "uint64"
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newCommission",
+              "type": "uint256"
           }
-        ],
-        "internalType": "struct IDataStructures.ETH2DataReport[]",
-        "name": "_beaconChainBalanceReports",
-        "type": "tuple[]"
-      },
-      {
-        "components": [
+      ],
+      "name": "DAOCommissionUpdated",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
           {
-            "internalType": "uint248",
-            "name": "deadline",
-            "type": "uint248"
+              "indexed": true,
+              "internalType": "address",
+              "name": "associatedSmartWallet",
+              "type": "address"
           },
           {
-            "internalType": "uint8",
-            "name": "v",
-            "type": "uint8"
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "blsPublicKeyOfKnot",
+              "type": "bytes"
           },
           {
-            "internalType": "bytes32",
-            "name": "r",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "s",
-            "type": "bytes32"
+              "indexed": false,
+              "internalType": "address",
+              "name": "nodeRunner",
+              "type": "address"
           }
-        ],
-        "internalType": "struct IDataStructures.EIP712Signature[]",
-        "name": "_reportSignatures",
-        "type": "tuple[]"
-      }
-    ],
-    "name": "mintDerivatives",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      ],
+      "name": "ETHWithdrawnFromSmartWallet",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "nodeRunnerOfSmartWallet",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "numberOfKnots",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKey",
-        "type": "bytes"
-      },
-      {
-        "components": [
+      "anonymous": false,
+      "inputs": [
           {
-            "internalType": "bytes",
-            "name": "blsPublicKey",
-            "type": "bytes"
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "_blsPublicKeyOfKnot",
+              "type": "bytes"
           },
           {
-            "internalType": "bytes",
-            "name": "withdrawalCredentials",
-            "type": "bytes"
-          },
-          {
-            "internalType": "bool",
-            "name": "slashed",
-            "type": "bool"
-          },
-          {
-            "internalType": "uint64",
-            "name": "activeBalance",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "effectiveBalance",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "exitEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "activationEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "withdrawalEpoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "currentCheckpointEpoch",
-            "type": "uint64"
+              "indexed": true,
+              "internalType": "address",
+              "name": "trigerringAddress",
+              "type": "address"
           }
-        ],
-        "internalType": "struct IDataStructures.ETH2DataReport",
-        "name": "_beaconChainReport",
-        "type": "tuple"
-      },
-      {
-        "components": [
+      ],
+      "name": "KnotStaked",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
           {
-            "internalType": "uint248",
-            "name": "deadline",
-            "type": "uint248"
-          },
-          {
-            "internalType": "uint8",
-            "name": "v",
-            "type": "uint8"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "r",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "s",
-            "type": "bytes32"
+              "indexed": false,
+              "internalType": "string",
+              "name": "newTicker",
+              "type": "string"
           }
-        ],
-        "internalType": "struct IDataStructures.EIP712Signature",
-        "name": "_signatureMetadata",
-        "type": "tuple"
-      }
-    ],
-    "name": "rageQuit",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
+      ],
+      "name": "NetworkTickerUpdated",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_safeBox",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_nodeRunner",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKey",
-        "type": "bytes"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_hAesPublicKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "recoverSigningKey",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "_blsPublicKeys",
-        "type": "bytes[]"
-      },
-      {
-        "internalType": "bytes[]",
-        "name": "_blsSignatures",
-        "type": "bytes[]"
-      },
-      {
-        "internalType": "address",
-        "name": "_eoaRepresentative",
-        "type": "address"
-      }
-    ],
-    "name": "registerBLSPublicKeys",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_buildingType",
-        "type": "uint256"
-      }
-    ],
-    "name": "registerBuildingTypeToBrand",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "_newBLSPublicKeyBeingRegistered",
-        "type": "bytes[]"
-      }
-    ],
-    "name": "registerKnotsToSyndicate",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_newRepresentative",
-        "type": "address"
-      }
-    ],
-    "name": "rotateEOARepresentative",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "savETHVault",
-    "outputs": [
-      {
-        "internalType": "contract SavETHVault",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "smartWalletDormantRepresentative",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "smartWalletFactory",
-    "outputs": [
-      {
-        "internalType": "contract IOwnableSmartWalletFactory",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "smartWalletOfKnot",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "smartWalletOfNodeRunner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "smartWalletRepresentative",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "_blsPublicKeyOfKnots",
-        "type": "bytes[]"
-      },
-      {
-        "internalType": "bytes[]",
-        "name": "_ciphertexts",
-        "type": "bytes[]"
-      },
-      {
-        "internalType": "bytes[]",
-        "name": "_aesEncryptorKeys",
-        "type": "bytes[]"
-      },
-      {
-        "components": [
+      "anonymous": false,
+      "inputs": [
           {
-            "internalType": "uint248",
-            "name": "deadline",
-            "type": "uint248"
+              "indexed": true,
+              "internalType": "address",
+              "name": "nodeRunner",
+              "type": "address"
           },
           {
-            "internalType": "uint8",
-            "name": "v",
-            "type": "uint8"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "r",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "s",
-            "type": "bytes32"
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "blsPublicKey",
+              "type": "bytes"
           }
-        ],
-        "internalType": "struct IDataStructures.EIP712Signature[]",
-        "name": "_encryptionSignatures",
-        "type": "tuple[]"
-      },
-      {
-        "internalType": "bytes32[]",
-        "name": "_dataRoots",
-        "type": "bytes32[]"
-      }
-    ],
-    "name": "stake",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      ],
+      "name": "NewLSDValidatorRegistered",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "stakedKnotsOfSmartWallet",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "nodeRunner",
+              "type": "address"
+          }
+      ],
+      "name": "NodeRunnerBanned",
+      "type": "event"
   },
   {
-    "inputs": [],
-    "name": "stakehouse",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "nodeRunner",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+          }
+      ],
+      "name": "NodeRunnerRewardsClaimed",
+      "type": "event"
   },
   {
-    "inputs": [],
-    "name": "stakehouseTicker",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "nodeRunner",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "updatedStatus",
+              "type": "bool"
+          }
+      ],
+      "name": "NodeRunnerWhitelistingStatusChanged",
+      "type": "event"
   },
   {
-    "inputs": [],
-    "name": "stakingFundsVault",
-    "outputs": [
-      {
-        "internalType": "contract StakingFundsVault",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "smartWallet",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "eoaRepresentative",
+              "type": "address"
+          }
+      ],
+      "name": "RepresentativeAppointed",
+      "type": "event"
   },
   {
-    "inputs": [],
-    "name": "syndicate",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "smartWallet",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "eoaRepresentative",
+              "type": "address"
+          }
+      ],
+      "name": "RepresentativeRemoved",
+      "type": "event"
   },
   {
-    "inputs": [],
-    "name": "syndicateFactory",
-    "outputs": [
-      {
-        "internalType": "contract ISyndicateFactory",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "smartWallet",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "nodeRunner",
+              "type": "address"
+          }
+      ],
+      "name": "SmartWalletCreated",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "_enabled",
-        "type": "bool"
-      }
-    ],
-    "name": "toggleHouseGatekeeper",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": false,
+              "internalType": "string",
+              "name": "stakehouseTicker",
+              "type": "string"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "stakehouse",
+              "type": "address"
+          }
+      ],
+      "name": "StakehouseCreated",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferSmartWalletOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "blsPubKey",
+              "type": "bytes"
+          }
+      ],
+      "name": "StakehouseJoined",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "_description",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_imageURI",
-        "type": "string"
-      }
-    ],
-    "name": "updateBrandInfo",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "oldAddress",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newAddress",
+              "type": "address"
+          }
+      ],
+      "name": "UpdateDAOAddress",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_newAddress",
-        "type": "address"
-      }
-    ],
-    "name": "updateDAOAddress",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "dao",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "updatedStatus",
+              "type": "bool"
+          }
+      ],
+      "name": "WhitelistingStatusChanged",
+      "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_commissionPercentage",
-        "type": "uint256"
-      }
-    ],
-    "name": "updateDAORevenueCommission",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "inputs": [],
+      "name": "MAX_COMMISSION",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "_nodeRunners",
-        "type": "address[]"
-      },
-      {
-        "internalType": "bool",
-        "name": "isWhitelisted",
-        "type": "bool"
-      }
-    ],
-    "name": "updateNodeRunnerWhitelistStatus",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "inputs": [],
+      "name": "MODULO",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_distance",
-        "type": "uint256"
-      }
-    ],
-    "name": "updateSyndicateActivationDistanceInBlocks",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_nodeRunner",
+              "type": "address"
+          }
+      ],
+      "name": "banNodeRunnerFromSettingUpBLSKeys",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_newTicker",
-        "type": "string"
-      }
-    ],
-    "name": "updateTicker",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+          }
+      ],
+      "name": "bannedBLSPublicKeys",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "_changeWhitelist",
-        "type": "bool"
-      }
-    ],
-    "name": "updateWhitelisting",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "bannedNodeRunners",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_recipient",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKeyOfKnot",
-        "type": "bytes"
-      }
-    ],
-    "name": "withdrawETHForKnot",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "inputs": [],
+      "name": "brand",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
   },
   {
-    "stateMutability": "payable",
-    "type": "receive"
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_recipient",
+              "type": "address"
+          },
+          {
+              "internalType": "bytes[]",
+              "name": "_blsPubKeys",
+              "type": "bytes[]"
+          }
+      ],
+      "name": "claimRewardsAsNodeRunner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "dao",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "daoCommissionPercentage",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes[]",
+              "name": "_blsPublicKeys",
+              "type": "bytes[]"
+          }
+      ],
+      "name": "deRegisterKnotFromSyndicate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "enableWhitelisting",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "factory",
+      "outputs": [
+          {
+              "internalType": "contract LSDNFactory",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "gatekeeper",
+      "outputs": [
+          {
+              "internalType": "contract OptionalHouseGatekeeper",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getNetworkFeeRecipient",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_dao",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_syndicateFactory",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_smartWalletFactory",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_lpTokenFactory",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_brand",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_savETHVaultDeployer",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_stakingFundsVaultDeployer",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_optionalGatekeeperDeployer",
+              "type": "address"
+          },
+          {
+              "internalType": "uint256",
+              "name": "_optionalCommission",
+              "type": "uint256"
+          },
+          {
+              "internalType": "bool",
+              "name": "_deployOptionalGatekeeper",
+              "type": "bool"
+          },
+          {
+              "internalType": "string",
+              "name": "_stakehouseTicker",
+              "type": "string"
+          }
+      ],
+      "name": "init",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "_blsPublicKeyOfKnot",
+              "type": "bytes"
+          }
+      ],
+      "name": "isBLSPublicKeyBanned",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "_blsPublicKeyOfKnot",
+              "type": "bytes"
+          }
+      ],
+      "name": "isBLSPublicKeyPartOfLSDNetwork",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_nodeRunner",
+              "type": "address"
+          }
+      ],
+      "name": "isNodeRunnerBanned",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "isNodeRunnerWhitelisted",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes[]",
+              "name": "_blsPublicKeyOfKnots",
+              "type": "bytes[]"
+          },
+          {
+              "components": [
+                  {
+                      "internalType": "bytes",
+                      "name": "blsPublicKey",
+                      "type": "bytes"
+                  },
+                  {
+                      "internalType": "bytes",
+                      "name": "withdrawalCredentials",
+                      "type": "bytes"
+                  },
+                  {
+                      "internalType": "bool",
+                      "name": "slashed",
+                      "type": "bool"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "activeBalance",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "effectiveBalance",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "exitEpoch",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "activationEpoch",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "withdrawalEpoch",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "currentCheckpointEpoch",
+                      "type": "uint64"
+                  }
+              ],
+              "internalType": "struct IDataStructures.ETH2DataReport[]",
+              "name": "_beaconChainBalanceReports",
+              "type": "tuple[]"
+          },
+          {
+              "components": [
+                  {
+                      "internalType": "uint248",
+                      "name": "deadline",
+                      "type": "uint248"
+                  },
+                  {
+                      "internalType": "uint8",
+                      "name": "v",
+                      "type": "uint8"
+                  },
+                  {
+                      "internalType": "bytes32",
+                      "name": "r",
+                      "type": "bytes32"
+                  },
+                  {
+                      "internalType": "bytes32",
+                      "name": "s",
+                      "type": "bytes32"
+                  }
+              ],
+              "internalType": "struct IDataStructures.EIP712Signature[]",
+              "name": "_reportSignatures",
+              "type": "tuple[]"
+          }
+      ],
+      "name": "mintDerivatives",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "nodeRunnerOfSmartWallet",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "numberOfKnots",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "_blsPublicKey",
+              "type": "bytes"
+          },
+          {
+              "components": [
+                  {
+                      "internalType": "bytes",
+                      "name": "blsPublicKey",
+                      "type": "bytes"
+                  },
+                  {
+                      "internalType": "bytes",
+                      "name": "withdrawalCredentials",
+                      "type": "bytes"
+                  },
+                  {
+                      "internalType": "bool",
+                      "name": "slashed",
+                      "type": "bool"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "activeBalance",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "effectiveBalance",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "exitEpoch",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "activationEpoch",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "withdrawalEpoch",
+                      "type": "uint64"
+                  },
+                  {
+                      "internalType": "uint64",
+                      "name": "currentCheckpointEpoch",
+                      "type": "uint64"
+                  }
+              ],
+              "internalType": "struct IDataStructures.ETH2DataReport",
+              "name": "_beaconChainReport",
+              "type": "tuple"
+          },
+          {
+              "components": [
+                  {
+                      "internalType": "uint248",
+                      "name": "deadline",
+                      "type": "uint248"
+                  },
+                  {
+                      "internalType": "uint8",
+                      "name": "v",
+                      "type": "uint8"
+                  },
+                  {
+                      "internalType": "bytes32",
+                      "name": "r",
+                      "type": "bytes32"
+                  },
+                  {
+                      "internalType": "bytes32",
+                      "name": "s",
+                      "type": "bytes32"
+                  }
+              ],
+              "internalType": "struct IDataStructures.EIP712Signature",
+              "name": "_signatureMetadata",
+              "type": "tuple"
+          }
+      ],
+      "name": "rageQuit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_safeBox",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_nodeRunner",
+              "type": "address"
+          },
+          {
+              "internalType": "bytes",
+              "name": "_blsPublicKey",
+              "type": "bytes"
+          },
+          {
+              "internalType": "bytes",
+              "name": "_hAesPublicKey",
+              "type": "bytes"
+          }
+      ],
+      "name": "recoverSigningKey",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes[]",
+              "name": "_blsPublicKeys",
+              "type": "bytes[]"
+          },
+          {
+              "internalType": "bytes[]",
+              "name": "_blsSignatures",
+              "type": "bytes[]"
+          },
+          {
+              "internalType": "address",
+              "name": "_eoaRepresentative",
+              "type": "address"
+          }
+      ],
+      "name": "registerBLSPublicKeys",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_tokenId",
+              "type": "uint256"
+          },
+          {
+              "internalType": "uint256",
+              "name": "_buildingType",
+              "type": "uint256"
+          }
+      ],
+      "name": "registerBuildingTypeToBrand",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes[]",
+              "name": "_newBLSPublicKeyBeingRegistered",
+              "type": "bytes[]"
+          }
+      ],
+      "name": "registerKnotsToSyndicate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_newRepresentative",
+              "type": "address"
+          }
+      ],
+      "name": "rotateEOARepresentative",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "savETHVault",
+      "outputs": [
+          {
+              "internalType": "contract SavETHVault",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "smartWalletDormantRepresentative",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "smartWalletFactory",
+      "outputs": [
+          {
+              "internalType": "contract IOwnableSmartWalletFactory",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+          }
+      ],
+      "name": "smartWalletOfKnot",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "smartWalletOfNodeRunner",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "smartWalletRepresentative",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes[]",
+              "name": "_blsPublicKeyOfKnots",
+              "type": "bytes[]"
+          },
+          {
+              "internalType": "bytes[]",
+              "name": "_ciphertexts",
+              "type": "bytes[]"
+          },
+          {
+              "internalType": "bytes[]",
+              "name": "_aesEncryptorKeys",
+              "type": "bytes[]"
+          },
+          {
+              "components": [
+                  {
+                      "internalType": "uint248",
+                      "name": "deadline",
+                      "type": "uint248"
+                  },
+                  {
+                      "internalType": "uint8",
+                      "name": "v",
+                      "type": "uint8"
+                  },
+                  {
+                      "internalType": "bytes32",
+                      "name": "r",
+                      "type": "bytes32"
+                  },
+                  {
+                      "internalType": "bytes32",
+                      "name": "s",
+                      "type": "bytes32"
+                  }
+              ],
+              "internalType": "struct IDataStructures.EIP712Signature[]",
+              "name": "_encryptionSignatures",
+              "type": "tuple[]"
+          },
+          {
+              "internalType": "bytes32[]",
+              "name": "_dataRoots",
+              "type": "bytes32[]"
+          }
+      ],
+      "name": "stake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "stakedKnotsOfSmartWallet",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "stakehouse",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "stakehouseTicker",
+      "outputs": [
+          {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "stakingFundsVault",
+      "outputs": [
+          {
+              "internalType": "contract StakingFundsVault",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "syndicate",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "syndicateFactory",
+      "outputs": [
+          {
+              "internalType": "contract ISyndicateFactory",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bool",
+              "name": "_enabled",
+              "type": "bool"
+          }
+      ],
+      "name": "toggleHouseGatekeeper",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_newOwner",
+              "type": "address"
+          }
+      ],
+      "name": "transferSmartWalletOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_tokenId",
+              "type": "uint256"
+          },
+          {
+              "internalType": "string",
+              "name": "_description",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "_imageURI",
+              "type": "string"
+          }
+      ],
+      "name": "updateBrandInfo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_newAddress",
+              "type": "address"
+          }
+      ],
+      "name": "updateDAOAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_commissionPercentage",
+              "type": "uint256"
+          }
+      ],
+      "name": "updateDAORevenueCommission",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address[]",
+              "name": "_nodeRunners",
+              "type": "address[]"
+          },
+          {
+              "internalType": "bool",
+              "name": "isWhitelisted",
+              "type": "bool"
+          }
+      ],
+      "name": "updateNodeRunnerWhitelistStatus",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_distance",
+              "type": "uint256"
+          }
+      ],
+      "name": "updateSyndicateActivationDistanceInBlocks",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "string",
+              "name": "_newTicker",
+              "type": "string"
+          }
+      ],
+      "name": "updateTicker",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bool",
+              "name": "_changeWhitelist",
+              "type": "bool"
+          }
+      ],
+      "name": "updateWhitelisting",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_recipient",
+              "type": "address"
+          },
+          {
+              "internalType": "bytes",
+              "name": "_blsPublicKeyOfKnot",
+              "type": "bytes"
+          }
+      ],
+      "name": "withdrawETHForKnot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "stateMutability": "payable",
+      "type": "receive"
   }
 ]

@@ -4,7 +4,6 @@ import {
     _getIndexOwnedByTheVault,
     _batchDepositETHForStaking,
     _depositETHForStaking,
-    _burnLPTokensByBLS,
     _burnLPTokens,
     _burnLPToken,
     _isDETHReadyForWithdrawal,
@@ -37,10 +36,6 @@ export class SavETHPoolSubPackage {
 
     depositETHForStaking(blsPublicKey: string, amount: string | BigNumber, ethValue: BigNumber) {
         return _depositETHForStaking(this.etherSigner, this.savETHPoolAddress, blsPublicKey, amount, ethValue);
-    }
-
-    burnLPTokensByBLS(blsPublicKeys: Array<string>, amounts: Array<string | BigNumber>) {
-        return _burnLPTokensByBLS(this.etherSigner, this.savETHPoolAddress, blsPublicKeys, amounts);
     }
 
     burnLPTokens(lpTokens: Array<string>, amounts: Array<string | BigNumber>) {
