@@ -1,1453 +1,1399 @@
 [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
   },
   {
-    "inputs": [],
-    "name": "BLSKeyNotStaked",
-    "type": "error"
+      "inputs": [],
+      "name": "BLSKeyNotStaked",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "BLSKeyStaked",
-    "type": "error"
+      "inputs": [],
+      "name": "BLSKeyStaked",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "BatchAllocated",
-    "type": "error"
+      "inputs": [],
+      "name": "BatchAllocated",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "BelowMinimum",
-    "type": "error"
+      "inputs": [],
+      "name": "BelowMinimum",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "ComeBackLater",
-    "type": "error"
+      "inputs": [],
+      "name": "ComeBackLater",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "ContractPaused",
-    "type": "error"
+      "inputs": [],
+      "name": "ContractPaused",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "EmptyArray",
-    "type": "error"
+      "inputs": [],
+      "name": "EmptyArray",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "ErrorWithdrawing",
-    "type": "error"
+      "inputs": [],
+      "name": "ErrorWithdrawing",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "FailedToTransfer",
-    "type": "error"
+      "inputs": [],
+      "name": "FailedToTransfer",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InconsistentArrayLength",
-    "type": "error"
+      "inputs": [],
+      "name": "InconsistentArrayLength",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidAmount",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidAmount",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidAmount",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidAmount",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidBalance",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidBalance",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidCaller",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidCaller",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidCaller",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidCaller",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidExistingPosition",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidExistingPosition",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidJump",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidJump",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidStakingFundsVault",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidStakingFundsVault",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidTransfer",
-    "type": "error"
+      "inputs": [],
+      "name": "InvalidTransfer",
+      "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidWithdrawal",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NoDerivativesMinted",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NoFullBatchAvailable",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NoFundingInSelectedBatch",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NoRecycledETH",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NotEnoughIdleETH",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "OnlyManager",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ReentrancyCall",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "UnableToDeleteRecycledBatch",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ZeroAddress",
-    "type": "error"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "previousAdmin",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "newAdmin",
-        "type": "address"
-      }
-    ],
-    "name": "AdminChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "beacon",
-        "type": "address"
-      }
-    ],
-    "name": "BeaconUpgraded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "lp",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "blsPublicKey",
-        "type": "bytes"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "fundedInBatch",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "ClaimETHFromRageQuit",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "ETHDeposited",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "recipient",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "ETHDistributed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "ETHReceived",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "LPBurnedForETH",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "activated",
-        "type": "bool"
-      }
-    ],
-    "name": "Paused",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "targetPosition",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "existingPosition",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "QueueJumped",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "implementation",
-        "type": "address"
-      }
-    ],
-    "name": "Upgraded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "key",
-        "type": "bytes"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "batchId",
-        "type": "uint256"
-      }
-    ],
-    "name": "WithdrawalBatchAssociatedWithBLSKey",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "batchId",
-        "type": "uint256"
-      }
-    ],
-    "name": "WithdrawalBatchAssociatedWithUser",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "key",
-        "type": "bytes"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "batchId",
-        "type": "uint256"
-      }
-    ],
-    "name": "WithdrawalBatchDisassociatedWithBLSKey",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "batchId",
-        "type": "uint256"
-      }
-    ],
-    "name": "WithdrawalBatchRemovedFromUser",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "batchId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newAmount",
-        "type": "uint256"
-      }
-    ],
-    "name": "WithdrawalBatchUpdated",
-    "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "MIN_STAKING_AMOUNT",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "PRECISION",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "accumulatedETHPerLPAtTimeOfMintingDerivatives",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "accumulatedETHPerLPShare",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_from",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_to",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "afterTokenTransfer",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "allocatedBlsPubKeyForWithdrawalBatch",
-    "outputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "allocatedWithdrawalBatchForBlsPubKey",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "_blsPublicKeys",
-        "type": "bytes[]"
-      }
-    ],
-    "name": "batchClaimETHFromRageQuit",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "_stakingFundsVault",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_ETHTransactionAmounts",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "bytes[][]",
-        "name": "_blsPublicKeyOfKnots",
-        "type": "bytes[][]"
-      },
-      {
-        "internalType": "uint256[][]",
-        "name": "_amounts",
-        "type": "uint256[][]"
-      }
-    ],
-    "name": "batchDepositETHForStaking",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "_stakingFundsVaults",
-        "type": "address[]"
-      },
-      {
-        "internalType": "contract LPToken[][]",
-        "name": "_lpTokens",
-        "type": "address[][]"
-      },
-      {
-        "internalType": "uint256[][]",
-        "name": "_amounts",
-        "type": "uint256[][]"
-      }
-    ],
-    "name": "batchFetchETHFromRageQuit",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "batchSize",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_from",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_to",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "beforeTokenTransfer",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "_stakingFundsVaults",
-        "type": "address[]"
-      },
-      {
-        "internalType": "contract LPToken[][]",
-        "name": "_lpTokens",
-        "type": "address[][]"
-      },
-      {
-        "internalType": "uint256[][]",
-        "name": "_amounts",
-        "type": "uint256[][]"
-      }
-    ],
-    "name": "bringUnusedETHBackIntoGiantPool",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "claimETHFromRageQuit",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_recipient",
-        "type": "address"
-      }
-    ],
-    "name": "claimExistingRewards",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_recipient",
-        "type": "address"
-      },
-      {
-        "internalType": "address[]",
-        "name": "_stakingFundsVaults",
-        "type": "address[]"
-      },
-      {
-        "internalType": "bytes[][]",
-        "name": "_blsPublicKeysForKnots",
-        "type": "bytes[][]"
-      }
-    ],
-    "name": "claimRewards",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "claimed",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "depositBatchCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "depositETH",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "depositETHForRageQuit",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "ethFromRageQuit",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "ethFromRageQuitForBlsKey",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "ethRecycledFromBatch",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_stakingFundsVault",
-        "type": "address"
-      },
-      {
-        "internalType": "contract LPToken",
-        "name": "_lpToken",
-        "type": "address"
-      }
-    ],
-    "name": "fetchETHFromRageQuit",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "_stakingFundsVaults",
-        "type": "address[]"
-      },
-      {
-        "internalType": "bytes[][]",
-        "name": "_blsPublicKeysForKnots",
-        "type": "bytes[][]"
-      }
-    ],
-    "name": "fetchGiantPoolRewards",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_index",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAssociatedDepositBatchIDAtIndex",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_index",
-        "type": "uint256"
-      }
-    ],
-    "name": "getRecycledDepositBatchIDAtIndex",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getRecycledDepositBatchesSize",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_index",
-        "type": "uint256"
-      }
-    ],
-    "name": "getRecycledStakedBatchIDAtIndex",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getRecycledStakedBatchesSize",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "getSetOfAssociatedDepositBatchesSize",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "getTotalLiquidityInActiveRangeForUser",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "idleETH",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "contract LSDNFactory",
-        "name": "_factory",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_lpDeployer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_upgradeManager",
-        "type": "address"
-      }
-    ],
-    "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_targetPosition",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_existingPosition",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "jumpTheQueue",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "lastAccumulatedLPAtLastLiquiditySize",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "liquidStakingDerivativeFactory",
-    "outputs": [
-      {
-        "internalType": "contract LSDNFactory",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "lpTokenETH",
-    "outputs": [
-      {
-        "internalType": "contract GiantLP",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_blsPublicKey",
-        "type": "bytes"
-      }
-    ],
-    "name": "onMintDerivatives",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "paused",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      },
-      {
-        "internalType": "address[]",
-        "name": "_stakingFundsVaults",
-        "type": "address[]"
-      },
-      {
-        "internalType": "contract LPToken[][]",
-        "name": "_lpTokens",
-        "type": "address[][]"
-      }
-    ],
-    "name": "previewAccumulatedETH",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "proxiableUUID",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "rageQuitETHClaimedFromBatch",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "stakedBatchCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "_paused",
-        "type": "bool"
-      }
-    ],
-    "name": "togglePause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalClaimed",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalETHFromLPs",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "totalETHFundedPerBatch",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalETHSeen",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalLPAssociatedWithDerivativesMinted",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalRewardsReceived",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "updateAccumulatedETHPerLP",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newImplementation",
-        "type": "address"
-      }
-    ],
-    "name": "upgradeTo",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newImplementation",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "data",
-        "type": "bytes"
-      }
-    ],
-    "name": "upgradeToAndCall",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "withdrawETH",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "withdrawableAmountOfETH",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "stateMutability": "payable",
-    "type": "receive"
+      "inputs": [],
+      "name": "InvalidWithdrawal",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "NoDerivativesMinted",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "NoFullBatchAvailable",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "NoFundingInSelectedBatch",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "NoRecycledETH",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "NotEnoughIdleETH",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "OnlyManager",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "ReentrancyCall",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "UnableToDeleteRecycledBatch",
+      "type": "error"
+  },
+  {
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": false,
+              "internalType": "address",
+              "name": "previousAdmin",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "address",
+              "name": "newAdmin",
+              "type": "address"
+          }
+      ],
+      "name": "AdminChanged",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "beacon",
+              "type": "address"
+          }
+      ],
+      "name": "BeaconUpgraded",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "lp",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "ClaimETHFromRageQuit",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "ETHDeposited",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "ETHDistributed",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "ETHReceived",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "LPBurnedForETH",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+          }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "activated",
+              "type": "bool"
+          }
+      ],
+      "name": "Paused",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "targetPosition",
+              "type": "uint256"
+          },
+          {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "existingPosition",
+              "type": "uint256"
+          },
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "QueueJumped",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "implementation",
+              "type": "address"
+          }
+      ],
+      "name": "Upgraded",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "key",
+              "type": "bytes"
+          },
+          {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "batchId",
+              "type": "uint256"
+          }
+      ],
+      "name": "WithdrawalBatchAssociatedWithBLSKey",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "batchId",
+              "type": "uint256"
+          }
+      ],
+      "name": "WithdrawalBatchAssociatedWithUser",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "key",
+              "type": "bytes"
+          },
+          {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "batchId",
+              "type": "uint256"
+          }
+      ],
+      "name": "WithdrawalBatchDisassociatedWithBLSKey",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "batchId",
+              "type": "uint256"
+          }
+      ],
+      "name": "WithdrawalBatchRemovedFromUser",
+      "type": "event"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "batchId",
+              "type": "uint256"
+          },
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newAmount",
+              "type": "uint256"
+          }
+      ],
+      "name": "WithdrawalBatchUpdated",
+      "type": "event"
+  },
+  {
+      "inputs": [],
+      "name": "MIN_STAKING_AMOUNT",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "PRECISION",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+          }
+      ],
+      "name": "accumulatedETHPerLPAtTimeOfMintingDerivatives",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "accumulatedETHPerLPShare",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_from",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_to",
+              "type": "address"
+          },
+          {
+              "internalType": "uint256",
+              "name": "_amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "afterTokenTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "name": "allocatedBlsPubKeyForWithdrawalBatch",
+      "outputs": [
+          {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+          }
+      ],
+      "name": "allocatedWithdrawalBatchForBlsPubKey",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes[]",
+              "name": "_blsPublicKeys",
+              "type": "bytes[]"
+          }
+      ],
+      "name": "batchClaimETHFromRageQuit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address[]",
+              "name": "_stakingFundsVault",
+              "type": "address[]"
+          },
+          {
+              "internalType": "uint256[]",
+              "name": "_ETHTransactionAmounts",
+              "type": "uint256[]"
+          },
+          {
+              "internalType": "bytes[][]",
+              "name": "_blsPublicKeyOfKnots",
+              "type": "bytes[][]"
+          },
+          {
+              "internalType": "uint256[][]",
+              "name": "_amounts",
+              "type": "uint256[][]"
+          }
+      ],
+      "name": "batchDepositETHForStaking",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address[]",
+              "name": "_stakingFundsVaults",
+              "type": "address[]"
+          },
+          {
+              "internalType": "contract LPToken[][]",
+              "name": "_lpTokens",
+              "type": "address[][]"
+          },
+          {
+              "internalType": "uint256[][]",
+              "name": "_amounts",
+              "type": "uint256[][]"
+          }
+      ],
+      "name": "batchFetchETHFromRageQuit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "batchSize",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_from",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_to",
+              "type": "address"
+          },
+          {
+              "internalType": "uint256",
+              "name": "_amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "beforeTokenTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address[]",
+              "name": "_stakingFundsVaults",
+              "type": "address[]"
+          },
+          {
+              "internalType": "contract LPToken[][]",
+              "name": "_lpTokens",
+              "type": "address[][]"
+          },
+          {
+              "internalType": "uint256[][]",
+              "name": "_amounts",
+              "type": "uint256[][]"
+          }
+      ],
+      "name": "bringUnusedETHBackIntoGiantPool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "_blsPubKey",
+              "type": "bytes"
+          }
+      ],
+      "name": "claimETHFromRageQuit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_recipient",
+              "type": "address"
+          }
+      ],
+      "name": "claimExistingRewards",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_recipient",
+              "type": "address"
+          },
+          {
+              "internalType": "address[]",
+              "name": "_stakingFundsVaults",
+              "type": "address[]"
+          },
+          {
+              "internalType": "bytes[][]",
+              "name": "_blsPublicKeysForKnots",
+              "type": "bytes[][]"
+          }
+      ],
+      "name": "claimRewards",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "claimed",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "depositBatchCount",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "depositETH",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "_blsPublicKey",
+              "type": "bytes"
+          }
+      ],
+      "name": "depositETHForRageQuit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "ethFromRageQuit",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+          }
+      ],
+      "name": "ethFromRageQuitForBlsKey",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "name": "ethRecycledFromBatch",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_stakingFundsVault",
+              "type": "address"
+          },
+          {
+              "internalType": "contract LPToken",
+              "name": "_lpToken",
+              "type": "address"
+          }
+      ],
+      "name": "fetchETHFromRageQuit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address[]",
+              "name": "_stakingFundsVaults",
+              "type": "address[]"
+          },
+          {
+              "internalType": "bytes[][]",
+              "name": "_blsPublicKeysForKnots",
+              "type": "bytes[][]"
+          }
+      ],
+      "name": "fetchGiantPoolRewards",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_user",
+              "type": "address"
+          },
+          {
+              "internalType": "uint256",
+              "name": "_index",
+              "type": "uint256"
+          }
+      ],
+      "name": "getAssociatedDepositBatchIDAtIndex",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_index",
+              "type": "uint256"
+          }
+      ],
+      "name": "getRecycledDepositBatchIDAtIndex",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getRecycledDepositBatchesSize",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_index",
+              "type": "uint256"
+          }
+      ],
+      "name": "getRecycledStakedBatchIDAtIndex",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getRecycledStakedBatchesSize",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_user",
+              "type": "address"
+          }
+      ],
+      "name": "getSetOfAssociatedDepositBatchesSize",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_user",
+              "type": "address"
+          }
+      ],
+      "name": "getTotalLiquidityInActiveRangeForUser",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "idleETH",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "contract LSDNFactory",
+              "name": "_factory",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_lpDeployer",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "_upgradeManager",
+              "type": "address"
+          }
+      ],
+      "name": "init",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "name": "lastAccumulatedLPAtLastLiquiditySize",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "liquidStakingDerivativeFactory",
+      "outputs": [
+          {
+              "internalType": "contract LSDNFactory",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "lpTokenETH",
+      "outputs": [
+          {
+              "internalType": "contract GiantLP",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bytes",
+              "name": "_blsPublicKey",
+              "type": "bytes"
+          }
+      ],
+      "name": "onMintDerivatives",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_user",
+              "type": "address"
+          },
+          {
+              "internalType": "address[]",
+              "name": "_stakingFundsVaults",
+              "type": "address[]"
+          },
+          {
+              "internalType": "contract LPToken[][]",
+              "name": "_lpTokens",
+              "type": "address[][]"
+          }
+      ],
+      "name": "previewAccumulatedETH",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "proxiableUUID",
+      "outputs": [
+          {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          },
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "name": "rageQuitETHClaimedFromBatch",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "stakedBatchCount",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "bool",
+              "name": "_paused",
+              "type": "bool"
+          }
+      ],
+      "name": "togglePause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "totalClaimed",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "totalETHFromLPs",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          },
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "name": "totalETHFundedPerBatch",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "totalETHSeen",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "totalLPAssociatedWithDerivativesMinted",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "totalRewardsReceived",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+          }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "updateAccumulatedETHPerLP",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "newImplementation",
+              "type": "address"
+          }
+      ],
+      "name": "upgradeTo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "newImplementation",
+              "type": "address"
+          },
+          {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+          }
+      ],
+      "name": "upgradeToAndCall",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_amount",
+              "type": "uint256"
+          }
+      ],
+      "name": "withdrawETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "stateMutability": "payable",
+      "type": "receive"
   }
 ]
