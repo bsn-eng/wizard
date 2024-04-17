@@ -205,13 +205,13 @@ export const _batchFetchETHFromRageQuit = async (signer: Signer | Provider, savE
     return contract.batchFetchETHFromRageQuit(savETHVaultAddresses, lpTokens, amounts);
 }
 
-export const _fetchETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string) => {
+export const _fetchETHFromRageQuit = async (signer: Signer | Provider, savETHVaultAddress: string, lpToken: string, amount: string | BigNumber) => {
 
-    const contract = (await getContractInstance(signer)).giantSavETHPool();
-
-    return contract.fetchETHFromRageQuit(
-        _add0x(savETHVaultAddress),
-        _add0x(lpToken)
+    return _batchFetchETHFromRageQuit(
+        signer,
+        [savETHVaultAddress],
+        [[lpToken]],
+        [[amount]]
     );
 }
 
@@ -228,7 +228,8 @@ export const _batchClaimETHFromRageQuit = async (signer: Signer | Provider, blsP
 
 export const _claimETHFromRageQuit = async (signer: Signer | Provider, blsPublicKey: string) => {
     
-    const contract = (await getContractInstance(signer)).giantSavETHPool();
-
-    return contract.claimETHFromRageQuit(_add0x(blsPublicKey));
+    return _batchClaimETHFromRageQuit(
+        signer,
+        [blsPublicKey]
+    );
 }
