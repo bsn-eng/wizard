@@ -54,8 +54,8 @@ export class GiantSavETHPoolSubPackage {
         return _batchFetchETHFromRageQuit(this.etherSigner, savETHVaultAddresses, lpTokens, amounts);
     }
 
-    fetchETHFromRageQuit(savETHVaultAddress: string, lpToken: string) {
-        return _fetchETHFromRageQuit(this.etherSigner, savETHVaultAddress, lpToken);
+    fetchETHFromRageQuit(savETHVaultAddress: string, lpToken: string, amount: string) {
+        return _fetchETHFromRageQuit(this.etherSigner, savETHVaultAddress, lpToken, amount);
     }
 
     batchClaimETHFromRageQuit(blsPublicKeys: Array<string>) {
